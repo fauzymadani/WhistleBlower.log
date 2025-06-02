@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>greetings.yml - whistleblower - whistleblower
+</title>
+<link rel="icon" type="image/png" href="../../../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed" href="../../../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed (tags)" href="../../../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../../../"><img src="../../../logo.png" alt="" width="32" height="32" /></a></td><td><h1>whistleblower</h1><span class="desc">whistleblower
+</span></td></tr><tr><td></td><td>
+<a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/README.md.html">README</a> | <a href="../../../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<p> greetings.yml (953B)</p><hr/><pre id="blob">
+<a href="#l1" class="line" id="l1">      1</a> name: Greetings
+<a href="#l2" class="line" id="l2">      2</a> 
+<a href="#l3" class="line" id="l3">      3</a> on: [pull_request_target, issues]
+<a href="#l4" class="line" id="l4">      4</a> 
+<a href="#l5" class="line" id="l5">      5</a> jobs:
+<a href="#l6" class="line" id="l6">      6</a>   greeting:
+<a href="#l7" class="line" id="l7">      7</a>     runs-on: ubuntu-latest
+<a href="#l8" class="line" id="l8">      8</a>     permissions:
+<a href="#l9" class="line" id="l9">      9</a>       issues: write
+<a href="#l10" class="line" id="l10">     10</a>       pull-requests: write
+<a href="#l11" class="line" id="l11">     11</a>     steps:
+<a href="#l12" class="line" id="l12">     12</a>     - uses: actions/first-interaction@v1
+<a href="#l13" class="line" id="l13">     13</a>       with:
+<a href="#l14" class="line" id="l14">     14</a>         repo-token: ${{ secrets.GITHUB_TOKEN }}
+<a href="#l15" class="line" id="l15">     15</a>         issue-message: |
+<a href="#l16" class="line" id="l16">     16</a>           👋 Hello and welcome!
+<a href="#l17" class="line" id="l17">     17</a>           Thank you for opening your first issue in this repository. We appreciate your contribution and will review it as soon as possible. If you have any questions or need further clarification, feel free to ask.
+<a href="#l18" class="line" id="l18">     18</a>           We’re glad to have you here!
+<a href="#l19" class="line" id="l19">     19</a>         pr-message: |
+<a href="#l20" class="line" id="l20">     20</a>           👋 Hello and thank you for your first pull request!
+<a href="#l21" class="line" id="l21">     21</a>           We truly appreciate your contribution to this project. Our team will review your PR shortly. Please make sure you&#39;ve followed the contribution guidelines and provided clear details about your changes.
+<a href="#l22" class="line" id="l22">     22</a>           Welcome aboard — we&#39;re happy to have you contributing!
+</pre>
+</div>
+</body>
+</html>

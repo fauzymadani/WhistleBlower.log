@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Create greetings.yml - whistleblower - whistleblower
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>whistleblower</h1><span class="desc">whistleblower
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/890822aa5cb83ac53c5680c9544a4b3cf5d4bbc3.html">890822aa5cb83ac53c5680c9544a4b3cf5d4bbc3</a>
+<b>parent</b> <a href="../commit/9828747964c9fe29eabfbd396469b5cdeb98e5d2.html">9828747964c9fe29eabfbd396469b5cdeb98e5d2</a>
+<b>Author:</b> fauzymadani &lt;<a href="mailto:153879220+fauzymadani@users.noreply.github.com">153879220+fauzymadani@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Mon,  2 Jun 2025 06:24:53 +0700
+
+Create greetings.yml
+<b>Diffstat:</b>
+<table><tr><td class="A">A</td><td><a href="#h0">.github/workflows/greetings.yml</a></td><td> | </td><td class="num">22</td><td><span class="i">++++++++++++++++++++++</span><span class="d"></span></td></tr>
+</table></pre><pre>1 file changed, 22 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/.github/workflows/greetings.yml.html">.github/workflows/greetings.yml</a> b/<a href="../file/.github/workflows/greetings.yml.html">.github/workflows/greetings.yml</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -0,0 +1,22 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="i">+name: Greetings
+</a><a href="#h0-0-1" id="h0-0-1" class="i">+
+</a><a href="#h0-0-2" id="h0-0-2" class="i">+on: [pull_request_target, issues]
+</a><a href="#h0-0-3" id="h0-0-3" class="i">+
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+jobs:
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+  greeting:
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+    runs-on: ubuntu-latest
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+    permissions:
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+      issues: write
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+      pull-requests: write
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+    steps:
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+    - uses: actions/first-interaction@v1
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+      with:
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+        issue-message: |
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+          👋 Hello and welcome!
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+          Thank you for opening your first issue in this repository. We appreciate your contribution and will review it as soon as possible. If you have any questions or need further clarification, feel free to ask.
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+          We’re glad to have you here!
+</a><a href="#h0-0-18" id="h0-0-18" class="i">+        pr-message: |
+</a><a href="#h0-0-19" id="h0-0-19" class="i">+          👋 Hello and thank you for your first pull request!
+</a><a href="#h0-0-20" id="h0-0-20" class="i">+          We truly appreciate your contribution to this project. Our team will review your PR shortly. Please make sure you&#39;ve followed the contribution guidelines and provided clear details about your changes.
+</a><a href="#h0-0-21" id="h0-0-21" class="i">+          Welcome aboard — we&#39;re happy to have you contributing!
+</a></pre>
+</div>
+</body>
+</html>
