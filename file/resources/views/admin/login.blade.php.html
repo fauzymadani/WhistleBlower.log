@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>login.blade.php - whistleblower - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../../../../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed" href="../../../../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed (tags)" href="../../../../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../../../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../../../../"><img src="../../../../logo.png" alt="" width="32" height="32" /></a></td><td><h1>whistleblower</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../../../../log.html">Log</a> | <a href="../../../../files.html">Files</a> | <a href="../../../../refs.html">Refs</a> | <a href="../../../../file/README.md.html">README</a> | <a href="../../../../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<p> login.blade.php (4388B)</p><hr/><pre id="blob">
+<a href="#l1" class="line" id="l1">      1</a> &lt;!DOCTYPE html&gt;
+<a href="#l2" class="line" id="l2">      2</a> &lt;html lang=&quot;en&quot;&gt;
+<a href="#l3" class="line" id="l3">      3</a> &lt;head&gt;
+<a href="#l4" class="line" id="l4">      4</a>     &lt;meta charset=&quot;UTF-8&quot;&gt;
+<a href="#l5" class="line" id="l5">      5</a>     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+<a href="#l6" class="line" id="l6">      6</a>     &lt;title&gt;Admin WhistleBlower Login&lt;/title&gt;
+<a href="#l7" class="line" id="l7">      7</a>     &lt;style&gt;
+<a href="#l8" class="line" id="l8">      8</a>         /* Reset dan gaya dasar */
+<a href="#l9" class="line" id="l9">      9</a>         * {
+<a href="#l10" class="line" id="l10">     10</a>             margin: 0;
+<a href="#l11" class="line" id="l11">     11</a>             padding: 0;
+<a href="#l12" class="line" id="l12">     12</a>             box-sizing: border-box;
+<a href="#l13" class="line" id="l13">     13</a>             font-family: &#39;Poppins&#39;, sans-serif;
+<a href="#l14" class="line" id="l14">     14</a>         }
+<a href="#l15" class="line" id="l15">     15</a> 
+<a href="#l16" class="line" id="l16">     16</a>         body {
+<a href="#l17" class="line" id="l17">     17</a>             min-height: 100vh;
+<a href="#l18" class="line" id="l18">     18</a>             display: flex;
+<a href="#l19" class="line" id="l19">     19</a>             align-items: center;
+<a href="#l20" class="line" id="l20">     20</a>             justify-content: center;
+<a href="#l21" class="line" id="l21">     21</a>             background: linear-gradient(135deg, #6a11cb, #2575fc);
+<a href="#l22" class="line" id="l22">     22</a>             color: white;
+<a href="#l23" class="line" id="l23">     23</a>         }
+<a href="#l24" class="line" id="l24">     24</a> 
+<a href="#l25" class="line" id="l25">     25</a>         .login-container {
+<a href="#l26" class="line" id="l26">     26</a>             background-color: #2d3748;
+<a href="#l27" class="line" id="l27">     27</a>             width: 400px;
+<a href="#l28" class="line" id="l28">     28</a>             padding: 40px 30px;
+<a href="#l29" class="line" id="l29">     29</a>             border-radius: 15px;
+<a href="#l30" class="line" id="l30">     30</a>             box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+<a href="#l31" class="line" id="l31">     31</a>             text-align: center;
+<a href="#l32" class="line" id="l32">     32</a>             transition: transform 0.3s ease;
+<a href="#l33" class="line" id="l33">     33</a>         }
+<a href="#l34" class="line" id="l34">     34</a> 
+<a href="#l35" class="line" id="l35">     35</a>         .login-container:hover {
+<a href="#l36" class="line" id="l36">     36</a>             transform: scale(1.05);
+<a href="#l37" class="line" id="l37">     37</a>         }
+<a href="#l38" class="line" id="l38">     38</a> 
+<a href="#l39" class="line" id="l39">     39</a>         .login-container h2 {
+<a href="#l40" class="line" id="l40">     40</a>             margin-bottom: 20px;
+<a href="#l41" class="line" id="l41">     41</a>             font-size: 1.8em;
+<a href="#l42" class="line" id="l42">     42</a>             color: #fff;
+<a href="#l43" class="line" id="l43">     43</a>         }
+<a href="#l44" class="line" id="l44">     44</a> 
+<a href="#l45" class="line" id="l45">     45</a>         .form-group {
+<a href="#l46" class="line" id="l46">     46</a>             margin-bottom: 20px;
+<a href="#l47" class="line" id="l47">     47</a>             text-align: left;
+<a href="#l48" class="line" id="l48">     48</a>         }
+<a href="#l49" class="line" id="l49">     49</a> 
+<a href="#l50" class="line" id="l50">     50</a>         label {
+<a href="#l51" class="line" id="l51">     51</a>             font-weight: 600;
+<a href="#l52" class="line" id="l52">     52</a>             font-size: 0.9em;
+<a href="#l53" class="line" id="l53">     53</a>             margin-bottom: 5px;
+<a href="#l54" class="line" id="l54">     54</a>             display: inline-block;
+<a href="#l55" class="line" id="l55">     55</a>             color: #a0aec0;
+<a href="#l56" class="line" id="l56">     56</a>         }
+<a href="#l57" class="line" id="l57">     57</a> 
+<a href="#l58" class="line" id="l58">     58</a>         input[type=&quot;text&quot;], input[type=&quot;password&quot;] {
+<a href="#l59" class="line" id="l59">     59</a>             width: 100%;
+<a href="#l60" class="line" id="l60">     60</a>             padding: 12px 15px;
+<a href="#l61" class="line" id="l61">     61</a>             border: none;
+<a href="#l62" class="line" id="l62">     62</a>             border-radius: 8px;
+<a href="#l63" class="line" id="l63">     63</a>             font-size: 1em;
+<a href="#l64" class="line" id="l64">     64</a>             outline: none;
+<a href="#l65" class="line" id="l65">     65</a>             background: #4a5568;
+<a href="#l66" class="line" id="l66">     66</a>             color: white;
+<a href="#l67" class="line" id="l67">     67</a>         }
+<a href="#l68" class="line" id="l68">     68</a> 
+<a href="#l69" class="line" id="l69">     69</a>         input[type=&quot;text&quot;]::placeholder, input[type=&quot;password&quot;]::placeholder {
+<a href="#l70" class="line" id="l70">     70</a>             color: #cbd5e0;
+<a href="#l71" class="line" id="l71">     71</a>         }
+<a href="#l72" class="line" id="l72">     72</a> 
+<a href="#l73" class="line" id="l73">     73</a>         .btn-login {
+<a href="#l74" class="line" id="l74">     74</a>             width: 100%;
+<a href="#l75" class="line" id="l75">     75</a>             padding: 12px 15px;
+<a href="#l76" class="line" id="l76">     76</a>             border: none;
+<a href="#l77" class="line" id="l77">     77</a>             border-radius: 8px;
+<a href="#l78" class="line" id="l78">     78</a>             background: linear-gradient(135deg, #6a11cb, #2575fc);
+<a href="#l79" class="line" id="l79">     79</a>             color: white;
+<a href="#l80" class="line" id="l80">     80</a>             font-size: 1.1em;
+<a href="#l81" class="line" id="l81">     81</a>             font-weight: bold;
+<a href="#l82" class="line" id="l82">     82</a>             cursor: pointer;
+<a href="#l83" class="line" id="l83">     83</a>             transition: background 0.3s ease;
+<a href="#l84" class="line" id="l84">     84</a>         }
+<a href="#l85" class="line" id="l85">     85</a> 
+<a href="#l86" class="line" id="l86">     86</a>         .btn-login:hover {
+<a href="#l87" class="line" id="l87">     87</a>             background: linear-gradient(135deg, #2575fc, #6a11cb);
+<a href="#l88" class="line" id="l88">     88</a>         }
+<a href="#l89" class="line" id="l89">     89</a> 
+<a href="#l90" class="line" id="l90">     90</a>         .form-footer {
+<a href="#l91" class="line" id="l91">     91</a>             margin-top: 20px;
+<a href="#l92" class="line" id="l92">     92</a>             font-size: 0.9em;
+<a href="#l93" class="line" id="l93">     93</a>             display: flex;
+<a href="#l94" class="line" id="l94">     94</a>             justify-content: space-between;
+<a href="#l95" class="line" id="l95">     95</a>             align-items: center;
+<a href="#l96" class="line" id="l96">     96</a>         }
+<a href="#l97" class="line" id="l97">     97</a> 
+<a href="#l98" class="line" id="l98">     98</a>         .form-footer label {
+<a href="#l99" class="line" id="l99">     99</a>             cursor: pointer;
+<a href="#l100" class="line" id="l100">    100</a>         }
+<a href="#l101" class="line" id="l101">    101</a> 
+<a href="#l102" class="line" id="l102">    102</a>         .form-footer a {
+<a href="#l103" class="line" id="l103">    103</a>             color: #63b3ed;
+<a href="#l104" class="line" id="l104">    104</a>             text-decoration: none;
+<a href="#l105" class="line" id="l105">    105</a>             transition: color 0.3s ease;
+<a href="#l106" class="line" id="l106">    106</a>         }
+<a href="#l107" class="line" id="l107">    107</a> 
+<a href="#l108" class="line" id="l108">    108</a>         .form-footer a:hover {
+<a href="#l109" class="line" id="l109">    109</a>             color: #90cdf4;
+<a href="#l110" class="line" id="l110">    110</a>         }
+<a href="#l111" class="line" id="l111">    111</a> 
+<a href="#l112" class="line" id="l112">    112</a>         .error-container {
+<a href="#l113" class="line" id="l113">    113</a>             background-color: #e53e3e;
+<a href="#l114" class="line" id="l114">    114</a>             padding: 10px;
+<a href="#l115" class="line" id="l115">    115</a>             border-radius: 8px;
+<a href="#l116" class="line" id="l116">    116</a>             color: white;
+<a href="#l117" class="line" id="l117">    117</a>             font-size: 0.9em;
+<a href="#l118" class="line" id="l118">    118</a>             margin-bottom: 20px;
+<a href="#l119" class="line" id="l119">    119</a>         }
+<a href="#l120" class="line" id="l120">    120</a> 
+<a href="#l121" class="line" id="l121">    121</a>         .error-container ul {
+<a href="#l122" class="line" id="l122">    122</a>             list-style: none;
+<a href="#l123" class="line" id="l123">    123</a>             margin: 0;
+<a href="#l124" class="line" id="l124">    124</a>             padding: 0;
+<a href="#l125" class="line" id="l125">    125</a>         }
+<a href="#l126" class="line" id="l126">    126</a>     &lt;/style&gt;
+<a href="#l127" class="line" id="l127">    127</a> &lt;/head&gt;
+<a href="#l128" class="line" id="l128">    128</a> &lt;body&gt;
+<a href="#l129" class="line" id="l129">    129</a>     &lt;div class=&quot;login-container&quot;&gt;
+<a href="#l130" class="line" id="l130">    130</a>         &lt;h2&gt;Login Admin&lt;/h2&gt;
+<a href="#l131" class="line" id="l131">    131</a>         &lt;!-- Tampilkan error kalau ada --&gt;
+<a href="#l132" class="line" id="l132">    132</a>         @if($errors-&gt;any())
+<a href="#l133" class="line" id="l133">    133</a>             &lt;div class=&quot;error-container&quot;&gt;
+<a href="#l134" class="line" id="l134">    134</a>                 &lt;ul&gt;
+<a href="#l135" class="line" id="l135">    135</a>                     @foreach($errors-&gt;all() as $e)
+<a href="#l136" class="line" id="l136">    136</a>                         &lt;li&gt;{{ $e }}&lt;/li&gt;
+<a href="#l137" class="line" id="l137">    137</a>                     @endforeach
+<a href="#l138" class="line" id="l138">    138</a>                 &lt;/ul&gt;
+<a href="#l139" class="line" id="l139">    139</a>             &lt;/div&gt;
+<a href="#l140" class="line" id="l140">    140</a>         @endif
+<a href="#l141" class="line" id="l141">    141</a> 
+<a href="#l142" class="line" id="l142">    142</a>         &lt;!-- Form login admin --&gt;
+<a href="#l143" class="line" id="l143">    143</a>         &lt;form method=&quot;POST&quot; action=&quot;{{ route(&#39;admin.login.submit&#39;) }}&quot;&gt;
+<a href="#l144" class="line" id="l144">    144</a>             @csrf &lt;!-- Token proteksi form biar aman dari serangan CSRF --&gt;
+<a href="#l145" class="line" id="l145">    145</a> 
+<a href="#l146" class="line" id="l146">    146</a>             &lt;!-- Input username --&gt;
+<a href="#l147" class="line" id="l147">    147</a>             &lt;div class=&quot;form-group&quot;&gt;
+<a href="#l148" class="line" id="l148">    148</a>                 &lt;label for=&quot;username&quot;&gt;Username&lt;/label&gt;
+<a href="#l149" class="line" id="l149">    149</a>                 &lt;input type=&quot;text&quot; name=&quot;username&quot; id=&quot;username&quot; placeholder=&quot;Enter your username&quot; required&gt;
+<a href="#l150" class="line" id="l150">    150</a>             &lt;/div&gt;
+<a href="#l151" class="line" id="l151">    151</a> 
+<a href="#l152" class="line" id="l152">    152</a>             &lt;!-- Input password --&gt;
+<a href="#l153" class="line" id="l153">    153</a>             &lt;div class=&quot;form-group&quot;&gt;
+<a href="#l154" class="line" id="l154">    154</a>                 &lt;label for=&quot;password&quot;&gt;Password&lt;/label&gt;
+<a href="#l155" class="line" id="l155">    155</a>                 &lt;input type=&quot;password&quot; name=&quot;password&quot; id=&quot;password&quot; placeholder=&quot;Enter your password&quot; required&gt;
+<a href="#l156" class="line" id="l156">    156</a>             &lt;/div&gt;
+<a href="#l157" class="line" id="l157">    157</a> 
+<a href="#l158" class="line" id="l158">    158</a>             &lt;!-- Tombol login --&gt;
+<a href="#l159" class="line" id="l159">    159</a>             &lt;button type=&quot;submit&quot; class=&quot;btn-login&quot;&gt;Login&lt;/button&gt;
+<a href="#l160" class="line" id="l160">    160</a>         &lt;/form&gt;
+<a href="#l161" class="line" id="l161">    161</a>     &lt;/div&gt;
+<a href="#l162" class="line" id="l162">    162</a> &lt;/body&gt;
+<a href="#l163" class="line" id="l163">    163</a> &lt;/html&gt;
+</pre>
+</div>
+</body>
+</html>

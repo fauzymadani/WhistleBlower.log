@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>refactor(component): fix error in the status report and create admin panel - whistleblower - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>whistleblower</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/e6822b4b1c63b6ba6a450e79c8c23ec64d537b1d.html">e6822b4b1c63b6ba6a450e79c8c23ec64d537b1d</a>
+<b>parent</b> <a href="../commit/af043fb23e0e3530d2ab795d7aa44958ffa1fba1.html">af043fb23e0e3530d2ab795d7aa44958ffa1fba1</a>
+<b>Author:</b> fauzymadani &lt;<a href="mailto:keperluansekolahfauzy@gmail.com">keperluansekolahfauzy@gmail.com</a>&gt;
+<b>Date:</b>   Wed, 23 Apr 2025 13:20:50 +0700
+
+refactor(component): fix error in the status report and create admin panel
+
+there&#39;s an error when the admin want to set the status of the report and create admin panel which is
+accessible via 127.0.0.1:8000/admin/dashboard
+
+<b>Diffstat:</b>
+<table><tr><td class="A">A</td><td><a href="#h0">app/Http/Controllers/AdminAuthController.php</a></td><td> | </td><td class="num">41</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h1">app/Http/Controllers/AdminController.php</a></td><td> | </td><td class="num">49</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h2">app/Http/Middleware/AdminMiddleware.php</a></td><td> | </td><td class="num">18</td><td><span class="i">++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h3">app/Models/Report.php</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h4">bootstrap/app.php</a></td><td> | </td><td class="num">10</td><td><span class="i">+++++++</span><span class="d">---</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h5">config/auth.php</a></td><td> | </td><td class="num">8</td><td><span class="i">++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h6">database/migrations/2025_04_10_095826_create_reports_table.php</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td class="A">A</td><td><a href="#h7">database/migrations/2025_04_23_061210_change_status_column_in_reports_table.php</a></td><td> | </td><td class="num">25</td><td><span class="i">+++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h8">database/seeders/AdminSeeder.php</a></td><td> | </td><td class="num">22</td><td><span class="i">++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h9">database/seeders/DatabaseSeeder.php</a></td><td> | </td><td class="num">10</td><td><span class="i">+++++++</span><span class="d">---</span></td></tr>
+<tr><td class="A">A</td><td><a href="#h10">resources/views/admin/dashboard.blade.php</a></td><td> | </td><td class="num">69</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h11">resources/views/admin/layout.blade.php</a></td><td> | </td><td class="num">46</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h12">resources/views/admin/login.blade.php</a></td><td> | </td><td class="num">37</td><td><span class="i">+++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h13">routes/web.php</a></td><td> | </td><td class="num">16</td><td><span class="i">++++++++++++++++</span><span class="d"></span></td></tr>
+</table></pre><pre>14 files changed, 347 insertions(+), 7 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/app/Http/Controllers/AdminAuthController.php.html">app/Http/Controllers/AdminAuthController.php</a> b/<a href="../file/app/Http/Controllers/AdminAuthController.php.html">app/Http/Controllers/AdminAuthController.php</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -0,0 +1,41 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="i">+&lt;?php
+</a><a href="#h0-0-1" id="h0-0-1" class="i">+
+</a><a href="#h0-0-2" id="h0-0-2" class="i">+namespace App\Http\Controllers;
+</a><a href="#h0-0-3" id="h0-0-3" class="i">+
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+use Illuminate\Http\Request;
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+use Illuminate\Support\Facades\Auth;
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+use Illuminate\Support\Facades\Hash;
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+use App\Models\Admin;
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+class AdminAuthController extends Controller
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+{
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+    public function showLoginForm()
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+    {
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+        return view(&#39;admin.login&#39;);
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+    }
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+    public function login(Request $request)
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+    {
+</a><a href="#h0-0-18" id="h0-0-18" class="i">+        $credentials = $request-&gt;validate([
+</a><a href="#h0-0-19" id="h0-0-19" class="i">+            &#39;username&#39; =&gt; &#39;required&#39;,
+</a><a href="#h0-0-20" id="h0-0-20" class="i">+            &#39;password&#39; =&gt; &#39;required&#39;
+</a><a href="#h0-0-21" id="h0-0-21" class="i">+        ]);
+</a><a href="#h0-0-22" id="h0-0-22" class="i">+
+</a><a href="#h0-0-23" id="h0-0-23" class="i">+        $admin = Admin::where(&#39;username&#39;, $credentials[&#39;username&#39;])-&gt;first();
+</a><a href="#h0-0-24" id="h0-0-24" class="i">+
+</a><a href="#h0-0-25" id="h0-0-25" class="i">+        if ($admin &amp;&amp; Hash::check($credentials[&#39;password&#39;], $admin-&gt;password)) {
+</a><a href="#h0-0-26" id="h0-0-26" class="i">+            session([&#39;admin_logged_in&#39; =&gt; true]);
+</a><a href="#h0-0-27" id="h0-0-27" class="i">+            return redirect()-&gt;route(&#39;admin.dashboard&#39;);
+</a><a href="#h0-0-28" id="h0-0-28" class="i">+        }
+</a><a href="#h0-0-29" id="h0-0-29" class="i">+
+</a><a href="#h0-0-30" id="h0-0-30" class="i">+        return back()-&gt;withErrors([
+</a><a href="#h0-0-31" id="h0-0-31" class="i">+            &#39;username&#39; =&gt; &#39;Username atau password salah.&#39;,
+</a><a href="#h0-0-32" id="h0-0-32" class="i">+        ]);
+</a><a href="#h0-0-33" id="h0-0-33" class="i">+    }
+</a><a href="#h0-0-34" id="h0-0-34" class="i">+
+</a><a href="#h0-0-35" id="h0-0-35" class="i">+    public function logout()
+</a><a href="#h0-0-36" id="h0-0-36" class="i">+    {
+</a><a href="#h0-0-37" id="h0-0-37" class="i">+        session()-&gt;forget(&#39;admin_logged_in&#39;);
+</a><a href="#h0-0-38" id="h0-0-38" class="i">+        return redirect()-&gt;route(&#39;admin.login&#39;);
+</a><a href="#h0-0-39" id="h0-0-39" class="i">+    }
+</a><a href="#h0-0-40" id="h0-0-40" class="i">+}
+</a><b>diff --git a/<a id="h1" href="../file/app/Http/Controllers/AdminController.php.html">app/Http/Controllers/AdminController.php</a> b/<a href="../file/app/Http/Controllers/AdminController.php.html">app/Http/Controllers/AdminController.php</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -0,0 +1,49 @@
+</a><a href="#h1-0-0" id="h1-0-0" class="i">+&lt;?php
+</a><a href="#h1-0-1" id="h1-0-1" class="i">+
+</a><a href="#h1-0-2" id="h1-0-2" class="i">+namespace App\Http\Controllers;
+</a><a href="#h1-0-3" id="h1-0-3" class="i">+
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+namespace App\Http\Controllers;
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+use Illuminate\Http\Request;
+</a><a href="#h1-0-7" id="h1-0-7" class="i">+use App\Models\Report;
+</a><a href="#h1-0-8" id="h1-0-8" class="i">+
+</a><a href="#h1-0-9" id="h1-0-9" class="i">+class AdminController extends Controller
+</a><a href="#h1-0-10" id="h1-0-10" class="i">+{
+</a><a href="#h1-0-11" id="h1-0-11" class="i">+    public function index()
+</a><a href="#h1-0-12" id="h1-0-12" class="i">+    {
+</a><a href="#h1-0-13" id="h1-0-13" class="i">+        $reports = Report::latest()-&gt;get(); // ambil semua laporan
+</a><a href="#h1-0-14" id="h1-0-14" class="i">+        return view(&#39;admin.dashboard&#39;, compact(&#39;reports&#39;));
+</a><a href="#h1-0-15" id="h1-0-15" class="i">+    }
+</a><a href="#h1-0-16" id="h1-0-16" class="i">+
+</a><a href="#h1-0-17" id="h1-0-17" class="i">+    public function updateStatus(Request $request, Report $report)
+</a><a href="#h1-0-18" id="h1-0-18" class="i">+    {
+</a><a href="#h1-0-19" id="h1-0-19" class="i">+        \Log::info(&#39;Updating status for report &#39; . $report-&gt;id . &#39; to &#39; . $request-&gt;status);
+</a><a href="#h1-0-20" id="h1-0-20" class="i">+
+</a><a href="#h1-0-21" id="h1-0-21" class="i">+        $report-&gt;update([
+</a><a href="#h1-0-22" id="h1-0-22" class="i">+            &#39;status&#39; =&gt; $request-&gt;status,
+</a><a href="#h1-0-23" id="h1-0-23" class="i">+        ]);
+</a><a href="#h1-0-24" id="h1-0-24" class="i">+
+</a><a href="#h1-0-25" id="h1-0-25" class="i">+        return redirect()-&gt;route(&#39;admin.dashboard&#39;)-&gt;with(&#39;success&#39;, &#39;Status berhasil diperbarui!&#39;);
+</a><a href="#h1-0-26" id="h1-0-26" class="i">+    }
+</a><a href="#h1-0-27" id="h1-0-27" class="i">+
+</a><a href="#h1-0-28" id="h1-0-28" class="i">+
+</a><a href="#h1-0-29" id="h1-0-29" class="i">+
+</a><a href="#h1-0-30" id="h1-0-30" class="i">+    public function edit(Report $report)
+</a><a href="#h1-0-31" id="h1-0-31" class="i">+    {
+</a><a href="#h1-0-32" id="h1-0-32" class="i">+        return view(&#39;admin.edit&#39;, compact(&#39;report&#39;));
+</a><a href="#h1-0-33" id="h1-0-33" class="i">+    }
+</a><a href="#h1-0-34" id="h1-0-34" class="i">+
+</a><a href="#h1-0-35" id="h1-0-35" class="i">+
+</a><a href="#h1-0-36" id="h1-0-36" class="i">+    public function destroy(Report $report)
+</a><a href="#h1-0-37" id="h1-0-37" class="i">+    {
+</a><a href="#h1-0-38" id="h1-0-38" class="i">+        $report-&gt;delete();
+</a><a href="#h1-0-39" id="h1-0-39" class="i">+
+</a><a href="#h1-0-40" id="h1-0-40" class="i">+        return redirect()-&gt;route(&#39;admin.dashboard&#39;)-&gt;with(&#39;success&#39;, &#39;Laporan berhasil dihapus!&#39;);
+</a><a href="#h1-0-41" id="h1-0-41" class="i">+    }
+</a><a href="#h1-0-42" id="h1-0-42" class="i">+
+</a><a href="#h1-0-43" id="h1-0-43" class="i">+    public function dashboard()
+</a><a href="#h1-0-44" id="h1-0-44" class="i">+    {
+</a><a href="#h1-0-45" id="h1-0-45" class="i">+        $reports = Report::latest()-&gt;get();
+</a><a href="#h1-0-46" id="h1-0-46" class="i">+        return view(&#39;admin.dashboard&#39;, compact(&#39;reports&#39;));
+</a><a href="#h1-0-47" id="h1-0-47" class="i">+    }
+</a><a href="#h1-0-48" id="h1-0-48" class="i">+}
+</a><b>diff --git a/<a id="h2" href="../file/app/Http/Middleware/AdminMiddleware.php.html">app/Http/Middleware/AdminMiddleware.php</a> b/<a href="../file/app/Http/Middleware/AdminMiddleware.php.html">app/Http/Middleware/AdminMiddleware.php</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -0,0 +1,18 @@
+</a><a href="#h2-0-0" id="h2-0-0" class="i">+&lt;?php
+</a><a href="#h2-0-1" id="h2-0-1" class="i">+
+</a><a href="#h2-0-2" id="h2-0-2" class="i">+namespace App\Http\Middleware;
+</a><a href="#h2-0-3" id="h2-0-3" class="i">+
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+use Closure;
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+use Illuminate\Http\Request;
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+
+</a><a href="#h2-0-7" id="h2-0-7" class="i">+class AdminMiddleware
+</a><a href="#h2-0-8" id="h2-0-8" class="i">+{
+</a><a href="#h2-0-9" id="h2-0-9" class="i">+    public function handle(Request $request, Closure $next)
+</a><a href="#h2-0-10" id="h2-0-10" class="i">+    {
+</a><a href="#h2-0-11" id="h2-0-11" class="i">+        if (!session(&#39;admin_logged_in&#39;)) {
+</a><a href="#h2-0-12" id="h2-0-12" class="i">+            return redirect()-&gt;route(&#39;admin.login&#39;);
+</a><a href="#h2-0-13" id="h2-0-13" class="i">+        }
+</a><a href="#h2-0-14" id="h2-0-14" class="i">+
+</a><a href="#h2-0-15" id="h2-0-15" class="i">+        return $next($request);
+</a><a href="#h2-0-16" id="h2-0-16" class="i">+    }
+</a><a href="#h2-0-17" id="h2-0-17" class="i">+}
+</a><b>diff --git a/<a id="h3" href="../file/app/Models/Report.php.html">app/Models/Report.php</a> b/<a href="../file/app/Models/Report.php.html">app/Models/Report.php</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -17,6 +17,7 @@ class Report extends Model
+</a>         &#39;reporter_major&#39;,
+         &#39;peran&#39;,
+         &#39;is_anonymous&#39;,
+<a href="#h3-0-3" id="h3-0-3" class="i">+        &#39;status&#39;,
+</a>     ];
+ 
+     protected $casts = [
+<b>diff --git a/<a id="h4" href="../file/bootstrap/app.php.html">bootstrap/app.php</a> b/<a href="../file/bootstrap/app.php.html">bootstrap/app.php</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -3,15 +3,19 @@
+</a> use Illuminate\Foundation\Application;
+ use Illuminate\Foundation\Configuration\Exceptions;
+ use Illuminate\Foundation\Configuration\Middleware;
+<a href="#h4-0-3" id="h4-0-3" class="i">+use App\Http\Middleware\AdminMiddleware;
+</a><a href="#h4-0-4" id="h4-0-4" class="i">+use Illuminate\Support\Facades\Route;
+</a> 
+ return Application::configure(basePath: dirname(__DIR__))
+     -&gt;withRouting(
+<a href="#h4-0-8" id="h4-0-8" class="d">-        web: __DIR__.&#39;/../routes/web.php&#39;,
+</a><a href="#h4-0-9" id="h4-0-9" class="d">-        commands: __DIR__.&#39;/../routes/console.php&#39;,
+</a><a href="#h4-0-10" id="h4-0-10" class="i">+        web: __DIR__ . &#39;/../routes/web.php&#39;,
+</a><a href="#h4-0-11" id="h4-0-11" class="i">+        commands: __DIR__ . &#39;/../routes/console.php&#39;,
+</a>         health: &#39;/up&#39;,
+     )
+     -&gt;withMiddleware(function (Middleware $middleware) {
+<a href="#h4-0-15" id="h4-0-15" class="d">-        //
+</a><a href="#h4-0-16" id="h4-0-16" class="i">+        $middleware-&gt;alias([
+</a><a href="#h4-0-17" id="h4-0-17" class="i">+            &#39;admin&#39; =&gt; \App\Http\Middleware\AdminMiddleware::class,
+</a><a href="#h4-0-18" id="h4-0-18" class="i">+        ]);
+</a>     })
+     -&gt;withExceptions(function (Exceptions $exceptions) {
+         //
+<b>diff --git a/<a id="h5" href="../file/config/auth.php.html">config/auth.php</a> b/<a href="../file/config/auth.php.html">config/auth.php</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -40,6 +40,10 @@ return [
+</a>             &#39;driver&#39; =&gt; &#39;session&#39;,
+             &#39;provider&#39; =&gt; &#39;users&#39;,
+         ],
+<a href="#h5-0-3" id="h5-0-3" class="i">+        &#39;admin&#39; =&gt; [
+</a><a href="#h5-0-4" id="h5-0-4" class="i">+            &#39;driver&#39; =&gt; &#39;session&#39;,
+</a><a href="#h5-0-5" id="h5-0-5" class="i">+            &#39;provider&#39; =&gt; &#39;admins&#39;,
+</a><a href="#h5-0-6" id="h5-0-6" class="i">+        ],
+</a>     ],
+ 
+     /*
+<a href="#h5-1" id="h5-1" class="h">@@ -64,6 +68,10 @@ return [
+</a>             &#39;driver&#39; =&gt; &#39;eloquent&#39;,
+             &#39;model&#39; =&gt; env(&#39;AUTH_MODEL&#39;, App\Models\User::class),
+         ],
+<a href="#h5-1-3" id="h5-1-3" class="i">+        &#39;admins&#39; =&gt; [
+</a><a href="#h5-1-4" id="h5-1-4" class="i">+            &#39;driver&#39; =&gt; &#39;eloquent&#39;,
+</a><a href="#h5-1-5" id="h5-1-5" class="i">+            &#39;model&#39; =&gt; App\Models\Admin::class,
+</a><a href="#h5-1-6" id="h5-1-6" class="i">+        ],
+</a> 
+         // &#39;users&#39; =&gt; [
+         //     &#39;driver&#39; =&gt; &#39;database&#39;,
+<b>diff --git a/<a id="h6" href="../file/database/migrations/2025_04_10_095826_create_reports_table.php.html">database/migrations/2025_04_10_095826_create_reports_table.php</a> b/<a href="../file/database/migrations/2025_04_10_095826_create_reports_table.php.html">database/migrations/2025_04_10_095826_create_reports_table.php</a></b>
+<a href="#h6-0" id="h6-0" class="h">@@ -20,7 +20,7 @@ return new class extends Migration
+</a>             $table-&gt;string(&#39;kelas_pelaku&#39;);
+             $table-&gt;string(&#39;jurusan_pelaku&#39;);
+             $table-&gt;enum(&#39;peran&#39;, [&#39;saksi&#39;, &#39;korban&#39;]);
+<a href="#h6-0-3" id="h6-0-3" class="d">-            $table-&gt;enum(&#39;status&#39;, [&#39;pending&#39;, &#39;ditangani&#39;])-&gt;default(&#39;pending&#39;);
+</a><a href="#h6-0-4" id="h6-0-4" class="i">+            $table-&gt;enum(&#39;status&#39;, [&#39;pending&#39;, &#39;proses&#39;, &#39;selesai&#39;])-&gt;default(&#39;pending&#39;);
+</a>             $table-&gt;timestamps();
+         });
+     }
+<b>diff --git a/<a id="h7" href="../file/database/migrations/2025_04_23_061210_change_status_column_in_reports_table.php.html">database/migrations/2025_04_23_061210_change_status_column_in_reports_table.php</a> b/<a href="../file/database/migrations/2025_04_23_061210_change_status_column_in_reports_table.php.html">database/migrations/2025_04_23_061210_change_status_column_in_reports_table.php</a></b>
+<a href="#h7-0" id="h7-0" class="h">@@ -0,0 +1,25 @@
+</a><a href="#h7-0-0" id="h7-0-0" class="i">+&lt;?php
+</a><a href="#h7-0-1" id="h7-0-1" class="i">+
+</a><a href="#h7-0-2" id="h7-0-2" class="i">+use Illuminate\Database\Migrations\Migration;
+</a><a href="#h7-0-3" id="h7-0-3" class="i">+use Illuminate\Database\Schema\Blueprint;
+</a><a href="#h7-0-4" id="h7-0-4" class="i">+use Illuminate\Support\Facades\Schema;
+</a><a href="#h7-0-5" id="h7-0-5" class="i">+
+</a><a href="#h7-0-6" id="h7-0-6" class="i">+return new class extends Migration
+</a><a href="#h7-0-7" id="h7-0-7" class="i">+{
+</a><a href="#h7-0-8" id="h7-0-8" class="i">+    /**
+</a><a href="#h7-0-9" id="h7-0-9" class="i">+     * Run the migrations.
+</a><a href="#h7-0-10" id="h7-0-10" class="i">+     */
+</a><a href="#h7-0-11" id="h7-0-11" class="i">+    public function up()
+</a><a href="#h7-0-12" id="h7-0-12" class="i">+    {
+</a><a href="#h7-0-13" id="h7-0-13" class="i">+        Schema::table(&#39;reports&#39;, function (Blueprint $table) {
+</a><a href="#h7-0-14" id="h7-0-14" class="i">+            $table-&gt;enum(&#39;status&#39;, [&#39;pending&#39;, &#39;proses&#39;, &#39;selesai&#39;])-&gt;default(&#39;pending&#39;)-&gt;change();
+</a><a href="#h7-0-15" id="h7-0-15" class="i">+        });
+</a><a href="#h7-0-16" id="h7-0-16" class="i">+    }
+</a><a href="#h7-0-17" id="h7-0-17" class="i">+
+</a><a href="#h7-0-18" id="h7-0-18" class="i">+    public function down()
+</a><a href="#h7-0-19" id="h7-0-19" class="i">+    {
+</a><a href="#h7-0-20" id="h7-0-20" class="i">+        Schema::table(&#39;reports&#39;, function (Blueprint $table) {
+</a><a href="#h7-0-21" id="h7-0-21" class="i">+            $table-&gt;string(&#39;status&#39;)-&gt;default(&#39;pending&#39;)-&gt;change(); // Atau sesuaikan dengan tipe data sebelumnya
+</a><a href="#h7-0-22" id="h7-0-22" class="i">+        });
+</a><a href="#h7-0-23" id="h7-0-23" class="i">+    }
+</a><a href="#h7-0-24" id="h7-0-24" class="i">+};
+</a><b>diff --git a/<a id="h8" href="../file/database/seeders/AdminSeeder.php.html">database/seeders/AdminSeeder.php</a> b/<a href="../file/database/seeders/AdminSeeder.php.html">database/seeders/AdminSeeder.php</a></b>
+<a href="#h8-0" id="h8-0" class="h">@@ -0,0 +1,22 @@
+</a><a href="#h8-0-0" id="h8-0-0" class="i">+&lt;?php
+</a><a href="#h8-0-1" id="h8-0-1" class="i">+
+</a><a href="#h8-0-2" id="h8-0-2" class="i">+namespace Database\Seeders;
+</a><a href="#h8-0-3" id="h8-0-3" class="i">+
+</a><a href="#h8-0-4" id="h8-0-4" class="i">+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+</a><a href="#h8-0-5" id="h8-0-5" class="i">+use Illuminate\Database\Seeder;
+</a><a href="#h8-0-6" id="h8-0-6" class="i">+use App\Models\Admin;
+</a><a href="#h8-0-7" id="h8-0-7" class="i">+use Illuminate\Support\Facades\Hash;
+</a><a href="#h8-0-8" id="h8-0-8" class="i">+
+</a><a href="#h8-0-9" id="h8-0-9" class="i">+class AdminSeeder extends Seeder
+</a><a href="#h8-0-10" id="h8-0-10" class="i">+{
+</a><a href="#h8-0-11" id="h8-0-11" class="i">+    /**
+</a><a href="#h8-0-12" id="h8-0-12" class="i">+     * Run the database seeds.
+</a><a href="#h8-0-13" id="h8-0-13" class="i">+     */
+</a><a href="#h8-0-14" id="h8-0-14" class="i">+    public function run(): void
+</a><a href="#h8-0-15" id="h8-0-15" class="i">+    {
+</a><a href="#h8-0-16" id="h8-0-16" class="i">+        Admin::updateOrCreate(
+</a><a href="#h8-0-17" id="h8-0-17" class="i">+            [&#39;username&#39; =&gt; &#39;admin123&#39;],
+</a><a href="#h8-0-18" id="h8-0-18" class="i">+            [&#39;password&#39; =&gt; Hash::make(&#39;passwordsuperaman&#39;)]
+</a><a href="#h8-0-19" id="h8-0-19" class="i">+        );
+</a><a href="#h8-0-20" id="h8-0-20" class="i">+    }
+</a><a href="#h8-0-21" id="h8-0-21" class="i">+}
+</a><b>diff --git a/<a id="h9" href="../file/database/seeders/DatabaseSeeder.php.html">database/seeders/DatabaseSeeder.php</a> b/<a href="../file/database/seeders/DatabaseSeeder.php.html">database/seeders/DatabaseSeeder.php</a></b>
+<a href="#h9-0" id="h9-0" class="h">@@ -15,9 +15,13 @@ class DatabaseSeeder extends Seeder
+</a>     {
+         // User::factory(10)-&gt;create();
+ 
+<a href="#h9-0-3" id="h9-0-3" class="d">-        User::factory()-&gt;create([
+</a><a href="#h9-0-4" id="h9-0-4" class="d">-            &#39;name&#39; =&gt; &#39;Test User&#39;,
+</a><a href="#h9-0-5" id="h9-0-5" class="d">-            &#39;email&#39; =&gt; &#39;test@example.com&#39;,
+</a><a href="#h9-0-6" id="h9-0-6" class="i">+        // User::factory()-&gt;create([
+</a><a href="#h9-0-7" id="h9-0-7" class="i">+        //   &#39;name&#39; =&gt; &#39;Test User&#39;,
+</a><a href="#h9-0-8" id="h9-0-8" class="i">+        //    &#39;email&#39; =&gt; &#39;test@example.com&#39;,
+</a><a href="#h9-0-9" id="h9-0-9" class="i">+        // ]);
+</a><a href="#h9-0-10" id="h9-0-10" class="i">+
+</a><a href="#h9-0-11" id="h9-0-11" class="i">+        $this-&gt;call([
+</a><a href="#h9-0-12" id="h9-0-12" class="i">+            AdminSeeder::class,
+</a>         ]);
+     }
+ }
+<b>diff --git a/<a id="h10" href="../file/resources/views/admin/dashboard.blade.php.html">resources/views/admin/dashboard.blade.php</a> b/<a href="../file/resources/views/admin/dashboard.blade.php.html">resources/views/admin/dashboard.blade.php</a></b>
+<a href="#h10-0" id="h10-0" class="h">@@ -0,0 +1,69 @@
+</a><a href="#h10-0-0" id="h10-0-0" class="i">+@extends(&#39;admin.layout&#39;)
+</a><a href="#h10-0-1" id="h10-0-1" class="i">+
+</a><a href="#h10-0-2" id="h10-0-2" class="i">+@section(&#39;content&#39;)
+</a><a href="#h10-0-3" id="h10-0-3" class="i">+    &lt;h2 class=&quot;text-2xl font-bold mb-4&quot;&gt;Laporan Masuk&lt;/h2&gt;
+</a><a href="#h10-0-4" id="h10-0-4" class="i">+
+</a><a href="#h10-0-5" id="h10-0-5" class="i">+    @if(session(&#39;success&#39;))
+</a><a href="#h10-0-6" id="h10-0-6" class="i">+        &lt;div class=&quot;bg-green-600 text-white p-4 rounded mb-4&quot;&gt;
+</a><a href="#h10-0-7" id="h10-0-7" class="i">+            {{ session(&#39;success&#39;) }}
+</a><a href="#h10-0-8" id="h10-0-8" class="i">+        &lt;/div&gt;
+</a><a href="#h10-0-9" id="h10-0-9" class="i">+    @endif
+</a><a href="#h10-0-10" id="h10-0-10" class="i">+
+</a><a href="#h10-0-11" id="h10-0-11" class="i">+    &lt;div class=&quot;overflow-x-auto&quot;&gt;
+</a><a href="#h10-0-12" id="h10-0-12" class="i">+        &lt;table class=&quot;min-w-full text-sm text-left text-gray-900 dark:text-gray-300 border border-gray-300 dark:border-[#3a3a3a]&quot;&gt;
+</a><a href="#h10-0-13" id="h10-0-13" class="i">+            &lt;thead class=&quot;bg-gray-100 dark:bg-[#262626] text-xs uppercase font-medium text-gray-700 dark:text-gray-400&quot;&gt;
+</a><a href="#h10-0-14" id="h10-0-14" class="i">+                &lt;tr&gt;
+</a><a href="#h10-0-15" id="h10-0-15" class="i">+                    &lt;th class=&quot;px-4 py-2&quot;&gt;Judul&lt;/th&gt;
+</a><a href="#h10-0-16" id="h10-0-16" class="i">+                    &lt;th class=&quot;px-4 py-2&quot;&gt;Isi&lt;/th&gt;
+</a><a href="#h10-0-17" id="h10-0-17" class="i">+                    &lt;th class=&quot;px-4 py-2&quot;&gt;Pelaku&lt;/th&gt;
+</a><a href="#h10-0-18" id="h10-0-18" class="i">+                    &lt;th class=&quot;px-4 py-2&quot;&gt;Kelas&lt;/th&gt;
+</a><a href="#h10-0-19" id="h10-0-19" class="i">+                    &lt;th class=&quot;px-4 py-2&quot;&gt;Jurusan&lt;/th&gt;
+</a><a href="#h10-0-20" id="h10-0-20" class="i">+                    &lt;th class=&quot;px-4 py-2&quot;&gt;Peran&lt;/th&gt;
+</a><a href="#h10-0-21" id="h10-0-21" class="i">+                    &lt;th class=&quot;px-4 py-2&quot;&gt;Identitas Pelapor&lt;/th&gt;
+</a><a href="#h10-0-22" id="h10-0-22" class="i">+                    &lt;th class=&quot;px-4 py-2&quot;&gt;Status&lt;/th&gt;
+</a><a href="#h10-0-23" id="h10-0-23" class="i">+                    &lt;th class=&quot;px-4 py-2&quot;&gt;Dibuat Pada&lt;/th&gt;
+</a><a href="#h10-0-24" id="h10-0-24" class="i">+                    &lt;th class=&quot;px-4 py-2&quot;&gt;Aksi&lt;/th&gt;
+</a><a href="#h10-0-25" id="h10-0-25" class="i">+                &lt;/tr&gt;
+</a><a href="#h10-0-26" id="h10-0-26" class="i">+            &lt;/thead&gt;
+</a><a href="#h10-0-27" id="h10-0-27" class="i">+            &lt;tbody class=&quot;bg-white dark:bg-[#181818]&quot;&gt;
+</a><a href="#h10-0-28" id="h10-0-28" class="i">+                @forelse($reports as $report)
+</a><a href="#h10-0-29" id="h10-0-29" class="i">+                    &lt;tr class=&quot;border-b border-gray-300 dark:border-[#3a3a3a]&quot;&gt;
+</a><a href="#h10-0-30" id="h10-0-30" class="i">+                        &lt;td class=&quot;px-4 py-2&quot;&gt;{{ $report-&gt;judul }}&lt;/td&gt;
+</a><a href="#h10-0-31" id="h10-0-31" class="i">+                        &lt;td class=&quot;px-4 py-2 max-w-xs truncate&quot;&gt;{{ $report-&gt;isi_laporan }}&lt;/td&gt;
+</a><a href="#h10-0-32" id="h10-0-32" class="i">+                        &lt;td class=&quot;px-4 py-2&quot;&gt;{{ $report-&gt;nama_pelaku }}&lt;/td&gt;
+</a><a href="#h10-0-33" id="h10-0-33" class="i">+                        &lt;td class=&quot;px-4 py-2&quot;&gt;{{ $report-&gt;kelas_pelaku }}&lt;/td&gt;
+</a><a href="#h10-0-34" id="h10-0-34" class="i">+                        &lt;td class=&quot;px-4 py-2&quot;&gt;{{ $report-&gt;jurusan_pelaku }}&lt;/td&gt;
+</a><a href="#h10-0-35" id="h10-0-35" class="i">+                        &lt;td class=&quot;px-4 py-2&quot;&gt;{{ $report-&gt;peran }}&lt;/td&gt;
+</a><a href="#h10-0-36" id="h10-0-36" class="i">+                        &lt;td class=&quot;px-4 py-2&quot;&gt;
+</a><a href="#h10-0-37" id="h10-0-37" class="i">+                            @if(isset($report-&gt;is_anonymous) &amp;&amp; $report-&gt;is_anonymous == 0)
+</a><a href="#h10-0-38" id="h10-0-38" class="i">+                                {{ $report-&gt;reporter_name }} &lt;br&gt;
+</a><a href="#h10-0-39" id="h10-0-39" class="i">+                                {{ $report-&gt;reporter_class }} &lt;br&gt;
+</a><a href="#h10-0-40" id="h10-0-40" class="i">+                                {{ $report-&gt;reporter_major }}
+</a><a href="#h10-0-41" id="h10-0-41" class="i">+                            @else
+</a><a href="#h10-0-42" id="h10-0-42" class="i">+                                &lt;em&gt;Anonim&lt;/em&gt;
+</a><a href="#h10-0-43" id="h10-0-43" class="i">+                            @endif
+</a><a href="#h10-0-44" id="h10-0-44" class="i">+                        &lt;/td&gt;
+</a><a href="#h10-0-45" id="h10-0-45" class="i">+                        &lt;td class=&quot;px-4 py-2&quot;&gt;{{ ucfirst($report-&gt;status) }}&lt;/td&gt;
+</a><a href="#h10-0-46" id="h10-0-46" class="i">+                        &lt;td class=&quot;px-4 py-2&quot;&gt;{{ $report-&gt;created_at-&gt;format(&#39;d M Y&#39;) }}&lt;/td&gt;
+</a><a href="#h10-0-47" id="h10-0-47" class="i">+                        &lt;td class=&quot;px-4 py-2&quot;&gt;
+</a><a href="#h10-0-48" id="h10-0-48" class="i">+                         &lt;form action=&quot;{{ route(&#39;admin.reports.update&#39;, $report-&gt;id) }}&quot; method=&quot;POST&quot;&gt;
+</a><a href="#h10-0-49" id="h10-0-49" class="i">+    @csrf
+</a><a href="#h10-0-50" id="h10-0-50" class="i">+    @method(&#39;PUT&#39;)
+</a><a href="#h10-0-51" id="h10-0-51" class="i">+    &lt;select name=&quot;status&quot; class=&quot;form-select&quot; onchange=&quot;this.form.submit()&quot;&gt;
+</a><a href="#h10-0-52" id="h10-0-52" class="i">+        &lt;option value=&quot;pending&quot; {{ $report-&gt;status == &#39;pending&#39; ? &#39;selected&#39; : &#39;&#39; }}&gt;Pending&lt;/option&gt;
+</a><a href="#h10-0-53" id="h10-0-53" class="i">+        &lt;option value=&quot;proses&quot; {{ $report-&gt;status == &#39;proses&#39; ? &#39;selected&#39; : &#39;&#39; }}&gt;Proses&lt;/option&gt;
+</a><a href="#h10-0-54" id="h10-0-54" class="i">+        &lt;option value=&quot;selesai&quot; {{ $report-&gt;status == &#39;selesai&#39; ? &#39;selected&#39; : &#39;&#39; }}&gt;Selesai&lt;/option&gt;
+</a><a href="#h10-0-55" id="h10-0-55" class="i">+    &lt;/select&gt;
+</a><a href="#h10-0-56" id="h10-0-56" class="i">+&lt;/form&gt;
+</a><a href="#h10-0-57" id="h10-0-57" class="i">+                        &lt;/td&gt;
+</a><a href="#h10-0-58" id="h10-0-58" class="i">+                    &lt;/tr&gt;
+</a><a href="#h10-0-59" id="h10-0-59" class="i">+                @empty
+</a><a href="#h10-0-60" id="h10-0-60" class="i">+                    &lt;tr&gt;
+</a><a href="#h10-0-61" id="h10-0-61" class="i">+                        &lt;td colspan=&quot;10&quot; class=&quot;px-4 py-4 text-center text-gray-500 dark:text-gray-400&quot;&gt;Belum ada laporan&lt;/td&gt;
+</a><a href="#h10-0-62" id="h10-0-62" class="i">+                    &lt;/tr&gt;
+</a><a href="#h10-0-63" id="h10-0-63" class="i">+                @endforelse
+</a><a href="#h10-0-64" id="h10-0-64" class="i">+            &lt;/tbody&gt;
+</a><a href="#h10-0-65" id="h10-0-65" class="i">+        &lt;/table&gt;
+</a><a href="#h10-0-66" id="h10-0-66" class="i">+    &lt;/div&gt;
+</a><a href="#h10-0-67" id="h10-0-67" class="i">+@endsection
+</a><a href="#h10-0-68" id="h10-0-68" class="i">+
+</a><b>diff --git a/<a id="h11" href="../file/resources/views/admin/layout.blade.php.html">resources/views/admin/layout.blade.php</a> b/<a href="../file/resources/views/admin/layout.blade.php.html">resources/views/admin/layout.blade.php</a></b>
+<a href="#h11-0" id="h11-0" class="h">@@ -0,0 +1,46 @@
+</a><a href="#h11-0-0" id="h11-0-0" class="i">+&lt;!DOCTYPE html&gt;
+</a><a href="#h11-0-1" id="h11-0-1" class="i">+&lt;html lang=&quot;en&quot;&gt;
+</a><a href="#h11-0-2" id="h11-0-2" class="i">+&lt;head&gt;
+</a><a href="#h11-0-3" id="h11-0-3" class="i">+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+</a><a href="#h11-0-4" id="h11-0-4" class="i">+    &lt;title&gt;Admin Panel&lt;/title&gt;
+</a><a href="#h11-0-5" id="h11-0-5" class="i">+    &lt;link href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+</a><a href="#h11-0-6" id="h11-0-6" class="i">+    &lt;style&gt;
+</a><a href="#h11-0-7" id="h11-0-7" class="i">+        body {
+</a><a href="#h11-0-8" id="h11-0-8" class="i">+            display: flex;
+</a><a href="#h11-0-9" id="h11-0-9" class="i">+            min-height: 100vh;
+</a><a href="#h11-0-10" id="h11-0-10" class="i">+        }
+</a><a href="#h11-0-11" id="h11-0-11" class="i">+        .sidebar {
+</a><a href="#h11-0-12" id="h11-0-12" class="i">+            width: 250px;
+</a><a href="#h11-0-13" id="h11-0-13" class="i">+            background: #343a40;
+</a><a href="#h11-0-14" id="h11-0-14" class="i">+            color: white;
+</a><a href="#h11-0-15" id="h11-0-15" class="i">+        }
+</a><a href="#h11-0-16" id="h11-0-16" class="i">+        .sidebar a {
+</a><a href="#h11-0-17" id="h11-0-17" class="i">+            color: white;
+</a><a href="#h11-0-18" id="h11-0-18" class="i">+            display: block;
+</a><a href="#h11-0-19" id="h11-0-19" class="i">+            padding: 15px;
+</a><a href="#h11-0-20" id="h11-0-20" class="i">+            text-decoration: none;
+</a><a href="#h11-0-21" id="h11-0-21" class="i">+        }
+</a><a href="#h11-0-22" id="h11-0-22" class="i">+        .sidebar a:hover {
+</a><a href="#h11-0-23" id="h11-0-23" class="i">+            background: #495057;
+</a><a href="#h11-0-24" id="h11-0-24" class="i">+        }
+</a><a href="#h11-0-25" id="h11-0-25" class="i">+        .main-content {
+</a><a href="#h11-0-26" id="h11-0-26" class="i">+            flex-grow: 1;
+</a><a href="#h11-0-27" id="h11-0-27" class="i">+            padding: 30px;
+</a><a href="#h11-0-28" id="h11-0-28" class="i">+        }
+</a><a href="#h11-0-29" id="h11-0-29" class="i">+    &lt;/style&gt;
+</a><a href="#h11-0-30" id="h11-0-30" class="i">+&lt;/head&gt;
+</a><a href="#h11-0-31" id="h11-0-31" class="i">+&lt;body&gt;
+</a><a href="#h11-0-32" id="h11-0-32" class="i">+    &lt;div class=&quot;sidebar&quot;&gt;
+</a><a href="#h11-0-33" id="h11-0-33" class="i">+        &lt;h4 class=&quot;p-3&quot;&gt;Admin Panel&lt;/h4&gt;
+</a><a href="#h11-0-34" id="h11-0-34" class="i">+        &lt;a href=&quot;{{ route(&#39;admin.dashboard&#39;) }}&quot;&gt;Dashboard&lt;/a&gt;
+</a><a href="#h11-0-35" id="h11-0-35" class="i">+        &lt;form method=&quot;POST&quot; action=&quot;{{ route(&#39;admin.logout&#39;) }}&quot;&gt;
+</a><a href="#h11-0-36" id="h11-0-36" class="i">+            @csrf
+</a><a href="#h11-0-37" id="h11-0-37" class="i">+            &lt;button type=&quot;submit&quot; class=&quot;btn btn-danger w-100 m-2&quot;&gt;Logout&lt;/button&gt;
+</a><a href="#h11-0-38" id="h11-0-38" class="i">+        &lt;/form&gt;
+</a><a href="#h11-0-39" id="h11-0-39" class="i">+    &lt;/div&gt;
+</a><a href="#h11-0-40" id="h11-0-40" class="i">+    &lt;div class=&quot;main-content&quot;&gt;
+</a><a href="#h11-0-41" id="h11-0-41" class="i">+        @yield(&#39;content&#39;)
+</a><a href="#h11-0-42" id="h11-0-42" class="i">+    &lt;/div&gt;
+</a><a href="#h11-0-43" id="h11-0-43" class="i">+&lt;/body&gt;
+</a><a href="#h11-0-44" id="h11-0-44" class="i">+&lt;/html&gt;
+</a><a href="#h11-0-45" id="h11-0-45" class="i">+
+</a><b>diff --git a/<a id="h12" href="../file/resources/views/admin/login.blade.php.html">resources/views/admin/login.blade.php</a> b/<a href="../file/resources/views/admin/login.blade.php.html">resources/views/admin/login.blade.php</a></b>
+<a href="#h12-0" id="h12-0" class="h">@@ -0,0 +1,37 @@
+</a><a href="#h12-0-0" id="h12-0-0" class="i">+&lt;!DOCTYPE html&gt;
+</a><a href="#h12-0-1" id="h12-0-1" class="i">+&lt;html lang=&quot;en&quot;&gt;
+</a><a href="#h12-0-2" id="h12-0-2" class="i">+&lt;head&gt;
+</a><a href="#h12-0-3" id="h12-0-3" class="i">+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+</a><a href="#h12-0-4" id="h12-0-4" class="i">+    &lt;title&gt;Admin Login&lt;/title&gt;
+</a><a href="#h12-0-5" id="h12-0-5" class="i">+    &lt;link href=&quot;https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0/dist/tailwind.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+</a><a href="#h12-0-6" id="h12-0-6" class="i">+&lt;/head&gt;
+</a><a href="#h12-0-7" id="h12-0-7" class="i">+&lt;body class=&quot;bg-gray-900 text-white flex items-center justify-center h-screen&quot;&gt;
+</a><a href="#h12-0-8" id="h12-0-8" class="i">+    &lt;div class=&quot;bg-gray-800 p-8 rounded shadow-md w-full max-w-md&quot;&gt;
+</a><a href="#h12-0-9" id="h12-0-9" class="i">+        &lt;h1 class=&quot;text-2xl font-bold mb-4&quot;&gt;Login Admin&lt;/h1&gt;
+</a><a href="#h12-0-10" id="h12-0-10" class="i">+
+</a><a href="#h12-0-11" id="h12-0-11" class="i">+        @if($errors-&gt;any())
+</a><a href="#h12-0-12" id="h12-0-12" class="i">+            &lt;div class=&quot;bg-red-600 p-2 rounded mb-4&quot;&gt;
+</a><a href="#h12-0-13" id="h12-0-13" class="i">+                &lt;ul class=&quot;text-white text-sm&quot;&gt;
+</a><a href="#h12-0-14" id="h12-0-14" class="i">+                    @foreach($errors-&gt;all() as $e)
+</a><a href="#h12-0-15" id="h12-0-15" class="i">+                        &lt;li&gt;{{ $e }}&lt;/li&gt;
+</a><a href="#h12-0-16" id="h12-0-16" class="i">+                    @endforeach
+</a><a href="#h12-0-17" id="h12-0-17" class="i">+                &lt;/ul&gt;
+</a><a href="#h12-0-18" id="h12-0-18" class="i">+            &lt;/div&gt;
+</a><a href="#h12-0-19" id="h12-0-19" class="i">+        @endif
+</a><a href="#h12-0-20" id="h12-0-20" class="i">+
+</a><a href="#h12-0-21" id="h12-0-21" class="i">+        &lt;form method=&quot;POST&quot; action=&quot;{{ route(&#39;admin.login.submit&#39;) }}&quot;&gt;
+</a><a href="#h12-0-22" id="h12-0-22" class="i">+            @csrf
+</a><a href="#h12-0-23" id="h12-0-23" class="i">+            &lt;div class=&quot;mb-4&quot;&gt;
+</a><a href="#h12-0-24" id="h12-0-24" class="i">+                &lt;label class=&quot;block mb-1&quot;&gt;Username&lt;/label&gt;
+</a><a href="#h12-0-25" id="h12-0-25" class="i">+                &lt;input type=&quot;text&quot; name=&quot;username&quot; class=&quot;w-full rounded p-2 text-black&quot; required&gt;
+</a><a href="#h12-0-26" id="h12-0-26" class="i">+            &lt;/div&gt;
+</a><a href="#h12-0-27" id="h12-0-27" class="i">+            &lt;div class=&quot;mb-4&quot;&gt;
+</a><a href="#h12-0-28" id="h12-0-28" class="i">+                &lt;label class=&quot;block mb-1&quot;&gt;Password&lt;/label&gt;
+</a><a href="#h12-0-29" id="h12-0-29" class="i">+                &lt;input type=&quot;password&quot; name=&quot;password&quot; class=&quot;w-full rounded p-2 text-black&quot; required&gt;
+</a><a href="#h12-0-30" id="h12-0-30" class="i">+            &lt;/div&gt;
+</a><a href="#h12-0-31" id="h12-0-31" class="i">+            &lt;button class=&quot;bg-blue-600 hover:bg-blue-700 w-full py-2 rounded&quot;&gt;Login&lt;/button&gt;
+</a><a href="#h12-0-32" id="h12-0-32" class="i">+        &lt;/form&gt;
+</a><a href="#h12-0-33" id="h12-0-33" class="i">+    &lt;/div&gt;
+</a><a href="#h12-0-34" id="h12-0-34" class="i">+&lt;/body&gt;
+</a><a href="#h12-0-35" id="h12-0-35" class="i">+&lt;/html&gt;
+</a><a href="#h12-0-36" id="h12-0-36" class="i">+
+</a><b>diff --git a/<a id="h13" href="../file/routes/web.php.html">routes/web.php</a> b/<a href="../file/routes/web.php.html">routes/web.php</a></b>
+<a href="#h13-0" id="h13-0" class="h">@@ -3,6 +3,7 @@
+</a> use App\Http\Controllers\ProfileController;
+ use Illuminate\Support\Facades\Route;
+ use App\Http\Controllers\ReportController;
+<a href="#h13-0-3" id="h13-0-3" class="i">+use App\Http\Controllers\AdminController;
+</a> 
+ Route::get(&#39;/&#39;, function () {
+     return view(&#39;welcome&#39;);
+<a href="#h13-1" id="h13-1" class="h">@@ -27,5 +28,20 @@ Route::middleware([&#39;auth&#39;])-&gt;group(function () {
+</a>     ]);
+ });
+ 
+<a href="#h13-1-3" id="h13-1-3" class="i">+// Admin panel route declaration
+</a><a href="#h13-1-4" id="h13-1-4" class="i">+// Admin Auth
+</a><a href="#h13-1-5" id="h13-1-5" class="i">+Route::get(&#39;/admin/login&#39;, [\App\Http\Controllers\AdminAuthController::class, &#39;showLoginForm&#39;])-&gt;name(&#39;admin.login&#39;);
+</a><a href="#h13-1-6" id="h13-1-6" class="i">+Route::post(&#39;/admin/login&#39;, [\App\Http\Controllers\AdminAuthController::class, &#39;login&#39;])-&gt;name(&#39;admin.login.submit&#39;);
+</a><a href="#h13-1-7" id="h13-1-7" class="i">+Route::post(&#39;/admin/logout&#39;, [\App\Http\Controllers\AdminAuthController::class, &#39;logout&#39;])-&gt;name(&#39;admin.logout&#39;);
+</a><a href="#h13-1-8" id="h13-1-8" class="i">+
+</a><a href="#h13-1-9" id="h13-1-9" class="i">+// Admin Dashboard
+</a><a href="#h13-1-10" id="h13-1-10" class="i">+Route::middleware(&#39;admin&#39;)-&gt;group(function () {
+</a><a href="#h13-1-11" id="h13-1-11" class="i">+    Route::get(&#39;/admin/dashboard&#39;, [AdminController::class, &#39;dashboard&#39;])-&gt;name(&#39;admin.dashboard&#39;);
+</a><a href="#h13-1-12" id="h13-1-12" class="i">+    Route::post(&#39;/admin/logout&#39;, [AdminController::class, &#39;logout&#39;])-&gt;name(&#39;admin.logout&#39;);
+</a><a href="#h13-1-13" id="h13-1-13" class="i">+
+</a><a href="#h13-1-14" id="h13-1-14" class="i">+    Route::get(&#39;/admin/reports/{report}/edit&#39;, [AdminController::class, &#39;edit&#39;])-&gt;name(&#39;admin.reports.edit&#39;);
+</a><a href="#h13-1-15" id="h13-1-15" class="i">+    Route::put(&#39;/admin/reports/{report}&#39;, [AdminController::class, &#39;updateStatus&#39;])-&gt;name(&#39;admin.reports.update&#39;);
+</a><a href="#h13-1-16" id="h13-1-16" class="i">+    Route::delete(&#39;/admin/reports/{report}&#39;, [AdminController::class, &#39;destroy&#39;])-&gt;name(&#39;admin.reports.destroy&#39;);
+</a><a href="#h13-1-17" id="h13-1-17" class="i">+});
+</a> 
+ require __DIR__ . &#39;/auth.php&#39;;
+</pre>
+</div>
+</body>
+</html>

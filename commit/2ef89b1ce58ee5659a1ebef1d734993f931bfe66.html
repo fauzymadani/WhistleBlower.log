@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>dark mode everything - whistleblower - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>whistleblower</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/2ef89b1ce58ee5659a1ebef1d734993f931bfe66.html">2ef89b1ce58ee5659a1ebef1d734993f931bfe66</a>
+<b>parent</b> <a href="../commit/62ccca3ca0fb724d3b333b436a796b752cf740bc.html">62ccca3ca0fb724d3b333b436a796b752cf740bc</a>
+<b>Author:</b> fauzymadani &lt;<a href="mailto:keperluansekolahfauzy@gmail.com">keperluansekolahfauzy@gmail.com</a>&gt;
+<b>Date:</b>   Thu, 10 Apr 2025 21:48:50 +0700
+
+dark mode everything
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">app/Http/Controllers/ReportController.php</a></td><td> | </td><td class="num">26</td><td><span class="i">+++++++++++++++++++++</span><span class="d">-----</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">app/Models/Report.php</a></td><td> | </td><td class="num">22</td><td><span class="i">+++++++++++++++++++++</span><span class="d">-</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h2">app/Models/User.php</a></td><td> | </td><td class="num">5</td><td><span class="i">+++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h3">database/migrations/2025_04_10_115438_add_identity_fields_to_reports_table.php</a></td><td> | </td><td class="num">24</td><td><span class="i">++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h4">resources/views/auth/login.blade.php</a></td><td> | </td><td class="num">29</td><td><span class="i">+++++++++++++</span><span class="d">----------------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h5">resources/views/components/dropdown-link.blade.php</a></td><td> | </td><td class="num">11</td><td><span class="i">++++++++++</span><span class="d">-</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h6">resources/views/components/dropdown.blade.php</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h7">resources/views/components/text-input.blade.php</a></td><td> | </td><td class="num">17</td><td><span class="i">++++++++++++++++</span><span class="d">-</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h8">resources/views/dashboard.blade.php</a></td><td> | </td><td class="num">93</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">-----------------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h9">resources/views/layouts/app.blade.php</a></td><td> | </td><td class="num">17</td><td><span class="i">+++++++++</span><span class="d">--------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h10">resources/views/layouts/guest.blade.php</a></td><td> | </td><td class="num">14</td><td><span class="i">++++++++++</span><span class="d">----</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h11">resources/views/layouts/navigation.blade.php</a></td><td> | </td><td class="num">10</td><td><span class="i">+++++</span><span class="d">-----</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h12">resources/views/profile/edit.blade.php</a></td><td> | </td><td class="num">8</td><td><span class="i">++++</span><span class="d">----</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h13">routes/web.php</a></td><td> | </td><td class="num">8</td><td><span class="i">+++++++</span><span class="d">-</span></td></tr>
+</table></pre><pre>14 files changed, 219 insertions(+), 67 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/app/Http/Controllers/ReportController.php.html">app/Http/Controllers/ReportController.php</a> b/<a href="../file/app/Http/Controllers/ReportController.php.html">app/Http/Controllers/ReportController.php</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -16,17 +16,33 @@ class ReportController extends Controller
+</a>             &#39;nama_pelaku&#39; =&gt; &#39;required|string|max:255&#39;,
+             &#39;kelas_pelaku&#39; =&gt; &#39;required|string|max:255&#39;,
+             &#39;jurusan_pelaku&#39; =&gt; &#39;required|string|max:255&#39;,
+<a href="#h0-0-3" id="h0-0-3" class="d">-            &#39;anonim&#39; =&gt; &#39;required|boolean&#39;,
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-            &#39;nama_pelapor&#39; =&gt; &#39;nullable|string|max:255&#39;,
+</a><a href="#h0-0-5" id="h0-0-5" class="d">-            &#39;kelas_pelapor&#39; =&gt; &#39;nullable|string|max:255&#39;,
+</a><a href="#h0-0-6" id="h0-0-6" class="d">-            &#39;jurusan_pelapor&#39; =&gt; &#39;nullable|string|max:255&#39;,
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+            &#39;is_anonymous&#39; =&gt; &#39;required|boolean&#39;,
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+            &#39;reporter_name&#39; =&gt; &#39;nullable|string|max:255&#39;,
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+            &#39;reporter_class&#39; =&gt; &#39;nullable|string|max:255&#39;,
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+            &#39;reporter_major&#39; =&gt; &#39;nullable|string|max:255&#39;,
+</a>             &#39;peran&#39; =&gt; &#39;required|in:saksi,korban&#39;,
+         ]);
+ 
+         $report = new Report($validated);
+<a href="#h0-0-15" id="h0-0-15" class="d">-        $report-&gt;user_id = Auth::id(); // nyambungin ke user yg login
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+        $report-&gt;user_id = Auth::id(); // relasi ke user login
+</a>         $report-&gt;save();
+ 
+         return redirect()-&gt;back()-&gt;with(&#39;success&#39;, &#39;Laporan berhasil dikirim.&#39;);
+     }
+<a href="#h0-0-21" id="h0-0-21" class="i">+
+</a><a href="#h0-0-22" id="h0-0-22" class="i">+    public function edit(Report $report)
+</a><a href="#h0-0-23" id="h0-0-23" class="i">+    {
+</a><a href="#h0-0-24" id="h0-0-24" class="i">+        return view(&#39;reports.edit&#39;, compact(&#39;report&#39;));
+</a><a href="#h0-0-25" id="h0-0-25" class="i">+    }
+</a><a href="#h0-0-26" id="h0-0-26" class="i">+
+</a><a href="#h0-0-27" id="h0-0-27" class="i">+    public function update(Request $request, Report $report)
+</a><a href="#h0-0-28" id="h0-0-28" class="i">+    {
+</a><a href="#h0-0-29" id="h0-0-29" class="i">+        // validasi &amp; update logic di sini
+</a><a href="#h0-0-30" id="h0-0-30" class="i">+    }
+</a><a href="#h0-0-31" id="h0-0-31" class="i">+
+</a><a href="#h0-0-32" id="h0-0-32" class="i">+    public function destroy(Report $report)
+</a><a href="#h0-0-33" id="h0-0-33" class="i">+    {
+</a><a href="#h0-0-34" id="h0-0-34" class="i">+        $report-&gt;delete();
+</a><a href="#h0-0-35" id="h0-0-35" class="i">+        return redirect()-&gt;back()-&gt;with(&#39;success&#39;, &#39;Laporan berhasil dihapus.&#39;);
+</a><a href="#h0-0-36" id="h0-0-36" class="i">+    }
+</a> }
+<b>diff --git a/<a id="h1" href="../file/app/Models/Report.php.html">app/Models/Report.php</a> b/<a href="../file/app/Models/Report.php.html">app/Models/Report.php</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -6,5 +6,25 @@ use Illuminate\Database\Eloquent\Model;
+</a> 
+ class Report extends Model
+ {
+<a href="#h1-0-3" id="h1-0-3" class="d">-    //
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+    protected $fillable = [
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+        &#39;judul&#39;,
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+        &#39;isi_laporan&#39;,
+</a><a href="#h1-0-7" id="h1-0-7" class="i">+        &#39;nama_pelaku&#39;,
+</a><a href="#h1-0-8" id="h1-0-8" class="i">+        &#39;kelas_pelaku&#39;,
+</a><a href="#h1-0-9" id="h1-0-9" class="i">+        &#39;jurusan_pelaku&#39;,
+</a><a href="#h1-0-10" id="h1-0-10" class="i">+        &#39;reporter_name&#39;,
+</a><a href="#h1-0-11" id="h1-0-11" class="i">+        &#39;reporter_class&#39;,
+</a><a href="#h1-0-12" id="h1-0-12" class="i">+        &#39;reporter_major&#39;,
+</a><a href="#h1-0-13" id="h1-0-13" class="i">+        &#39;peran&#39;,
+</a><a href="#h1-0-14" id="h1-0-14" class="i">+        &#39;is_anonymous&#39;,
+</a><a href="#h1-0-15" id="h1-0-15" class="i">+    ];
+</a><a href="#h1-0-16" id="h1-0-16" class="i">+
+</a><a href="#h1-0-17" id="h1-0-17" class="i">+    protected $casts = [
+</a><a href="#h1-0-18" id="h1-0-18" class="i">+        &#39;is_anonymous&#39; =&gt; &#39;boolean&#39;,
+</a><a href="#h1-0-19" id="h1-0-19" class="i">+    ];
+</a><a href="#h1-0-20" id="h1-0-20" class="i">+
+</a><a href="#h1-0-21" id="h1-0-21" class="i">+    public function user()
+</a><a href="#h1-0-22" id="h1-0-22" class="i">+    {
+</a><a href="#h1-0-23" id="h1-0-23" class="i">+        return $this-&gt;belongsTo(\App\Models\User::class);
+</a><a href="#h1-0-24" id="h1-0-24" class="i">+    }
+</a> }
+<b>diff --git a/<a id="h2" href="../file/app/Models/User.php.html">app/Models/User.php</a> b/<a href="../file/app/Models/User.php.html">app/Models/User.php</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -45,4 +45,9 @@ class User extends Authenticatable
+</a>             &#39;password&#39; =&gt; &#39;hashed&#39;,
+         ];
+     }
+<a href="#h2-0-3" id="h2-0-3" class="i">+
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+    public function reports()
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+    {
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+        return $this-&gt;hasMany(\App\Models\Report::class);
+</a><a href="#h2-0-7" id="h2-0-7" class="i">+    }
+</a> }
+<b>diff --git a/<a id="h3" href="../file/database/migrations/2025_04_10_115438_add_identity_fields_to_reports_table.php.html">database/migrations/2025_04_10_115438_add_identity_fields_to_reports_table.php</a> b/<a href="../file/database/migrations/2025_04_10_115438_add_identity_fields_to_reports_table.php.html">database/migrations/2025_04_10_115438_add_identity_fields_to_reports_table.php</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -0,0 +1,24 @@
+</a><a href="#h3-0-0" id="h3-0-0" class="i">+&lt;?php
+</a><a href="#h3-0-1" id="h3-0-1" class="i">+
+</a><a href="#h3-0-2" id="h3-0-2" class="i">+use Illuminate\Database\Migrations\Migration;
+</a><a href="#h3-0-3" id="h3-0-3" class="i">+use Illuminate\Database\Schema\Blueprint;
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+use Illuminate\Support\Facades\Schema;
+</a><a href="#h3-0-5" id="h3-0-5" class="i">+
+</a><a href="#h3-0-6" id="h3-0-6" class="i">+return new class extends Migration {
+</a><a href="#h3-0-7" id="h3-0-7" class="i">+    public function up(): void
+</a><a href="#h3-0-8" id="h3-0-8" class="i">+    {
+</a><a href="#h3-0-9" id="h3-0-9" class="i">+        Schema::table(&#39;reports&#39;, function (Blueprint $table) {
+</a><a href="#h3-0-10" id="h3-0-10" class="i">+            $table-&gt;boolean(&#39;is_anonymous&#39;)-&gt;default(true);
+</a><a href="#h3-0-11" id="h3-0-11" class="i">+            $table-&gt;string(&#39;reporter_name&#39;)-&gt;nullable();
+</a><a href="#h3-0-12" id="h3-0-12" class="i">+            $table-&gt;string(&#39;reporter_class&#39;)-&gt;nullable();
+</a><a href="#h3-0-13" id="h3-0-13" class="i">+            $table-&gt;string(&#39;reporter_major&#39;)-&gt;nullable();
+</a><a href="#h3-0-14" id="h3-0-14" class="i">+        });
+</a><a href="#h3-0-15" id="h3-0-15" class="i">+    }
+</a><a href="#h3-0-16" id="h3-0-16" class="i">+
+</a><a href="#h3-0-17" id="h3-0-17" class="i">+    public function down(): void
+</a><a href="#h3-0-18" id="h3-0-18" class="i">+    {
+</a><a href="#h3-0-19" id="h3-0-19" class="i">+        Schema::table(&#39;reports&#39;, function (Blueprint $table) {
+</a><a href="#h3-0-20" id="h3-0-20" class="i">+            $table-&gt;dropColumn([&#39;is_anonymous&#39;, &#39;reporter_name&#39;, &#39;reporter_class&#39;, &#39;reporter_major&#39;]);
+</a><a href="#h3-0-21" id="h3-0-21" class="i">+        });
+</a><a href="#h3-0-22" id="h3-0-22" class="i">+    }
+</a><a href="#h3-0-23" id="h3-0-23" class="i">+};
+</a><b>diff --git a/<a id="h4" href="../file/resources/views/auth/login.blade.php.html">resources/views/auth/login.blade.php</a> b/<a href="../file/resources/views/auth/login.blade.php.html">resources/views/auth/login.blade.php</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -1,40 +1,36 @@
+</a> &lt;x-guest-layout&gt;
+     &lt;!-- Session Status --&gt;
+<a href="#h4-0-2" id="h4-0-2" class="d">-    &lt;x-auth-session-status class=&quot;mb-4&quot; :status=&quot;session(&#39;status&#39;)&quot; /&gt;
+</a><a href="#h4-0-3" id="h4-0-3" class="i">+    &lt;x-auth-session-status class=&quot;mb-4 text-sm text-green-600 dark:text-green-400&quot; :status=&quot;session(&#39;status&#39;)&quot; /&gt;
+</a> 
+<a href="#h4-0-5" id="h4-0-5" class="d">-    &lt;form method=&quot;POST&quot; action=&quot;{{ route(&#39;login&#39;) }}&quot;&gt;
+</a><a href="#h4-0-6" id="h4-0-6" class="i">+    &lt;form method=&quot;POST&quot; action=&quot;{{ route(&#39;login&#39;) }}&quot; class=&quot;bg-white dark:bg-[#1e1e1e] p-6 rounded-lg shadow-md dark:shadow-none border border-gray-300 dark:border-[#444]&quot;&gt;
+</a>         @csrf
+ 
+         &lt;!-- Email Address --&gt;
+         &lt;div&gt;
+<a href="#h4-0-11" id="h4-0-11" class="d">-            &lt;x-input-label for=&quot;email&quot; :value=&quot;__(&#39;Email&#39;)&quot; /&gt;
+</a><a href="#h4-0-12" id="h4-0-12" class="d">-            &lt;x-text-input id=&quot;email&quot; class=&quot;block mt-1 w-full&quot; type=&quot;email&quot; name=&quot;email&quot; :value=&quot;old(&#39;email&#39;)&quot; required autofocus autocomplete=&quot;username&quot; /&gt;
+</a><a href="#h4-0-13" id="h4-0-13" class="d">-            &lt;x-input-error :messages=&quot;$errors-&gt;get(&#39;email&#39;)&quot; class=&quot;mt-2&quot; /&gt;
+</a><a href="#h4-0-14" id="h4-0-14" class="i">+            &lt;x-input-label for=&quot;email&quot; class=&quot;text-gray-700 dark:text-gray-300&quot; :value=&quot;__(&#39;Email&#39;)&quot; /&gt;
+</a><a href="#h4-0-15" id="h4-0-15" class="i">+            &lt;x-text-input id=&quot;email&quot; class=&quot;block mt-1 w-full bg-gray-100 dark:bg-[#2b2b2b] border border-gray-300 dark:border-[#555] text-gray-900 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-600&quot; type=&quot;email&quot; name=&quot;email&quot; :value=&quot;old(&#39;email&#39;)&quot; required autofocus autocomplete=&quot;username&quot; /&gt;
+</a><a href="#h4-0-16" id="h4-0-16" class="i">+            &lt;x-input-error :messages=&quot;$errors-&gt;get(&#39;email&#39;)&quot; class=&quot;mt-2 text-red-600 dark:text-red-400&quot; /&gt;
+</a>         &lt;/div&gt;
+ 
+         &lt;!-- Password --&gt;
+         &lt;div class=&quot;mt-4&quot;&gt;
+<a href="#h4-0-21" id="h4-0-21" class="d">-            &lt;x-input-label for=&quot;password&quot; :value=&quot;__(&#39;Password&#39;)&quot; /&gt;
+</a><a href="#h4-0-22" id="h4-0-22" class="d">-
+</a><a href="#h4-0-23" id="h4-0-23" class="d">-            &lt;x-text-input id=&quot;password&quot; class=&quot;block mt-1 w-full&quot;
+</a><a href="#h4-0-24" id="h4-0-24" class="d">-                            type=&quot;password&quot;
+</a><a href="#h4-0-25" id="h4-0-25" class="d">-                            name=&quot;password&quot;
+</a><a href="#h4-0-26" id="h4-0-26" class="d">-                            required autocomplete=&quot;current-password&quot; /&gt;
+</a><a href="#h4-0-27" id="h4-0-27" class="d">-
+</a><a href="#h4-0-28" id="h4-0-28" class="d">-            &lt;x-input-error :messages=&quot;$errors-&gt;get(&#39;password&#39;)&quot; class=&quot;mt-2&quot; /&gt;
+</a><a href="#h4-0-29" id="h4-0-29" class="i">+            &lt;x-input-label for=&quot;password&quot; class=&quot;text-gray-700 dark:text-gray-300&quot; :value=&quot;__(&#39;Password&#39;)&quot; /&gt;
+</a><a href="#h4-0-30" id="h4-0-30" class="i">+            &lt;x-text-input id=&quot;password&quot; class=&quot;block mt-1 w-full bg-gray-100 dark:bg-[#2b2b2b] border border-gray-300 dark:border-[#555] text-gray-900 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-600&quot; type=&quot;password&quot; name=&quot;password&quot; required autocomplete=&quot;current-password&quot; /&gt;
+</a><a href="#h4-0-31" id="h4-0-31" class="i">+            &lt;x-input-error :messages=&quot;$errors-&gt;get(&#39;password&#39;)&quot; class=&quot;mt-2 text-red-600 dark:text-red-400&quot; /&gt;
+</a>         &lt;/div&gt;
+ 
+         &lt;!-- Remember Me --&gt;
+         &lt;div class=&quot;block mt-4&quot;&gt;
+             &lt;label for=&quot;remember_me&quot; class=&quot;inline-flex items-center&quot;&gt;
+<a href="#h4-0-37" id="h4-0-37" class="d">-                &lt;input id=&quot;remember_me&quot; type=&quot;checkbox&quot; class=&quot;rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800&quot; name=&quot;remember&quot;&gt;
+</a><a href="#h4-0-38" id="h4-0-38" class="i">+                &lt;input id=&quot;remember_me&quot; type=&quot;checkbox&quot; class=&quot;rounded dark:bg-[#2b2b2b] border-gray-300 dark:border-[#666] text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-[#1e1e1e]&quot; name=&quot;remember&quot;&gt;
+</a>                 &lt;span class=&quot;ms-2 text-sm text-gray-600 dark:text-gray-400&quot;&gt;{{ __(&#39;Remember me&#39;) }}&lt;/span&gt;
+             &lt;/label&gt;
+         &lt;/div&gt;
+ 
+<a href="#h4-0-43" id="h4-0-43" class="d">-        &lt;div class=&quot;flex items-center justify-end mt-4&quot;&gt;
+</a><a href="#h4-0-44" id="h4-0-44" class="i">+        &lt;!-- Buttons --&gt;
+</a><a href="#h4-0-45" id="h4-0-45" class="i">+        &lt;div class=&quot;flex items-center justify-end mt-6&quot;&gt;
+</a>             @if (Route::has(&#39;password.request&#39;))
+<a href="#h4-0-47" id="h4-0-47" class="d">-                &lt;a class=&quot;underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800&quot; href=&quot;{{ route(&#39;password.request&#39;) }}&quot;&gt;
+</a><a href="#h4-0-48" id="h4-0-48" class="i">+                &lt;a class=&quot;underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-[#1e1e1e]&quot; href=&quot;{{ route(&#39;password.request&#39;) }}&quot;&gt;
+</a>                     {{ __(&#39;Forgot your password?&#39;) }}
+                 &lt;/a&gt;
+             @endif
+<a href="#h4-1" id="h4-1" class="h">@@ -45,3 +41,4 @@
+</a>         &lt;/div&gt;
+     &lt;/form&gt;
+ &lt;/x-guest-layout&gt;
+<a href="#h4-1-3" id="h4-1-3" class="i">+
+</a><b>diff --git a/<a id="h5" href="../file/resources/views/components/dropdown-link.blade.php.html">resources/views/components/dropdown-link.blade.php</a> b/<a href="../file/resources/views/components/dropdown-link.blade.php.html">resources/views/components/dropdown-link.blade.php</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -1 +1,10 @@
+</a><a href="#h5-0-0" id="h5-0-0" class="d">-&lt;a {{ $attributes-&gt;merge([&#39;class&#39; =&gt; &#39;block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-800 transition duration-150 ease-in-out&#39;]) }}&gt;{{ $slot }}&lt;/a&gt;
+</a><a href="#h5-0-1" id="h5-0-1" class="i">+&lt;a {{ $attributes-&gt;merge([
+</a><a href="#h5-0-2" id="h5-0-2" class="i">+    &#39;class&#39; =&gt; &#39;
+</a><a href="#h5-0-3" id="h5-0-3" class="i">+        block px-4 py-2 text-sm
+</a><a href="#h5-0-4" id="h5-0-4" class="i">+        text-gray-700 dark:text-gray-200
+</a><a href="#h5-0-5" id="h5-0-5" class="i">+        hover:bg-gray-100 dark:hover:bg-gray-600
+</a><a href="#h5-0-6" id="h5-0-6" class="i">+        transition duration-150 ease-in-out&#39;
+</a><a href="#h5-0-7" id="h5-0-7" class="i">+]) }}&gt;
+</a><a href="#h5-0-8" id="h5-0-8" class="i">+    {{ $slot }}
+</a><a href="#h5-0-9" id="h5-0-9" class="i">+&lt;/a&gt;
+</a><a href="#h5-0-10" id="h5-0-10" class="i">+
+</a><b>diff --git a/<a id="h6" href="../file/resources/views/components/dropdown.blade.php.html">resources/views/components/dropdown.blade.php</a> b/<a href="../file/resources/views/components/dropdown.blade.php.html">resources/views/components/dropdown.blade.php</a></b>
+<a href="#h6-0" id="h6-0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h6-0-0" id="h6-0-0" class="d">-@props([&#39;align&#39; =&gt; &#39;right&#39;, &#39;width&#39; =&gt; &#39;48&#39;, &#39;contentClasses&#39; =&gt; &#39;py-1 bg-white dark:bg-gray-700&#39;])
+</a><a href="#h6-0-1" id="h6-0-1" class="i">+@props([&#39;align&#39; =&gt; &#39;right&#39;, &#39;width&#39; =&gt; &#39;48&#39;, &#39;contentClasses&#39; =&gt; &#39;py-1 bg-white dark:bg-[#1e1e1e] text-gray-800 dark:text-gray-200&#39;])
+</a> 
+ @php
+ $alignmentClasses = match ($align) {
+<b>diff --git a/<a id="h7" href="../file/resources/views/components/text-input.blade.php.html">resources/views/components/text-input.blade.php</a> b/<a href="../file/resources/views/components/text-input.blade.php.html">resources/views/components/text-input.blade.php</a></b>
+<a href="#h7-0" id="h7-0" class="h">@@ -1,3 +1,18 @@
+</a> @props([&#39;disabled&#39; =&gt; false])
+ 
+<a href="#h7-0-2" id="h7-0-2" class="d">-&lt;input @disabled($disabled) {{ $attributes-&gt;merge([&#39;class&#39; =&gt; &#39;border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm&#39;]) }}&gt;
+</a><a href="#h7-0-3" id="h7-0-3" class="i">+&lt;input
+</a><a href="#h7-0-4" id="h7-0-4" class="i">+    {{ $disabled ? &#39;disabled&#39; : &#39;&#39; }}
+</a><a href="#h7-0-5" id="h7-0-5" class="i">+    {!! $attributes-&gt;merge([
+</a><a href="#h7-0-6" id="h7-0-6" class="i">+        &#39;class&#39; =&gt; &#39;
+</a><a href="#h7-0-7" id="h7-0-7" class="i">+            border-gray-300 dark:border-gray-700
+</a><a href="#h7-0-8" id="h7-0-8" class="i">+            bg-white dark:bg-[#1e1e1e]
+</a><a href="#h7-0-9" id="h7-0-9" class="i">+            text-gray-900 dark:text-gray-100
+</a><a href="#h7-0-10" id="h7-0-10" class="i">+            placeholder-gray-400 dark:placeholder-gray-500
+</a><a href="#h7-0-11" id="h7-0-11" class="i">+            focus:border-indigo-500 dark:focus:border-indigo-400
+</a><a href="#h7-0-12" id="h7-0-12" class="i">+            focus:ring-indigo-500 dark:focus:ring-indigo-400
+</a><a href="#h7-0-13" id="h7-0-13" class="i">+            rounded-md shadow-sm dark:shadow-none
+</a><a href="#h7-0-14" id="h7-0-14" class="i">+            transition duration-150 ease-in-out
+</a><a href="#h7-0-15" id="h7-0-15" class="i">+        &#39;
+</a><a href="#h7-0-16" id="h7-0-16" class="i">+    ]) !!}
+</a><a href="#h7-0-17" id="h7-0-17" class="i">+/&gt;
+</a><a href="#h7-0-18" id="h7-0-18" class="i">+
+</a><b>diff --git a/<a id="h8" href="../file/resources/views/dashboard.blade.php.html">resources/views/dashboard.blade.php</a> b/<a href="../file/resources/views/dashboard.blade.php.html">resources/views/dashboard.blade.php</a></b>
+<a href="#h8-0" id="h8-0" class="h">@@ -1,54 +1,67 @@
+</a> &lt;x-app-layout&gt;
+     &lt;x-slot name=&quot;header&quot;&gt;
+<a href="#h8-0-2" id="h8-0-2" class="d">-        &lt;h2 class=&quot;font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight&quot;&gt;
+</a><a href="#h8-0-3" id="h8-0-3" class="i">+        &lt;h2 class=&quot;font-semibold text-xl text-gray-800 dark:text-gray-300 leading-tight&quot;&gt;
+</a>             {{ __(&#39;Dashboard&#39;) }}
+         &lt;/h2&gt;
+     &lt;/x-slot&gt;
+ 
+     &lt;div class=&quot;py-12&quot;&gt;
+         &lt;div class=&quot;max-w-7xl mx-auto sm:px-6 lg:px-8&quot;&gt;
+<a href="#h8-0-10" id="h8-0-10" class="d">-            &lt;div class=&quot;bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg&quot;&gt;
+</a><a href="#h8-0-11" id="h8-0-11" class="d">-                &lt;div class=&quot;p-6 text-gray-900 dark:text-gray-100&quot;&gt;
+</a><a href="#h8-0-12" id="h8-0-12" class="i">+
+</a><a href="#h8-0-13" id="h8-0-13" class="i">+            {{-- Kotak login info --}}
+</a><a href="#h8-0-14" id="h8-0-14" class="i">+            &lt;div class=&quot;bg-white dark:bg-[#1e1e1e] overflow-hidden shadow-sm sm:rounded-lg mb-6&quot;&gt;
+</a><a href="#h8-0-15" id="h8-0-15" class="i">+                &lt;div class=&quot;p-6 text-gray-900 dark:text-gray-300&quot;&gt;
+</a>                     You&#39;re logged in as &lt;strong&gt;{{ Auth::user()-&gt;username }}&lt;/strong&gt;
+                 &lt;/div&gt;
+             &lt;/div&gt;
+ 
+<a href="#h8-0-20" id="h8-0-20" class="i">+            {{-- Notifikasi sukses --}}
+</a><a href="#h8-0-21" id="h8-0-21" class="i">+            @if(session(&#39;success&#39;))
+</a><a href="#h8-0-22" id="h8-0-22" class="i">+            &lt;div class=&quot;bg-green-600 text-white p-4 rounded mb-4&quot;&gt;
+</a><a href="#h8-0-23" id="h8-0-23" class="i">+                {{ session(&#39;success&#39;) }}
+</a><a href="#h8-0-24" id="h8-0-24" class="i">+            &lt;/div&gt;
+</a><a href="#h8-0-25" id="h8-0-25" class="i">+            @endif
+</a><a href="#h8-0-26" id="h8-0-26" class="i">+
+</a>             {{-- Form buat laporan --}}
+<a href="#h8-0-28" id="h8-0-28" class="d">-            &lt;div class=&quot;mt-6 bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg&quot;&gt;
+</a><a href="#h8-0-29" id="h8-0-29" class="d">-                &lt;div class=&quot;p-6 text-gray-900 dark:text-gray-100&quot;&gt;
+</a><a href="#h8-0-30" id="h8-0-30" class="i">+            &lt;div class=&quot;bg-white dark:bg-[#1e1e1e] overflow-hidden shadow-sm sm:rounded-lg mb-6&quot;&gt;
+</a><a href="#h8-0-31" id="h8-0-31" class="i">+                &lt;div class=&quot;p-6 text-gray-900 dark:text-gray-300&quot;&gt;
+</a>                     &lt;h3 class=&quot;text-lg font-semibold mb-4&quot;&gt;Buat Laporan Whistleblowing&lt;/h3&gt;
+ 
+                     &lt;form method=&quot;POST&quot; action=&quot;{{ route(&#39;reports.store&#39;) }}&quot;&gt;
+                         @csrf
+ 
+<a href="#h8-0-37" id="h8-0-37" class="i">+                        @php
+</a><a href="#h8-0-38" id="h8-0-38" class="i">+                            $inputStyle = &#39;w-full rounded px-3 py-2 bg-white dark:bg-[#262626] text-gray-900 dark:text-gray-300 border border-gray-300 dark:border-[#3a3a3a] focus:outline-none focus:ring-2 focus:ring-blue-500&#39;;
+</a><a href="#h8-0-39" id="h8-0-39" class="i">+                        @endphp
+</a><a href="#h8-0-40" id="h8-0-40" class="i">+
+</a>                         &lt;div class=&quot;mb-4&quot;&gt;
+<a href="#h8-0-42" id="h8-0-42" class="d">-                            &lt;label for=&quot;title&quot; class=&quot;block font-medium&quot;&gt;Judul Laporan&lt;/label&gt;
+</a><a href="#h8-0-43" id="h8-0-43" class="d">-                            &lt;input type=&quot;text&quot; name=&quot;title&quot; id=&quot;title&quot; class=&quot;w-full rounded px-3 py-2 text-black&quot; required&gt;
+</a><a href="#h8-0-44" id="h8-0-44" class="i">+                            &lt;label for=&quot;judul&quot; class=&quot;block font-medium&quot;&gt;Judul Laporan&lt;/label&gt;
+</a><a href="#h8-0-45" id="h8-0-45" class="i">+                            &lt;input type=&quot;text&quot; name=&quot;judul&quot; id=&quot;judul&quot; class=&quot;{{ $inputStyle }}&quot; required&gt;
+</a>                         &lt;/div&gt;
+ 
+                         &lt;div class=&quot;mb-4&quot;&gt;
+<a href="#h8-0-49" id="h8-0-49" class="d">-                            &lt;label for=&quot;content&quot; class=&quot;block font-medium&quot;&gt;Isi Laporan&lt;/label&gt;
+</a><a href="#h8-0-50" id="h8-0-50" class="d">-                            &lt;textarea name=&quot;content&quot; id=&quot;content&quot; rows=&quot;4&quot; class=&quot;w-full rounded px-3 py-2 text-black&quot; required&gt;&lt;/textarea&gt;
+</a><a href="#h8-0-51" id="h8-0-51" class="i">+                            &lt;label for=&quot;isi_laporan&quot; class=&quot;block font-medium&quot;&gt;Isi Laporan&lt;/label&gt;
+</a><a href="#h8-0-52" id="h8-0-52" class="i">+                            &lt;textarea name=&quot;isi_laporan&quot; id=&quot;isi_laporan&quot; rows=&quot;4&quot; class=&quot;{{ $inputStyle }}&quot; required&gt;&lt;/textarea&gt;
+</a>                         &lt;/div&gt;
+ 
+                         &lt;div class=&quot;mb-4&quot;&gt;
+<a href="#h8-0-56" id="h8-0-56" class="d">-                            &lt;label for=&quot;perpetrator_name&quot; class=&quot;block font-medium&quot;&gt;Nama Pelaku&lt;/label&gt;
+</a><a href="#h8-0-57" id="h8-0-57" class="d">-                            &lt;input type=&quot;text&quot; name=&quot;perpetrator_name&quot; id=&quot;perpetrator_name&quot; class=&quot;w-full rounded px-3 py-2 text-black&quot; required&gt;
+</a><a href="#h8-0-58" id="h8-0-58" class="i">+                            &lt;label for=&quot;nama_pelaku&quot; class=&quot;block font-medium&quot;&gt;Nama Pelaku&lt;/label&gt;
+</a><a href="#h8-0-59" id="h8-0-59" class="i">+                            &lt;input type=&quot;text&quot; name=&quot;nama_pelaku&quot; id=&quot;nama_pelaku&quot; class=&quot;{{ $inputStyle }}&quot; required&gt;
+</a>                         &lt;/div&gt;
+ 
+                         &lt;div class=&quot;mb-4&quot;&gt;
+<a href="#h8-0-63" id="h8-0-63" class="d">-                            &lt;label for=&quot;perpetrator_class&quot; class=&quot;block font-medium&quot;&gt;Kelas Pelaku&lt;/label&gt;
+</a><a href="#h8-0-64" id="h8-0-64" class="d">-                            &lt;input type=&quot;text&quot; name=&quot;perpetrator_class&quot; id=&quot;perpetrator_class&quot; class=&quot;w-full rounded px-3 py-2 text-black&quot; required&gt;
+</a><a href="#h8-0-65" id="h8-0-65" class="i">+                            &lt;label for=&quot;kelas_pelaku&quot; class=&quot;block font-medium&quot;&gt;Kelas Pelaku&lt;/label&gt;
+</a><a href="#h8-0-66" id="h8-0-66" class="i">+                            &lt;input type=&quot;text&quot; name=&quot;kelas_pelaku&quot; id=&quot;kelas_pelaku&quot; class=&quot;{{ $inputStyle }}&quot; required&gt;
+</a>                         &lt;/div&gt;
+ 
+                         &lt;div class=&quot;mb-4&quot;&gt;
+<a href="#h8-0-70" id="h8-0-70" class="d">-                            &lt;label for=&quot;perpetrator_major&quot; class=&quot;block font-medium&quot;&gt;Jurusan Pelaku&lt;/label&gt;
+</a><a href="#h8-0-71" id="h8-0-71" class="d">-                            &lt;input type=&quot;text&quot; name=&quot;perpetrator_major&quot; id=&quot;perpetrator_major&quot; class=&quot;w-full rounded px-3 py-2 text-black&quot; required&gt;
+</a><a href="#h8-0-72" id="h8-0-72" class="i">+                            &lt;label for=&quot;jurusan_pelaku&quot; class=&quot;block font-medium&quot;&gt;Jurusan Pelaku&lt;/label&gt;
+</a><a href="#h8-0-73" id="h8-0-73" class="i">+                            &lt;input type=&quot;text&quot; name=&quot;jurusan_pelaku&quot; id=&quot;jurusan_pelaku&quot; class=&quot;{{ $inputStyle }}&quot; required&gt;
+</a>                         &lt;/div&gt;
+ 
+                         &lt;div class=&quot;mb-4&quot;&gt;
+                             &lt;label class=&quot;block font-medium&quot;&gt;Status Pelapor&lt;/label&gt;
+<a href="#h8-0-78" id="h8-0-78" class="d">-                            &lt;select name=&quot;reporter_status&quot; class=&quot;w-full rounded px-3 py-2 text-black&quot; required&gt;
+</a><a href="#h8-0-79" id="h8-0-79" class="i">+                            &lt;select name=&quot;peran&quot; class=&quot;{{ $inputStyle }}&quot; required&gt;
+</a>                                 &lt;option value=&quot;saksi&quot;&gt;Saksi&lt;/option&gt;
+                                 &lt;option value=&quot;korban&quot;&gt;Korban&lt;/option&gt;
+                             &lt;/select&gt;
+<a href="#h8-1" id="h8-1" class="h">@@ -56,7 +69,7 @@
+</a> 
+                         &lt;div class=&quot;mb-4&quot;&gt;
+                             &lt;label class=&quot;block font-medium&quot;&gt;Ingin menyantumkan identitas?&lt;/label&gt;
+<a href="#h8-1-3" id="h8-1-3" class="d">-                            &lt;select name=&quot;is_anonymous&quot; id=&quot;is_anonymous&quot; class=&quot;w-full rounded px-3 py-2 text-black&quot; required onchange=&quot;toggleIdentityFields()&quot;&gt;
+</a><a href="#h8-1-4" id="h8-1-4" class="i">+                            &lt;select name=&quot;is_anonymous&quot; id=&quot;is_anonymous&quot; class=&quot;{{ $inputStyle }}&quot; required onchange=&quot;toggleIdentityFields()&quot;&gt;
+</a>                                 &lt;option value=&quot;1&quot;&gt;Tidak, saya ingin anonim&lt;/option&gt;
+                                 &lt;option value=&quot;0&quot;&gt;Ya, saya bersedia diselidiki&lt;/option&gt;
+                             &lt;/select&gt;
+<a href="#h8-2" id="h8-2" class="h">@@ -65,17 +78,17 @@
+</a>                         &lt;div id=&quot;identityFields&quot; class=&quot;hidden&quot;&gt;
+                             &lt;div class=&quot;mb-4&quot;&gt;
+                                 &lt;label for=&quot;reporter_name&quot; class=&quot;block font-medium&quot;&gt;Nama Pelapor&lt;/label&gt;
+<a href="#h8-2-3" id="h8-2-3" class="d">-                                &lt;input type=&quot;text&quot; name=&quot;reporter_name&quot; id=&quot;reporter_name&quot; class=&quot;w-full rounded px-3 py-2 text-black&quot;&gt;
+</a><a href="#h8-2-4" id="h8-2-4" class="i">+                                &lt;input type=&quot;text&quot; name=&quot;reporter_name&quot; id=&quot;reporter_name&quot; class=&quot;{{ $inputStyle }}&quot;&gt;
+</a>                             &lt;/div&gt;
+ 
+                             &lt;div class=&quot;mb-4&quot;&gt;
+                                 &lt;label for=&quot;reporter_class&quot; class=&quot;block font-medium&quot;&gt;Kelas Pelapor&lt;/label&gt;
+<a href="#h8-2-9" id="h8-2-9" class="d">-                                &lt;input type=&quot;text&quot; name=&quot;reporter_class&quot; id=&quot;reporter_class&quot; class=&quot;w-full rounded px-3 py-2 text-black&quot;&gt;
+</a><a href="#h8-2-10" id="h8-2-10" class="i">+                                &lt;input type=&quot;text&quot; name=&quot;reporter_class&quot; id=&quot;reporter_class&quot; class=&quot;{{ $inputStyle }}&quot;&gt;
+</a>                             &lt;/div&gt;
+ 
+                             &lt;div class=&quot;mb-4&quot;&gt;
+                                 &lt;label for=&quot;reporter_major&quot; class=&quot;block font-medium&quot;&gt;Jurusan Pelapor&lt;/label&gt;
+<a href="#h8-2-15" id="h8-2-15" class="d">-                                &lt;input type=&quot;text&quot; name=&quot;reporter_major&quot; id=&quot;reporter_major&quot; class=&quot;w-full rounded px-3 py-2 text-black&quot;&gt;
+</a><a href="#h8-2-16" id="h8-2-16" class="i">+                                &lt;input type=&quot;text&quot; name=&quot;reporter_major&quot; id=&quot;reporter_major&quot; class=&quot;{{ $inputStyle }}&quot;&gt;
+</a>                             &lt;/div&gt;
+                         &lt;/div&gt;
+ 
+<a href="#h8-3" id="h8-3" class="h">@@ -87,6 +100,46 @@
+</a>                     &lt;/form&gt;
+                 &lt;/div&gt;
+             &lt;/div&gt;
+<a href="#h8-3-3" id="h8-3-3" class="i">+
+</a><a href="#h8-3-4" id="h8-3-4" class="i">+            {{-- Daftar laporan --}}
+</a><a href="#h8-3-5" id="h8-3-5" class="i">+            &lt;div class=&quot;bg-white dark:bg-[#1e1e1e] overflow-hidden shadow-sm sm:rounded-lg&quot;&gt;
+</a><a href="#h8-3-6" id="h8-3-6" class="i">+                &lt;div class=&quot;p-6 text-gray-900 dark:text-gray-300 overflow-x-auto&quot;&gt;
+</a><a href="#h8-3-7" id="h8-3-7" class="i">+                    &lt;h3 class=&quot;text-lg font-semibold mb-4&quot;&gt;Laporan Kamu&lt;/h3&gt;
+</a><a href="#h8-3-8" id="h8-3-8" class="i">+
+</a><a href="#h8-3-9" id="h8-3-9" class="i">+                    &lt;table class=&quot;min-w-full text-sm text-left text-gray-900 dark:text-gray-300 border border-gray-300 dark:border-[#3a3a3a]&quot;&gt;
+</a><a href="#h8-3-10" id="h8-3-10" class="i">+                        &lt;thead class=&quot;bg-gray-100 dark:bg-[#262626] text-xs uppercase font-medium text-gray-700 dark:text-gray-400&quot;&gt;
+</a><a href="#h8-3-11" id="h8-3-11" class="i">+                            &lt;tr&gt;
+</a><a href="#h8-3-12" id="h8-3-12" class="i">+                                &lt;th scope=&quot;col&quot; class=&quot;px-6 py-3&quot;&gt;Judul&lt;/th&gt;
+</a><a href="#h8-3-13" id="h8-3-13" class="i">+                                &lt;th scope=&quot;col&quot; class=&quot;px-6 py-3&quot;&gt;Isi&lt;/th&gt;
+</a><a href="#h8-3-14" id="h8-3-14" class="i">+                                &lt;th scope=&quot;col&quot; class=&quot;px-6 py-3&quot;&gt;Status&lt;/th&gt;
+</a><a href="#h8-3-15" id="h8-3-15" class="i">+                                &lt;th scope=&quot;col&quot; class=&quot;px-6 py-3&quot;&gt;Aksi&lt;/th&gt;
+</a><a href="#h8-3-16" id="h8-3-16" class="i">+                            &lt;/tr&gt;
+</a><a href="#h8-3-17" id="h8-3-17" class="i">+                        &lt;/thead&gt;
+</a><a href="#h8-3-18" id="h8-3-18" class="i">+                        &lt;tbody class=&quot;bg-white dark:bg-[#181818]&quot;&gt;
+</a><a href="#h8-3-19" id="h8-3-19" class="i">+                            @forelse(Auth::user()-&gt;reports as $report)
+</a><a href="#h8-3-20" id="h8-3-20" class="i">+                                &lt;tr class=&quot;border-b border-gray-300 dark:border-[#3a3a3a]&quot;&gt;
+</a><a href="#h8-3-21" id="h8-3-21" class="i">+                                    &lt;td class=&quot;px-6 py-4 font-medium&quot;&gt;{{ $report-&gt;judul }}&lt;/td&gt;
+</a><a href="#h8-3-22" id="h8-3-22" class="i">+                                    &lt;td class=&quot;px-6 py-4 max-w-xs truncate&quot;&gt;{{ $report-&gt;isi_laporan }}&lt;/td&gt;
+</a><a href="#h8-3-23" id="h8-3-23" class="i">+                                    &lt;td class=&quot;px-6 py-4&quot;&gt;{{ $report-&gt;status ?? &#39;-&#39; }}&lt;/td&gt;
+</a><a href="#h8-3-24" id="h8-3-24" class="i">+                                    &lt;td class=&quot;px-6 py-4 flex gap-2&quot;&gt;
+</a><a href="#h8-3-25" id="h8-3-25" class="i">+                                        &lt;a href=&quot;{{ route(&#39;reports.edit&#39;, $report) }}&quot; class=&quot;bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded&quot;&gt;Edit&lt;/a&gt;
+</a><a href="#h8-3-26" id="h8-3-26" class="i">+                                        &lt;form action=&quot;{{ route(&#39;reports.destroy&#39;, $report) }}&quot; method=&quot;POST&quot; onsubmit=&quot;return confirm(&#39;Yakin mau hapus laporan ini?&#39;)&quot;&gt;
+</a><a href="#h8-3-27" id="h8-3-27" class="i">+                                            @csrf
+</a><a href="#h8-3-28" id="h8-3-28" class="i">+                                            @method(&#39;DELETE&#39;)
+</a><a href="#h8-3-29" id="h8-3-29" class="i">+                                            &lt;button type=&quot;submit&quot; class=&quot;bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded&quot;&gt;Hapus&lt;/button&gt;
+</a><a href="#h8-3-30" id="h8-3-30" class="i">+                                        &lt;/form&gt;
+</a><a href="#h8-3-31" id="h8-3-31" class="i">+                                    &lt;/td&gt;
+</a><a href="#h8-3-32" id="h8-3-32" class="i">+                                &lt;/tr&gt;
+</a><a href="#h8-3-33" id="h8-3-33" class="i">+                            @empty
+</a><a href="#h8-3-34" id="h8-3-34" class="i">+                                &lt;tr&gt;
+</a><a href="#h8-3-35" id="h8-3-35" class="i">+                                    &lt;td colspan=&quot;4&quot; class=&quot;px-6 py-4 text-center text-gray-500 dark:text-gray-500&quot;&gt;Belum ada laporan&lt;/td&gt;
+</a><a href="#h8-3-36" id="h8-3-36" class="i">+                                &lt;/tr&gt;
+</a><a href="#h8-3-37" id="h8-3-37" class="i">+                            @endforelse
+</a><a href="#h8-3-38" id="h8-3-38" class="i">+                        &lt;/tbody&gt;
+</a><a href="#h8-3-39" id="h8-3-39" class="i">+                    &lt;/table&gt;
+</a><a href="#h8-3-40" id="h8-3-40" class="i">+                &lt;/div&gt;
+</a><a href="#h8-3-41" id="h8-3-41" class="i">+            &lt;/div&gt;
+</a><a href="#h8-3-42" id="h8-3-42" class="i">+
+</a>         &lt;/div&gt;
+     &lt;/div&gt;
+ 
+<b>diff --git a/<a id="h9" href="../file/resources/views/layouts/app.blade.php.html">resources/views/layouts/app.blade.php</a> b/<a href="../file/resources/views/layouts/app.blade.php.html">resources/views/layouts/app.blade.php</a></b>
+<a href="#h9-0" id="h9-0" class="h">@@ -15,17 +15,18 @@
+</a>         @vite([&#39;resources/css/app.css&#39;, &#39;resources/js/app.js&#39;])
+     &lt;/head&gt;
+     &lt;body class=&quot;font-sans antialiased&quot;&gt;
+<a href="#h9-0-3" id="h9-0-3" class="d">-        &lt;div class=&quot;min-h-screen bg-gray-100 dark:bg-gray-900&quot;&gt;
+</a><a href="#h9-0-4" id="h9-0-4" class="d">-            @include(&#39;layouts.navigation&#39;)
+</a><a href="#h9-0-5" id="h9-0-5" class="i">+        &lt;div class=&quot;min-h-screen bg-gray-100 dark:bg-[#181818] text-gray-900 dark:text-gray-300&quot;&gt;
+</a><a href="#h9-0-6" id="h9-0-6" class="i">+
+</a><a href="#h9-0-7" id="h9-0-7" class="i">+        @include(&#39;layouts.navigation&#39;)
+</a> 
+             &lt;!-- Page Heading --&gt;
+             @isset($header)
+<a href="#h9-0-11" id="h9-0-11" class="d">-                &lt;header class=&quot;bg-white dark:bg-gray-800 shadow&quot;&gt;
+</a><a href="#h9-0-12" id="h9-0-12" class="d">-                    &lt;div class=&quot;max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8&quot;&gt;
+</a><a href="#h9-0-13" id="h9-0-13" class="d">-                        {{ $header }}
+</a><a href="#h9-0-14" id="h9-0-14" class="d">-                    &lt;/div&gt;
+</a><a href="#h9-0-15" id="h9-0-15" class="d">-                &lt;/header&gt;
+</a><a href="#h9-0-16" id="h9-0-16" class="d">-            @endisset
+</a><a href="#h9-0-17" id="h9-0-17" class="i">+    &lt;header class=&quot;bg-white dark:bg-[#1e1e1e] border-b border-gray-200 dark:border-[#696969] shadow-sm&quot;&gt;
+</a><a href="#h9-0-18" id="h9-0-18" class="i">+        &lt;div class=&quot;max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8&quot;&gt;
+</a><a href="#h9-0-19" id="h9-0-19" class="i">+            {{ $header }}
+</a><a href="#h9-0-20" id="h9-0-20" class="i">+        &lt;/div&gt;
+</a><a href="#h9-0-21" id="h9-0-21" class="i">+    &lt;/header&gt;
+</a><a href="#h9-0-22" id="h9-0-22" class="i">+@endisset
+</a> 
+             &lt;!-- Page Content --&gt;
+             &lt;main&gt;
+<b>diff --git a/<a id="h10" href="../file/resources/views/layouts/guest.blade.php.html">resources/views/layouts/guest.blade.php</a> b/<a href="../file/resources/views/layouts/guest.blade.php.html">resources/views/layouts/guest.blade.php</a></b>
+<a href="#h10-0" id="h10-0" class="h">@@ -14,17 +14,23 @@
+</a>         &lt;!-- Scripts --&gt;
+         @vite([&#39;resources/css/app.css&#39;, &#39;resources/js/app.js&#39;])
+     &lt;/head&gt;
+<a href="#h10-0-3" id="h10-0-3" class="d">-    &lt;body class=&quot;font-sans text-gray-900 antialiased&quot;&gt;
+</a><a href="#h10-0-4" id="h10-0-4" class="d">-        &lt;div class=&quot;min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900&quot;&gt;
+</a><a href="#h10-0-5" id="h10-0-5" class="i">+    &lt;body class=&quot;font-sans antialiased bg-[#f4f4f4] dark:bg-[#121212] text-gray-800 dark:text-gray-300 transition-colors duration-300&quot;&gt;
+</a><a href="#h10-0-6" id="h10-0-6" class="i">+
+</a><a href="#h10-0-7" id="h10-0-7" class="i">+        &lt;div class=&quot;min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0&quot;&gt;
+</a><a href="#h10-0-8" id="h10-0-8" class="i">+
+</a><a href="#h10-0-9" id="h10-0-9" class="i">+            {{-- Logo --}}
+</a>             &lt;div&gt;
+                 &lt;a href=&quot;/&quot;&gt;
+<a href="#h10-0-12" id="h10-0-12" class="d">-                    &lt;x-application-logo class=&quot;w-20 h-20 fill-current text-gray-500&quot; /&gt;
+</a><a href="#h10-0-13" id="h10-0-13" class="i">+                    &lt;x-application-logo class=&quot;w-20 h-20 fill-current text-gray-500 dark:text-gray-300&quot; /&gt;
+</a>                 &lt;/a&gt;
+             &lt;/div&gt;
+ 
+<a href="#h10-0-17" id="h10-0-17" class="d">-            &lt;div class=&quot;w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg&quot;&gt;
+</a><a href="#h10-0-18" id="h10-0-18" class="i">+            {{-- Kotak konten --}}
+</a><a href="#h10-0-19" id="h10-0-19" class="i">+            &lt;div class=&quot;w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-[#1e1e1e] shadow-md overflow-hidden sm:rounded-lg border border-gray-200 dark:border-[#444]&quot;&gt;
+</a>                 {{ $slot }}
+             &lt;/div&gt;
+         &lt;/div&gt;
+<a href="#h10-0-23" id="h10-0-23" class="i">+
+</a>     &lt;/body&gt;
+ &lt;/html&gt;
+<a href="#h10-0-26" id="h10-0-26" class="i">+
+</a><b>diff --git a/<a id="h11" href="../file/resources/views/layouts/navigation.blade.php.html">resources/views/layouts/navigation.blade.php</a> b/<a href="../file/resources/views/layouts/navigation.blade.php.html">resources/views/layouts/navigation.blade.php</a></b>
+<a href="#h11-0" id="h11-0" class="h">@@ -1,12 +1,12 @@
+</a><a href="#h11-0-0" id="h11-0-0" class="d">-&lt;nav x-data=&quot;{ open: false }&quot; class=&quot;bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700&quot;&gt;
+</a><a href="#h11-0-1" id="h11-0-1" class="d">-    &lt;!-- Primary Navigation Menu --&gt;
+</a><a href="#h11-0-2" id="h11-0-2" class="i">+&lt;nav x-data=&quot;{ open: false }&quot; class=&quot;bg-[#f1f1f1] dark:bg-[#1a1a1a] border-b border-gray-300 dark:border-gray-700&quot;&gt;
+</a><a href="#h11-0-3" id="h11-0-3" class="i">+&lt;!-- Primary Navigation Menu --&gt;
+</a>     &lt;div class=&quot;max-w-7xl mx-auto px-4 sm:px-6 lg:px-8&quot;&gt;
+         &lt;div class=&quot;flex justify-between h-16&quot;&gt;
+             &lt;div class=&quot;flex&quot;&gt;
+                 &lt;!-- Logo --&gt;
+                 &lt;div class=&quot;shrink-0 flex items-center&quot;&gt;
+                     &lt;a href=&quot;{{ route(&#39;dashboard&#39;) }}&quot;&gt;
+<a href="#h11-0-10" id="h11-0-10" class="d">-                        &lt;x-application-logo class=&quot;block h-9 w-auto fill-current text-gray-800 dark:text-gray-200&quot; /&gt;
+</a><a href="#h11-0-11" id="h11-0-11" class="i">+                        &lt;x-application-logo class=&quot;block h-9 w-auto fill-current text-gray-800 dark:text-gray-100&quot; /&gt;
+</a>                     &lt;/a&gt;
+                 &lt;/div&gt;
+ 
+<a href="#h11-1" id="h11-1" class="h">@@ -22,8 +22,8 @@
+</a>             &lt;div class=&quot;hidden sm:flex sm:items-center sm:ms-6&quot;&gt;
+                 &lt;x-dropdown align=&quot;right&quot; width=&quot;48&quot;&gt;
+                     &lt;x-slot name=&quot;trigger&quot;&gt;
+<a href="#h11-1-3" id="h11-1-3" class="d">-                        &lt;button class=&quot;inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150&quot;&gt;
+</a><a href="#h11-1-4" id="h11-1-4" class="d">-                            &lt;div&gt;{{ Auth::user()-&gt;name }}&lt;/div&gt;
+</a><a href="#h11-1-5" id="h11-1-5" class="i">+                        &lt;button class=&quot;inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-700 dark:text-gray-300 bg-[#f1f1f1] dark:bg-[#1a1a1a] hover:text-black dark:hover:text-white focus:outline-none transition ease-in-out duration-150&quot;&gt;
+</a><a href="#h11-1-6" id="h11-1-6" class="i">+                        &lt;div&gt;{{ Auth::user()-&gt;name }}&lt;/div&gt;
+</a> 
+                             &lt;div class=&quot;ms-1&quot;&gt;
+                                 &lt;svg class=&quot;fill-current h-4 w-4&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 20 20&quot;&gt;
+<b>diff --git a/<a id="h12" href="../file/resources/views/profile/edit.blade.php.html">resources/views/profile/edit.blade.php</a> b/<a href="../file/resources/views/profile/edit.blade.php.html">resources/views/profile/edit.blade.php</a></b>
+<a href="#h12-0" id="h12-0" class="h">@@ -1,25 +1,25 @@
+</a> &lt;x-app-layout&gt;
+     &lt;x-slot name=&quot;header&quot;&gt;
+<a href="#h12-0-2" id="h12-0-2" class="d">-        &lt;h2 class=&quot;font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight&quot;&gt;
+</a><a href="#h12-0-3" id="h12-0-3" class="i">+        &lt;h2 class=&quot;font-semibold text-xl text-gray-800 dark:text-gray-100 leading-tight&quot;&gt;
+</a>             {{ __(&#39;Profile&#39;) }}
+         &lt;/h2&gt;
+     &lt;/x-slot&gt;
+ 
+     &lt;div class=&quot;py-12&quot;&gt;
+         &lt;div class=&quot;max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6&quot;&gt;
+<a href="#h12-0-10" id="h12-0-10" class="d">-            &lt;div class=&quot;p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg&quot;&gt;
+</a><a href="#h12-0-11" id="h12-0-11" class="i">+            &lt;div class=&quot;p-4 sm:p-8 bg-[#f5f5f5] dark:bg-[#212121] shadow sm:rounded-lg&quot;&gt;
+</a>                 &lt;div class=&quot;max-w-xl&quot;&gt;
+                     @include(&#39;profile.partials.update-profile-information-form&#39;)
+                 &lt;/div&gt;
+             &lt;/div&gt;
+ 
+<a href="#h12-0-17" id="h12-0-17" class="d">-            &lt;div class=&quot;p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg&quot;&gt;
+</a><a href="#h12-0-18" id="h12-0-18" class="i">+            &lt;div class=&quot;p-4 sm:p-8 bg-[#f5f5f5] dark:bg-[#212121] shadow sm:rounded-lg&quot;&gt;
+</a>                 &lt;div class=&quot;max-w-xl&quot;&gt;
+                     @include(&#39;profile.partials.update-password-form&#39;)
+                 &lt;/div&gt;
+             &lt;/div&gt;
+ 
+<a href="#h12-0-24" id="h12-0-24" class="d">-            &lt;div class=&quot;p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg&quot;&gt;
+</a><a href="#h12-0-25" id="h12-0-25" class="i">+            &lt;div class=&quot;p-4 sm:p-8 bg-[#f5f5f5] dark:bg-[#212121] shadow sm:rounded-lg&quot;&gt;
+</a>                 &lt;div class=&quot;max-w-xl&quot;&gt;
+                     @include(&#39;profile.partials.delete-user-form&#39;)
+                 &lt;/div&gt;
+<b>diff --git a/<a id="h13" href="../file/routes/web.php.html">routes/web.php</a> b/<a href="../file/routes/web.php.html">routes/web.php</a></b>
+<a href="#h13-0" id="h13-0" class="h">@@ -19,7 +19,13 @@ Route::middleware(&#39;auth&#39;)-&gt;group(function () {
+</a> });
+ 
+ Route::middleware([&#39;auth&#39;])-&gt;group(function () {
+<a href="#h13-0-3" id="h13-0-3" class="d">-    Route::post(&#39;/reports&#39;, [ReportController::class, &#39;store&#39;])-&gt;name(&#39;reports.store&#39;);
+</a><a href="#h13-0-4" id="h13-0-4" class="i">+    Route::resource(&#39;reports&#39;, ReportController::class)-&gt;only([
+</a><a href="#h13-0-5" id="h13-0-5" class="i">+        &#39;store&#39;,
+</a><a href="#h13-0-6" id="h13-0-6" class="i">+        &#39;edit&#39;,
+</a><a href="#h13-0-7" id="h13-0-7" class="i">+        &#39;update&#39;,
+</a><a href="#h13-0-8" id="h13-0-8" class="i">+        &#39;destroy&#39;
+</a><a href="#h13-0-9" id="h13-0-9" class="i">+    ]);
+</a> });
+ 
+<a href="#h13-0-12" id="h13-0-12" class="i">+
+</a> require __DIR__ . &#39;/auth.php&#39;;
+</pre>
+</div>
+</body>
+</html>

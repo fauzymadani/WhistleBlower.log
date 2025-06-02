@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>dashboard.blade.php - whistleblower - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../../../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed" href="../../../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed (tags)" href="../../../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../../../"><img src="../../../logo.png" alt="" width="32" height="32" /></a></td><td><h1>whistleblower</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/README.md.html">README</a> | <a href="../../../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<p> dashboard.blade.php (8516B)</p><hr/><pre id="blob">
+<a href="#l1" class="line" id="l1">      1</a> 
+<a href="#l2" class="line" id="l2">      2</a> {{-- nah ini buat dashboard user --}}
+<a href="#l3" class="line" id="l3">      3</a> &lt;x-app-layout&gt;
+<a href="#l4" class="line" id="l4">      4</a>     &lt;x-slot name=&quot;header&quot;&gt;
+<a href="#l5" class="line" id="l5">      5</a>         &lt;h2 class=&quot;font-semibold text-xl text-gray-800 dark:text-gray-300 leading-tight&quot;&gt;
+<a href="#l6" class="line" id="l6">      6</a>             {{ __(&#39;Dashboard&#39;) }}
+<a href="#l7" class="line" id="l7">      7</a>         &lt;/h2&gt;
+<a href="#l8" class="line" id="l8">      8</a>     &lt;/x-slot&gt;
+<a href="#l9" class="line" id="l9">      9</a> 
+<a href="#l10" class="line" id="l10">     10</a>     &lt;div class=&quot;py-12&quot;&gt;
+<a href="#l11" class="line" id="l11">     11</a>         &lt;div class=&quot;max-w-7xl mx-auto sm:px-6 lg:px-8&quot;&gt;
+<a href="#l12" class="line" id="l12">     12</a> 
+<a href="#l13" class="line" id="l13">     13</a>             {{-- Kotak login info --}}
+<a href="#l14" class="line" id="l14">     14</a>             &lt;div class=&quot;bg-white dark:bg-[#1e1e1e] overflow-hidden shadow-sm sm:rounded-lg mb-6&quot;&gt;
+<a href="#l15" class="line" id="l15">     15</a>                 &lt;div class=&quot;p-6 text-gray-900 dark:text-gray-300&quot;&gt;
+<a href="#l16" class="line" id="l16">     16</a>                     You&#39;re logged in as &lt;strong&gt;{{ Auth::user()-&gt;username }}&lt;/strong&gt;
+<a href="#l17" class="line" id="l17">     17</a>                 &lt;/div&gt;
+<a href="#l18" class="line" id="l18">     18</a>             &lt;/div&gt;
+<a href="#l19" class="line" id="l19">     19</a> 
+<a href="#l20" class="line" id="l20">     20</a>             {{-- Notifikasi sukses --}}
+<a href="#l21" class="line" id="l21">     21</a>             @if(session(&#39;success&#39;))
+<a href="#l22" class="line" id="l22">     22</a>             &lt;div class=&quot;bg-green-600 text-white p-4 rounded mb-4&quot;&gt;
+<a href="#l23" class="line" id="l23">     23</a>                 {{ session(&#39;success&#39;) }}
+<a href="#l24" class="line" id="l24">     24</a>             &lt;/div&gt;
+<a href="#l25" class="line" id="l25">     25</a>             @endif
+<a href="#l26" class="line" id="l26">     26</a> 
+<a href="#l27" class="line" id="l27">     27</a>             {{-- Form buat laporan --}}
+<a href="#l28" class="line" id="l28">     28</a>             &lt;div class=&quot;bg-white dark:bg-[#1e1e1e] overflow-hidden shadow-sm sm:rounded-lg mb-6&quot;&gt;
+<a href="#l29" class="line" id="l29">     29</a>                 &lt;div class=&quot;p-6 text-gray-900 dark:text-gray-300&quot;&gt;
+<a href="#l30" class="line" id="l30">     30</a>                     &lt;h3 class=&quot;text-lg font-semibold mb-4&quot;&gt;Buat Laporan Whistleblowing&lt;/h3&gt;
+<a href="#l31" class="line" id="l31">     31</a> 
+<a href="#l32" class="line" id="l32">     32</a>                     &lt;form method=&quot;POST&quot; action=&quot;{{ route(&#39;reports.store&#39;) }}&quot;&gt;
+<a href="#l33" class="line" id="l33">     33</a>                         @csrf
+<a href="#l34" class="line" id="l34">     34</a> 
+<a href="#l35" class="line" id="l35">     35</a>                         @php
+<a href="#l36" class="line" id="l36">     36</a>                             $inputStyle = &#39;w-full rounded px-3 py-2 bg-white dark:bg-[#262626] text-gray-900 dark:text-gray-300 border border-gray-300 dark:border-[#3a3a3a] focus:outline-none focus:ring-2 focus:ring-blue-500&#39;;
+<a href="#l37" class="line" id="l37">     37</a>                         @endphp
+<a href="#l38" class="line" id="l38">     38</a> 
+<a href="#l39" class="line" id="l39">     39</a>                         &lt;div class=&quot;mb-4&quot;&gt;
+<a href="#l40" class="line" id="l40">     40</a>                             &lt;label for=&quot;judul&quot; class=&quot;block font-medium&quot;&gt;Judul Laporan&lt;/label&gt;
+<a href="#l41" class="line" id="l41">     41</a>                             &lt;input type=&quot;text&quot; name=&quot;judul&quot; id=&quot;judul&quot; class=&quot;{{ $inputStyle }}&quot; required&gt;
+<a href="#l42" class="line" id="l42">     42</a>                         &lt;/div&gt;
+<a href="#l43" class="line" id="l43">     43</a> 
+<a href="#l44" class="line" id="l44">     44</a>                         &lt;div class=&quot;mb-4&quot;&gt;
+<a href="#l45" class="line" id="l45">     45</a>                             &lt;label for=&quot;isi_laporan&quot; class=&quot;block font-medium&quot;&gt;Isi Laporan&lt;/label&gt;
+<a href="#l46" class="line" id="l46">     46</a>                             &lt;textarea name=&quot;isi_laporan&quot; id=&quot;isi_laporan&quot; rows=&quot;4&quot; class=&quot;{{ $inputStyle }}&quot; required&gt;&lt;/textarea&gt;
+<a href="#l47" class="line" id="l47">     47</a>                         &lt;/div&gt;
+<a href="#l48" class="line" id="l48">     48</a> 
+<a href="#l49" class="line" id="l49">     49</a>                         &lt;div class=&quot;mb-4&quot;&gt;
+<a href="#l50" class="line" id="l50">     50</a>                             &lt;label for=&quot;nama_pelaku&quot; class=&quot;block font-medium&quot;&gt;Nama Pelaku&lt;/label&gt;
+<a href="#l51" class="line" id="l51">     51</a>                             &lt;input type=&quot;text&quot; name=&quot;nama_pelaku&quot; id=&quot;nama_pelaku&quot; class=&quot;{{ $inputStyle }}&quot; required&gt;
+<a href="#l52" class="line" id="l52">     52</a>                         &lt;/div&gt;
+<a href="#l53" class="line" id="l53">     53</a> 
+<a href="#l54" class="line" id="l54">     54</a>                         &lt;div class=&quot;mb-4&quot;&gt;
+<a href="#l55" class="line" id="l55">     55</a>                             &lt;label for=&quot;kelas_pelaku&quot; class=&quot;block font-medium&quot;&gt;Kelas Pelaku&lt;/label&gt;
+<a href="#l56" class="line" id="l56">     56</a>                             &lt;input type=&quot;text&quot; name=&quot;kelas_pelaku&quot; id=&quot;kelas_pelaku&quot; class=&quot;{{ $inputStyle }}&quot; required&gt;
+<a href="#l57" class="line" id="l57">     57</a>                         &lt;/div&gt;
+<a href="#l58" class="line" id="l58">     58</a> 
+<a href="#l59" class="line" id="l59">     59</a>                         &lt;div class=&quot;mb-4&quot;&gt;
+<a href="#l60" class="line" id="l60">     60</a>                             &lt;label for=&quot;jurusan_pelaku&quot; class=&quot;block font-medium&quot;&gt;Jurusan Pelaku&lt;/label&gt;
+<a href="#l61" class="line" id="l61">     61</a>                             &lt;input type=&quot;text&quot; name=&quot;jurusan_pelaku&quot; id=&quot;jurusan_pelaku&quot; class=&quot;{{ $inputStyle }}&quot; required&gt;
+<a href="#l62" class="line" id="l62">     62</a>                         &lt;/div&gt;
+<a href="#l63" class="line" id="l63">     63</a> 
+<a href="#l64" class="line" id="l64">     64</a>                         &lt;div class=&quot;mb-4&quot;&gt;
+<a href="#l65" class="line" id="l65">     65</a>                             &lt;label class=&quot;block font-medium&quot;&gt;Status Pelapor&lt;/label&gt;
+<a href="#l66" class="line" id="l66">     66</a>                             &lt;select name=&quot;peran&quot; class=&quot;{{ $inputStyle }}&quot; required&gt;
+<a href="#l67" class="line" id="l67">     67</a>                                 &lt;option value=&quot;saksi&quot;&gt;Saksi&lt;/option&gt;
+<a href="#l68" class="line" id="l68">     68</a>                                 &lt;option value=&quot;korban&quot;&gt;Korban&lt;/option&gt;
+<a href="#l69" class="line" id="l69">     69</a>                             &lt;/select&gt;
+<a href="#l70" class="line" id="l70">     70</a>                         &lt;/div&gt;
+<a href="#l71" class="line" id="l71">     71</a> 
+<a href="#l72" class="line" id="l72">     72</a>                         &lt;div class=&quot;mb-4&quot;&gt;
+<a href="#l73" class="line" id="l73">     73</a>                             &lt;label class=&quot;block font-medium&quot;&gt;Ingin menyantumkan identitas?&lt;/label&gt;
+<a href="#l74" class="line" id="l74">     74</a>                             &lt;select name=&quot;is_anonymous&quot; id=&quot;is_anonymous&quot; class=&quot;{{ $inputStyle }}&quot; required onchange=&quot;toggleIdentityFields()&quot;&gt;
+<a href="#l75" class="line" id="l75">     75</a>                                 &lt;option value=&quot;1&quot;&gt;Tidak, saya ingin anonim&lt;/option&gt;
+<a href="#l76" class="line" id="l76">     76</a>                                 &lt;option value=&quot;0&quot;&gt;Ya, saya bersedia diselidiki&lt;/option&gt;
+<a href="#l77" class="line" id="l77">     77</a>                             &lt;/select&gt;
+<a href="#l78" class="line" id="l78">     78</a>                         &lt;/div&gt;
+<a href="#l79" class="line" id="l79">     79</a> 
+<a href="#l80" class="line" id="l80">     80</a>                         &lt;div id=&quot;identityFields&quot; class=&quot;hidden&quot;&gt;
+<a href="#l81" class="line" id="l81">     81</a>                             &lt;div class=&quot;mb-4&quot;&gt;
+<a href="#l82" class="line" id="l82">     82</a>                                 &lt;label for=&quot;reporter_name&quot; class=&quot;block font-medium&quot;&gt;Nama Pelapor&lt;/label&gt;
+<a href="#l83" class="line" id="l83">     83</a>                                 &lt;input type=&quot;text&quot; name=&quot;reporter_name&quot; id=&quot;reporter_name&quot; class=&quot;{{ $inputStyle }}&quot;&gt;
+<a href="#l84" class="line" id="l84">     84</a>                             &lt;/div&gt;
+<a href="#l85" class="line" id="l85">     85</a> 
+<a href="#l86" class="line" id="l86">     86</a>                             &lt;div class=&quot;mb-4&quot;&gt;
+<a href="#l87" class="line" id="l87">     87</a>                                 &lt;label for=&quot;reporter_class&quot; class=&quot;block font-medium&quot;&gt;Kelas Pelapor&lt;/label&gt;
+<a href="#l88" class="line" id="l88">     88</a>                                 &lt;input type=&quot;text&quot; name=&quot;reporter_class&quot; id=&quot;reporter_class&quot; class=&quot;{{ $inputStyle }}&quot;&gt;
+<a href="#l89" class="line" id="l89">     89</a>                             &lt;/div&gt;
+<a href="#l90" class="line" id="l90">     90</a> 
+<a href="#l91" class="line" id="l91">     91</a>                             &lt;div class=&quot;mb-4&quot;&gt;
+<a href="#l92" class="line" id="l92">     92</a>                                 &lt;label for=&quot;reporter_major&quot; class=&quot;block font-medium&quot;&gt;Jurusan Pelapor&lt;/label&gt;
+<a href="#l93" class="line" id="l93">     93</a>                                 &lt;input type=&quot;text&quot; name=&quot;reporter_major&quot; id=&quot;reporter_major&quot; class=&quot;{{ $inputStyle }}&quot;&gt;
+<a href="#l94" class="line" id="l94">     94</a>                             &lt;/div&gt;
+<a href="#l95" class="line" id="l95">     95</a>                         &lt;/div&gt;
+<a href="#l96" class="line" id="l96">     96</a> 
+<a href="#l97" class="line" id="l97">     97</a>                         &lt;div&gt;
+<a href="#l98" class="line" id="l98">     98</a>                             &lt;button type=&quot;submit&quot; class=&quot;bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded&quot;&gt;
+<a href="#l99" class="line" id="l99">     99</a>                                 Kirim Laporan
+<a href="#l100" class="line" id="l100">    100</a>                             &lt;/button&gt;
+<a href="#l101" class="line" id="l101">    101</a>                         &lt;/div&gt;
+<a href="#l102" class="line" id="l102">    102</a>                     &lt;/form&gt;
+<a href="#l103" class="line" id="l103">    103</a>                 &lt;/div&gt;
+<a href="#l104" class="line" id="l104">    104</a>             &lt;/div&gt;
+<a href="#l105" class="line" id="l105">    105</a> 
+<a href="#l106" class="line" id="l106">    106</a>             {{-- Daftar laporan --}}
+<a href="#l107" class="line" id="l107">    107</a>             &lt;div class=&quot;bg-white dark:bg-[#1e1e1e] overflow-hidden shadow-sm sm:rounded-lg&quot;&gt;
+<a href="#l108" class="line" id="l108">    108</a>                 &lt;div class=&quot;p-6 text-gray-900 dark:text-gray-300 overflow-x-auto&quot;&gt;
+<a href="#l109" class="line" id="l109">    109</a>                     &lt;h3 class=&quot;text-lg font-semibold mb-4&quot;&gt;Laporan Kamu&lt;/h3&gt;
+<a href="#l110" class="line" id="l110">    110</a> 
+<a href="#l111" class="line" id="l111">    111</a>                     &lt;table class=&quot;min-w-full text-sm text-left text-gray-900 dark:text-gray-300 border border-gray-300 dark:border-[#3a3a3a]&quot;&gt;
+<a href="#l112" class="line" id="l112">    112</a>                         &lt;thead class=&quot;bg-gray-100 dark:bg-[#262626] text-xs uppercase font-medium text-gray-700 dark:text-gray-400&quot;&gt;
+<a href="#l113" class="line" id="l113">    113</a>                             &lt;tr&gt;
+<a href="#l114" class="line" id="l114">    114</a>                                 &lt;th scope=&quot;col&quot; class=&quot;px-6 py-3&quot;&gt;Judul&lt;/th&gt;
+<a href="#l115" class="line" id="l115">    115</a>                                 &lt;th scope=&quot;col&quot; class=&quot;px-6 py-3&quot;&gt;Isi&lt;/th&gt;
+<a href="#l116" class="line" id="l116">    116</a>                                 &lt;th scope=&quot;col&quot; class=&quot;px-6 py-3&quot;&gt;Status&lt;/th&gt;
+<a href="#l117" class="line" id="l117">    117</a>                                 &lt;th scope=&quot;col&quot; class=&quot;px-6 py-3&quot;&gt;Aksi&lt;/th&gt;
+<a href="#l118" class="line" id="l118">    118</a>                             &lt;/tr&gt;
+<a href="#l119" class="line" id="l119">    119</a>                         &lt;/thead&gt;
+<a href="#l120" class="line" id="l120">    120</a>                         &lt;tbody class=&quot;bg-white dark:bg-[#181818]&quot;&gt;
+<a href="#l121" class="line" id="l121">    121</a>                             @forelse(Auth::user()-&gt;reports as $report)
+<a href="#l122" class="line" id="l122">    122</a>                                 &lt;tr class=&quot;border-b border-gray-300 dark:border-[#3a3a3a]&quot;&gt;
+<a href="#l123" class="line" id="l123">    123</a>                                     &lt;td class=&quot;px-6 py-4 font-medium&quot;&gt;{{ $report-&gt;judul }}&lt;/td&gt;
+<a href="#l124" class="line" id="l124">    124</a>                                     &lt;td class=&quot;px-6 py-4 max-w-xs truncate&quot;&gt;{{ $report-&gt;isi_laporan }}&lt;/td&gt;
+<a href="#l125" class="line" id="l125">    125</a>                                     &lt;td class=&quot;px-6 py-4&quot;&gt;{{ $report-&gt;status ?? &#39;-&#39; }}&lt;/td&gt;
+<a href="#l126" class="line" id="l126">    126</a>                                     &lt;td class=&quot;px-6 py-4 flex gap-2&quot;&gt;
+<a href="#l127" class="line" id="l127">    127</a>                                         &lt;a href=&quot;{{ route(&#39;reports.edit&#39;, $report) }}&quot; class=&quot;bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded&quot;&gt;Edit&lt;/a&gt;
+<a href="#l128" class="line" id="l128">    128</a>                                         &lt;form action=&quot;{{ route(&#39;reports.destroy&#39;, $report) }}&quot; method=&quot;POST&quot; onsubmit=&quot;return confirm(&#39;Yakin mau hapus laporan ini?&#39;)&quot;&gt;
+<a href="#l129" class="line" id="l129">    129</a>                                             @csrf
+<a href="#l130" class="line" id="l130">    130</a>                                             @method(&#39;DELETE&#39;)
+<a href="#l131" class="line" id="l131">    131</a>                                             &lt;button type=&quot;submit&quot; class=&quot;bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded&quot;&gt;Hapus&lt;/button&gt;
+<a href="#l132" class="line" id="l132">    132</a>                                         &lt;/form&gt;
+<a href="#l133" class="line" id="l133">    133</a>                                     &lt;/td&gt;
+<a href="#l134" class="line" id="l134">    134</a>                                 &lt;/tr&gt;
+<a href="#l135" class="line" id="l135">    135</a>                             @empty
+<a href="#l136" class="line" id="l136">    136</a>                                 &lt;tr&gt;
+<a href="#l137" class="line" id="l137">    137</a>                                     &lt;td colspan=&quot;4&quot; class=&quot;px-6 py-4 text-center text-gray-500 dark:text-gray-500&quot;&gt;Belum ada laporan&lt;/td&gt;
+<a href="#l138" class="line" id="l138">    138</a>                                 &lt;/tr&gt;
+<a href="#l139" class="line" id="l139">    139</a>                             @endforelse
+<a href="#l140" class="line" id="l140">    140</a>                         &lt;/tbody&gt;
+<a href="#l141" class="line" id="l141">    141</a>                     &lt;/table&gt;
+<a href="#l142" class="line" id="l142">    142</a>                 &lt;/div&gt;
+<a href="#l143" class="line" id="l143">    143</a>             &lt;/div&gt;
+<a href="#l144" class="line" id="l144">    144</a> 
+<a href="#l145" class="line" id="l145">    145</a>         &lt;/div&gt;
+<a href="#l146" class="line" id="l146">    146</a>     &lt;/div&gt;
+<a href="#l147" class="line" id="l147">    147</a> 
+<a href="#l148" class="line" id="l148">    148</a>     {{-- Script untuk toggle identitas --}}
+<a href="#l149" class="line" id="l149">    149</a>     &lt;script&gt;
+<a href="#l150" class="line" id="l150">    150</a>         function toggleIdentityFields() {
+<a href="#l151" class="line" id="l151">    151</a>             const isAnon = document.getElementById(&#39;is_anonymous&#39;).value;
+<a href="#l152" class="line" id="l152">    152</a>             const fields = document.getElementById(&#39;identityFields&#39;);
+<a href="#l153" class="line" id="l153">    153</a>             if (isAnon == &#39;0&#39;) {
+<a href="#l154" class="line" id="l154">    154</a>                 fields.classList.remove(&#39;hidden&#39;);
+<a href="#l155" class="line" id="l155">    155</a>             } else {
+<a href="#l156" class="line" id="l156">    156</a>                 fields.classList.add(&#39;hidden&#39;);
+<a href="#l157" class="line" id="l157">    157</a>             }
+<a href="#l158" class="line" id="l158">    158</a>         }
+<a href="#l159" class="line" id="l159">    159</a>     &lt;/script&gt;
+<a href="#l160" class="line" id="l160">    160</a> &lt;/x-app-layout&gt;
+<a href="#l161" class="line" id="l161">    161</a> 
+</pre>
+</div>
+</body>
+</html>

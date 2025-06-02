@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Merge pull request #8 from andikagithub1/fitur-navbar - whistleblower - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>whistleblower</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/7bdb8ae08c7f7edb6f44a3ccf06c332a5b792bc8.html">7bdb8ae08c7f7edb6f44a3ccf06c332a5b792bc8</a>
+<b>parent</b> <a href="../commit/7a1166a8941a3c5e640c822702d6a0eab0aa0ad9.html">7a1166a8941a3c5e640c822702d6a0eab0aa0ad9</a>
+<b>Author:</b> fauzymadani &lt;<a href="mailto:153879220+fauzymadani@users.noreply.github.com">153879220+fauzymadani@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Wed, 21 May 2025 14:16:48 +0700
+
+Merge pull request #8 from andikagithub1/fitur-navbar
+
+Fitur Navbar pada mobile
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">resources/views/welcome.blade.php</a></td><td> | </td><td class="num">504</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">---------------------</span></td></tr>
+</table></pre><pre>1 file changed, 373 insertions(+), 131 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/resources/views/welcome.blade.php.html">resources/views/welcome.blade.php</a> b/<a href="../file/resources/views/welcome.blade.php.html">resources/views/welcome.blade.php</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -6,6 +6,10 @@
+</a>     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+     &lt;style&gt;
+         /* CSS Utama */
+<a href="#h0-0-3" id="h0-0-3" class="i">+        html {
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+            scroll-behavior: smooth;
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+            scroll-padding-top: 100px; /* Add padding for fixed header */
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+        }
+</a>         body {
+             background-color: #1f2937;
+             color: #ffffff;
+<a href="#h0-1" id="h0-1" class="h">@@ -78,6 +82,13 @@
+</a>             color: #000000;
+         }
+ 
+<a href="#h0-1-3" id="h0-1-3" class="i">+        /* Scroll indicator for navigation links */
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+        nav.navbar a.active,
+</a><a href="#h0-1-5" id="h0-1-5" class="i">+        .mobile-nav a.active {
+</a><a href="#h0-1-6" id="h0-1-6" class="i">+            color: #3b82f6;
+</a><a href="#h0-1-7" id="h0-1-7" class="i">+            font-weight: 600;
+</a><a href="#h0-1-8" id="h0-1-8" class="i">+        }
+</a><a href="#h0-1-9" id="h0-1-9" class="i">+
+</a>         #theme-toggle {
+             padding: 0.4rem 0.8rem;
+             background-color: #374151;
+<a href="#h0-2" id="h0-2" class="h">@@ -87,6 +98,9 @@
+</a>             cursor: pointer;
+             transition: background-color 0.5s ease, color 0.5s ease, transform 0.3s ease;
+             justify-self: end;
+<a href="#h0-2-3" id="h0-2-3" class="i">+            position: relative;
+</a><a href="#h0-2-4" id="h0-2-4" class="i">+            z-index: 1001;
+</a><a href="#h0-2-5" id="h0-2-5" class="i">+            pointer-events: auto;
+</a>         }
+ 
+         #theme-toggle:hover {
+<a href="#h0-3" id="h0-3" class="h">@@ -293,10 +307,110 @@
+</a>             font-size: 1.5rem;
+             cursor: pointer;
+             padding: 0.5rem;
+<a href="#h0-3-3" id="h0-3-3" class="i">+            transition: color 0.3s ease;
+</a><a href="#h0-3-4" id="h0-3-4" class="i">+        }
+</a><a href="#h0-3-5" id="h0-3-5" class="i">+
+</a><a href="#h0-3-6" id="h0-3-6" class="i">+        .mobile-menu-btn:hover {
+</a><a href="#h0-3-7" id="h0-3-7" class="i">+            color: #3b82f6;
+</a>         }
+ 
+         .mobile-nav {
+<a href="#h0-3-11" id="h0-3-11" class="d">-            display: none;
+</a><a href="#h0-3-12" id="h0-3-12" class="i">+            position: fixed;
+</a><a href="#h0-3-13" id="h0-3-13" class="i">+            top: 0;
+</a><a href="#h0-3-14" id="h0-3-14" class="i">+            left: 0;
+</a><a href="#h0-3-15" id="h0-3-15" class="i">+            width: 100%;
+</a><a href="#h0-3-16" id="h0-3-16" class="i">+            height: 100vh;
+</a><a href="#h0-3-17" id="h0-3-17" class="i">+            background-color: rgba(17, 24, 39, 0.85);
+</a><a href="#h0-3-18" id="h0-3-18" class="i">+            backdrop-filter: blur(10px);
+</a><a href="#h0-3-19" id="h0-3-19" class="i">+            -webkit-backdrop-filter: blur(10px);
+</a><a href="#h0-3-20" id="h0-3-20" class="i">+            z-index: 1000;
+</a><a href="#h0-3-21" id="h0-3-21" class="i">+            display: flex;
+</a><a href="#h0-3-22" id="h0-3-22" class="i">+            flex-direction: column;
+</a><a href="#h0-3-23" id="h0-3-23" class="i">+            align-items: center;
+</a><a href="#h0-3-24" id="h0-3-24" class="i">+            justify-content: center;
+</a><a href="#h0-3-25" id="h0-3-25" class="i">+            gap: 1.5rem;
+</a><a href="#h0-3-26" id="h0-3-26" class="i">+            transition: all 0.3s ease-in-out;
+</a><a href="#h0-3-27" id="h0-3-27" class="i">+            opacity: 0;
+</a><a href="#h0-3-28" id="h0-3-28" class="i">+            visibility: hidden;
+</a><a href="#h0-3-29" id="h0-3-29" class="i">+            pointer-events: none;
+</a><a href="#h0-3-30" id="h0-3-30" class="i">+        }
+</a><a href="#h0-3-31" id="h0-3-31" class="i">+
+</a><a href="#h0-3-32" id="h0-3-32" class="i">+        .mobile-nav.show {
+</a><a href="#h0-3-33" id="h0-3-33" class="i">+            opacity: 1;
+</a><a href="#h0-3-34" id="h0-3-34" class="i">+            visibility: visible;
+</a><a href="#h0-3-35" id="h0-3-35" class="i">+            pointer-events: auto;
+</a><a href="#h0-3-36" id="h0-3-36" class="i">+        }
+</a><a href="#h0-3-37" id="h0-3-37" class="i">+
+</a><a href="#h0-3-38" id="h0-3-38" class="i">+        body.nav-open {
+</a><a href="#h0-3-39" id="h0-3-39" class="i">+            overflow: hidden;
+</a><a href="#h0-3-40" id="h0-3-40" class="i">+            position: fixed;
+</a><a href="#h0-3-41" id="h0-3-41" class="i">+            width: 100%;
+</a><a href="#h0-3-42" id="h0-3-42" class="i">+            height: 100%;
+</a><a href="#h0-3-43" id="h0-3-43" class="i">+        }
+</a><a href="#h0-3-44" id="h0-3-44" class="i">+
+</a><a href="#h0-3-45" id="h0-3-45" class="i">+        .mobile-nav .nav-link {
+</a><a href="#h0-3-46" id="h0-3-46" class="i">+            color: white;
+</a><a href="#h0-3-47" id="h0-3-47" class="i">+            font-size: 1.25rem;
+</a><a href="#h0-3-48" id="h0-3-48" class="i">+            text-decoration: none;
+</a><a href="#h0-3-49" id="h0-3-49" class="i">+            padding: 1rem 2rem;
+</a><a href="#h0-3-50" id="h0-3-50" class="i">+            border-radius: 0.5rem;
+</a><a href="#h0-3-51" id="h0-3-51" class="i">+            width: 80%;
+</a><a href="#h0-3-52" id="h0-3-52" class="i">+            max-width: 300px;
+</a><a href="#h0-3-53" id="h0-3-53" class="i">+            text-align: center;
+</a><a href="#h0-3-54" id="h0-3-54" class="i">+            background: rgba(255, 255, 255, 0.1);
+</a><a href="#h0-3-55" id="h0-3-55" class="i">+            backdrop-filter: blur(5px);
+</a><a href="#h0-3-56" id="h0-3-56" class="i">+            -webkit-backdrop-filter: blur(5px);
+</a><a href="#h0-3-57" id="h0-3-57" class="i">+            transition: all 0.3s ease;
+</a><a href="#h0-3-58" id="h0-3-58" class="i">+            transform: translateY(20px);
+</a><a href="#h0-3-59" id="h0-3-59" class="i">+            opacity: 0;
+</a><a href="#h0-3-60" id="h0-3-60" class="i">+        }
+</a><a href="#h0-3-61" id="h0-3-61" class="i">+
+</a><a href="#h0-3-62" id="h0-3-62" class="i">+        .mobile-nav.show .nav-link {
+</a><a href="#h0-3-63" id="h0-3-63" class="i">+            transform: translateY(0);
+</a><a href="#h0-3-64" id="h0-3-64" class="i">+            opacity: 1;
+</a><a href="#h0-3-65" id="h0-3-65" class="i">+        }
+</a><a href="#h0-3-66" id="h0-3-66" class="i">+
+</a><a href="#h0-3-67" id="h0-3-67" class="i">+        .mobile-nav .nav-link:hover {
+</a><a href="#h0-3-68" id="h0-3-68" class="i">+            background: rgba(59, 130, 246, 0.2);
+</a><a href="#h0-3-69" id="h0-3-69" class="i">+            color: #3b82f6;
+</a><a href="#h0-3-70" id="h0-3-70" class="i">+            transform: scale(1.05);
+</a><a href="#h0-3-71" id="h0-3-71" class="i">+        }
+</a><a href="#h0-3-72" id="h0-3-72" class="i">+
+</a><a href="#h0-3-73" id="h0-3-73" class="i">+        .mobile-nav.light-mode {
+</a><a href="#h0-3-74" id="h0-3-74" class="i">+            background-color: rgba(255, 255, 255, 0.85);
+</a><a href="#h0-3-75" id="h0-3-75" class="i">+        }
+</a><a href="#h0-3-76" id="h0-3-76" class="i">+
+</a><a href="#h0-3-77" id="h0-3-77" class="i">+        .mobile-nav.light-mode .nav-link {
+</a><a href="#h0-3-78" id="h0-3-78" class="i">+            color: #1f2937;
+</a><a href="#h0-3-79" id="h0-3-79" class="i">+            background: rgba(0, 0, 0, 0.05);
+</a><a href="#h0-3-80" id="h0-3-80" class="i">+        }
+</a><a href="#h0-3-81" id="h0-3-81" class="i">+
+</a><a href="#h0-3-82" id="h0-3-82" class="i">+        .mobile-nav.light-mode .nav-link:hover {
+</a><a href="#h0-3-83" id="h0-3-83" class="i">+            background: rgba(59, 130, 246, 0.1);
+</a><a href="#h0-3-84" id="h0-3-84" class="i">+            color: #3b82f6;
+</a><a href="#h0-3-85" id="h0-3-85" class="i">+        }
+</a><a href="#h0-3-86" id="h0-3-86" class="i">+
+</a><a href="#h0-3-87" id="h0-3-87" class="i">+        .close-menu {
+</a><a href="#h0-3-88" id="h0-3-88" class="i">+            position: absolute;
+</a><a href="#h0-3-89" id="h0-3-89" class="i">+            top: 1.5rem;
+</a><a href="#h0-3-90" id="h0-3-90" class="i">+            right: 1.5rem;
+</a><a href="#h0-3-91" id="h0-3-91" class="i">+            background: none;
+</a><a href="#h0-3-92" id="h0-3-92" class="i">+            border: none;
+</a><a href="#h0-3-93" id="h0-3-93" class="i">+            color: #fff;
+</a><a href="#h0-3-94" id="h0-3-94" class="i">+            font-size: 2rem;
+</a><a href="#h0-3-95" id="h0-3-95" class="i">+            cursor: pointer;
+</a><a href="#h0-3-96" id="h0-3-96" class="i">+            padding: 0.5rem;
+</a><a href="#h0-3-97" id="h0-3-97" class="i">+            transition: all 0.3s ease;
+</a><a href="#h0-3-98" id="h0-3-98" class="i">+            z-index: 1001;
+</a><a href="#h0-3-99" id="h0-3-99" class="i">+        }
+</a><a href="#h0-3-100" id="h0-3-100" class="i">+
+</a><a href="#h0-3-101" id="h0-3-101" class="i">+        .close-menu:hover {
+</a><a href="#h0-3-102" id="h0-3-102" class="i">+            transform: rotate(90deg);
+</a><a href="#h0-3-103" id="h0-3-103" class="i">+            color: #3b82f6;
+</a><a href="#h0-3-104" id="h0-3-104" class="i">+        }
+</a><a href="#h0-3-105" id="h0-3-105" class="i">+
+</a><a href="#h0-3-106" id="h0-3-106" class="i">+        .light-mode .close-menu {
+</a><a href="#h0-3-107" id="h0-3-107" class="i">+            color: #1f2937;
+</a>         }
+ 
+         @media (max-width: 768px) {
+<a href="#h0-4" id="h0-4" class="h">@@ -324,63 +438,138 @@
+</a>             }
+ 
+             .mobile-nav {
+<a href="#h0-4-3" id="h0-4-3" class="d">-                display: none;
+</a><a href="#h0-4-4" id="h0-4-4" class="d">-                position: fixed;
+</a><a href="#h0-4-5" id="h0-4-5" class="d">-                top: 0;
+</a><a href="#h0-4-6" id="h0-4-6" class="d">-                left: 0;
+</a><a href="#h0-4-7" id="h0-4-7" class="d">-                width: 100%;
+</a><a href="#h0-4-8" id="h0-4-8" class="d">-                height: 100%;
+</a><a href="#h0-4-9" id="h0-4-9" class="d">-                background: rgba(17, 24, 39, 0.95);
+</a><a href="#h0-4-10" id="h0-4-10" class="d">-                backdrop-filter: blur(8px);
+</a><a href="#h0-4-11" id="h0-4-11" class="d">-                z-index: 1000;
+</a><a href="#h0-4-12" id="h0-4-12" class="i">+                display: flex;
+</a><a href="#h0-4-13" id="h0-4-13" class="i">+                padding: 6rem 2rem;
+</a>             }
+ 
+<a href="#h0-4-16" id="h0-4-16" class="d">-            .mobile-nav.show {
+</a><a href="#h0-4-17" id="h0-4-17" class="d">-                display: flex;
+</a><a href="#h0-4-18" id="h0-4-18" class="i">+            .mobile-nav .nav-link {
+</a><a href="#h0-4-19" id="h0-4-19" class="i">+                margin: 0.5rem 0;
+</a><a href="#h0-4-20" id="h0-4-20" class="i">+                transition-delay: calc(var(--i) * 0.1s);
+</a><a href="#h0-4-21" id="h0-4-21" class="i">+            }
+</a><a href="#h0-4-22" id="h0-4-22" class="i">+
+</a><a href="#h0-4-23" id="h0-4-23" class="i">+            .close-menu {
+</a><a href="#h0-4-24" id="h0-4-24" class="i">+                top: 1rem;
+</a><a href="#h0-4-25" id="h0-4-25" class="i">+                right: 1rem;
+</a><a href="#h0-4-26" id="h0-4-26" class="i">+            }
+</a><a href="#h0-4-27" id="h0-4-27" class="i">+
+</a><a href="#h0-4-28" id="h0-4-28" class="i">+            main {
+</a><a href="#h0-4-29" id="h0-4-29" class="i">+                padding: 2rem 1rem;
+</a>                 flex-direction: column;
+<a href="#h0-4-31" id="h0-4-31" class="d">-                align-items: center;
+</a><a href="#h0-4-32" id="h0-4-32" class="d">-                justify-content: center;
+</a><a href="#h0-4-33" id="h0-4-33" class="d">-                gap: 2rem;
+</a><a href="#h0-4-34" id="h0-4-34" class="d">-                padding: 2rem;
+</a>             }
+ 
+<a href="#h0-4-37" id="h0-4-37" class="d">-            .mobile-nav a {
+</a><a href="#h0-4-38" id="h0-4-38" class="d">-                color: #fff;
+</a><a href="#h0-4-39" id="h0-4-39" class="d">-                text-decoration: none;
+</a><a href="#h0-4-40" id="h0-4-40" class="i">+            .main-text {
+</a><a href="#h0-4-41" id="h0-4-41" class="i">+                margin-right: 0;
+</a><a href="#h0-4-42" id="h0-4-42" class="i">+                margin-bottom: 2rem;
+</a><a href="#h0-4-43" id="h0-4-43" class="i">+                max-width: 100%;
+</a><a href="#h0-4-44" id="h0-4-44" class="i">+            }
+</a><a href="#h0-4-45" id="h0-4-45" class="i">+
+</a><a href="#h0-4-46" id="h0-4-46" class="i">+            .main-text h2 {
+</a><a href="#h0-4-47" id="h0-4-47" class="i">+                font-size: 2rem;
+</a><a href="#h0-4-48" id="h0-4-48" class="i">+                text-align: center;
+</a><a href="#h0-4-49" id="h0-4-49" class="i">+            }
+</a><a href="#h0-4-50" id="h0-4-50" class="i">+
+</a><a href="#h0-4-51" id="h0-4-51" class="i">+            .tagline {
+</a>                 font-size: 1.2rem;
+<a href="#h0-4-53" id="h0-4-53" class="d">-                font-weight: 500;
+</a><a href="#h0-4-54" id="h0-4-54" class="d">-                transition: color 0.3s ease;
+</a><a href="#h0-4-55" id="h0-4-55" class="i">+                text-align: center;
+</a>             }
+ 
+<a href="#h0-4-58" id="h0-4-58" class="d">-            .mobile-nav a:hover {
+</a><a href="#h0-4-59" id="h0-4-59" class="d">-                color: #3b82f6;
+</a><a href="#h0-4-60" id="h0-4-60" class="i">+            .description {
+</a><a href="#h0-4-61" id="h0-4-61" class="i">+                padding: 1.5rem;
+</a>             }
+ 
+<a href="#h0-4-64" id="h0-4-64" class="d">-            .close-menu {
+</a><a href="#h0-4-65" id="h0-4-65" class="d">-                position: absolute;
+</a><a href="#h0-4-66" id="h0-4-66" class="d">-                top: 1rem;
+</a><a href="#h0-4-67" id="h0-4-67" class="d">-                right: 1rem;
+</a><a href="#h0-4-68" id="h0-4-68" class="d">-                background: none;
+</a><a href="#h0-4-69" id="h0-4-69" class="d">-                border: none;
+</a><a href="#h0-4-70" id="h0-4-70" class="d">-                color: #fff;
+</a><a href="#h0-4-71" id="h0-4-71" class="d">-                font-size: 1.5rem;
+</a><a href="#h0-4-72" id="h0-4-72" class="d">-                cursor: pointer;
+</a><a href="#h0-4-73" id="h0-4-73" class="i">+            .features {
+</a><a href="#h0-4-74" id="h0-4-74" class="i">+                grid-template-columns: 1fr;
+</a><a href="#h0-4-75" id="h0-4-75" class="i">+                gap: 1rem;
+</a><a href="#h0-4-76" id="h0-4-76" class="i">+            }
+</a><a href="#h0-4-77" id="h0-4-77" class="i">+
+</a><a href="#h0-4-78" id="h0-4-78" class="i">+            .feature-card {
+</a><a href="#h0-4-79" id="h0-4-79" class="i">+                padding: 1.25rem;
+</a><a href="#h0-4-80" id="h0-4-80" class="i">+            }
+</a><a href="#h0-4-81" id="h0-4-81" class="i">+
+</a><a href="#h0-4-82" id="h0-4-82" class="i">+            .cta-section {
+</a><a href="#h0-4-83" id="h0-4-83" class="i">+                margin-top: 1.5rem;
+</a><a href="#h0-4-84" id="h0-4-84" class="i">+            }
+</a><a href="#h0-4-85" id="h0-4-85" class="i">+
+</a><a href="#h0-4-86" id="h0-4-86" class="i">+            .cta-text {
+</a><a href="#h0-4-87" id="h0-4-87" class="i">+                font-size: 1.1rem;
+</a><a href="#h0-4-88" id="h0-4-88" class="i">+            }
+</a><a href="#h0-4-89" id="h0-4-89" class="i">+
+</a><a href="#h0-4-90" id="h0-4-90" class="i">+            .cta-button {
+</a><a href="#h0-4-91" id="h0-4-91" class="i">+                width: 100%;
+</a><a href="#h0-4-92" id="h0-4-92" class="i">+                text-align: center;
+</a><a href="#h0-4-93" id="h0-4-93" class="i">+                padding: 1rem;
+</a><a href="#h0-4-94" id="h0-4-94" class="i">+            }
+</a><a href="#h0-4-95" id="h0-4-95" class="i">+
+</a><a href="#h0-4-96" id="h0-4-96" class="i">+            .image-box {
+</a><a href="#h0-4-97" id="h0-4-97" class="i">+                width: 100%;
+</a><a href="#h0-4-98" id="h0-4-98" class="i">+                gap: 1.5rem;
+</a><a href="#h0-4-99" id="h0-4-99" class="i">+            }
+</a><a href="#h0-4-100" id="h0-4-100" class="i">+
+</a><a href="#h0-4-101" id="h0-4-101" class="i">+            .hero-image {
+</a><a href="#h0-4-102" id="h0-4-102" class="i">+                max-width: 280px;
+</a><a href="#h0-4-103" id="h0-4-103" class="i">+                margin: 0 auto;
+</a><a href="#h0-4-104" id="h0-4-104" class="i">+            }
+</a><a href="#h0-4-105" id="h0-4-105" class="i">+
+</a><a href="#h0-4-106" id="h0-4-106" class="i">+            .logo-description {
+</a><a href="#h0-4-107" id="h0-4-107" class="i">+                padding: 1.5rem;
+</a><a href="#h0-4-108" id="h0-4-108" class="i">+                margin: 0 1rem;
+</a><a href="#h0-4-109" id="h0-4-109" class="i">+                text-align: center;
+</a>             }
+ 
+<a href="#h0-4-112" id="h0-4-112" class="d">-            .light-mode .mobile-nav {
+</a><a href="#h0-4-113" id="h0-4-113" class="d">-                background: rgba(255, 255, 255, 0.95);
+</a><a href="#h0-4-114" id="h0-4-114" class="i">+            .logo-description h3 {
+</a><a href="#h0-4-115" id="h0-4-115" class="i">+                font-size: 1.3rem;
+</a><a href="#h0-4-116" id="h0-4-116" class="i">+            }
+</a><a href="#h0-4-117" id="h0-4-117" class="i">+
+</a><a href="#h0-4-118" id="h0-4-118" class="i">+            .logo-description p {
+</a><a href="#h0-4-119" id="h0-4-119" class="i">+                font-size: 1rem;
+</a><a href="#h0-4-120" id="h0-4-120" class="i">+                margin-bottom: 0.75rem;
+</a><a href="#h0-4-121" id="h0-4-121" class="i">+            }
+</a><a href="#h0-4-122" id="h0-4-122" class="i">+
+</a><a href="#h0-4-123" id="h0-4-123" class="i">+            /* Improve mobile nav spacing */
+</a><a href="#h0-4-124" id="h0-4-124" class="i">+            .mobile-nav {
+</a><a href="#h0-4-125" id="h0-4-125" class="i">+                padding: 4rem 2rem;
+</a><a href="#h0-4-126" id="h0-4-126" class="i">+            }
+</a><a href="#h0-4-127" id="h0-4-127" class="i">+
+</a><a href="#h0-4-128" id="h0-4-128" class="i">+            .mobile-nav a {
+</a><a href="#h0-4-129" id="h0-4-129" class="i">+                padding: 0.75rem 1.5rem;
+</a><a href="#h0-4-130" id="h0-4-130" class="i">+                width: 100%;
+</a><a href="#h0-4-131" id="h0-4-131" class="i">+                text-align: center;
+</a><a href="#h0-4-132" id="h0-4-132" class="i">+                border-radius: 0.5rem;
+</a><a href="#h0-4-133" id="h0-4-133" class="i">+                background: rgba(255, 255, 255, 0.1);
+</a><a href="#h0-4-134" id="h0-4-134" class="i">+            }
+</a><a href="#h0-4-135" id="h0-4-135" class="i">+
+</a><a href="#h0-4-136" id="h0-4-136" class="i">+            .mobile-nav a:hover {
+</a><a href="#h0-4-137" id="h0-4-137" class="i">+                background: rgba(255, 255, 255, 0.2);
+</a>             }
+ 
+             .light-mode .mobile-nav a {
+<a href="#h0-4-141" id="h0-4-141" class="d">-                color: #111827;
+</a><a href="#h0-4-142" id="h0-4-142" class="i">+                background: rgba(0, 0, 0, 0.05);
+</a>             }
+ 
+             .light-mode .mobile-nav a:hover {
+<a href="#h0-4-146" id="h0-4-146" class="d">-                color: #3b82f6;
+</a><a href="#h0-4-147" id="h0-4-147" class="i">+                background: rgba(0, 0, 0, 0.1);
+</a><a href="#h0-4-148" id="h0-4-148" class="i">+            }
+</a><a href="#h0-4-149" id="h0-4-149" class="i">+        }
+</a><a href="#h0-4-150" id="h0-4-150" class="i">+
+</a><a href="#h0-4-151" id="h0-4-151" class="i">+        @media (max-width: 480px) {
+</a><a href="#h0-4-152" id="h0-4-152" class="i">+            .main-text h2 {
+</a><a href="#h0-4-153" id="h0-4-153" class="i">+                font-size: 1.75rem;
+</a><a href="#h0-4-154" id="h0-4-154" class="i">+            }
+</a><a href="#h0-4-155" id="h0-4-155" class="i">+
+</a><a href="#h0-4-156" id="h0-4-156" class="i">+            .tagline {
+</a><a href="#h0-4-157" id="h0-4-157" class="i">+                font-size: 1.1rem;
+</a><a href="#h0-4-158" id="h0-4-158" class="i">+            }
+</a><a href="#h0-4-159" id="h0-4-159" class="i">+
+</a><a href="#h0-4-160" id="h0-4-160" class="i">+            .feature-card {
+</a><a href="#h0-4-161" id="h0-4-161" class="i">+                padding: 1rem;
+</a><a href="#h0-4-162" id="h0-4-162" class="i">+            }
+</a><a href="#h0-4-163" id="h0-4-163" class="i">+
+</a><a href="#h0-4-164" id="h0-4-164" class="i">+            .hero-image {
+</a><a href="#h0-4-165" id="h0-4-165" class="i">+                max-width: 240px;
+</a>             }
+ 
+<a href="#h0-4-168" id="h0-4-168" class="d">-            .light-mode .close-menu {
+</a><a href="#h0-4-169" id="h0-4-169" class="d">-                color: #111827;
+</a><a href="#h0-4-170" id="h0-4-170" class="i">+            .logo-description {
+</a><a href="#h0-4-171" id="h0-4-171" class="i">+                padding: 1.25rem;
+</a>             }
+         }
+ 
+<a href="#h0-5" id="h0-5" class="h">@@ -429,6 +618,37 @@
+</a>             visibility: hidden;
+             transform: translate(-50%, -50%) scale(0.9);
+         }
+<a href="#h0-5-3" id="h0-5-3" class="i">+
+</a><a href="#h0-5-4" id="h0-5-4" class="i">+        #theme-toggle {
+</a><a href="#h0-5-5" id="h0-5-5" class="i">+            z-index: 1001;
+</a><a href="#h0-5-6" id="h0-5-6" class="i">+            position: relative;
+</a><a href="#h0-5-7" id="h0-5-7" class="i">+        }
+</a><a href="#h0-5-8" id="h0-5-8" class="i">+
+</a><a href="#h0-5-9" id="h0-5-9" class="i">+        .mobile-menu-btn {
+</a><a href="#h0-5-10" id="h0-5-10" class="i">+            z-index: 1001;
+</a><a href="#h0-5-11" id="h0-5-11" class="i">+            position: relative;
+</a><a href="#h0-5-12" id="h0-5-12" class="i">+        }
+</a><a href="#h0-5-13" id="h0-5-13" class="i">+
+</a><a href="#h0-5-14" id="h0-5-14" class="i">+        .mobile-nav {
+</a><a href="#h0-5-15" id="h0-5-15" class="i">+            display: none;
+</a><a href="#h0-5-16" id="h0-5-16" class="i">+            position: fixed;
+</a><a href="#h0-5-17" id="h0-5-17" class="i">+            top: 0;
+</a><a href="#h0-5-18" id="h0-5-18" class="i">+            left: 0;
+</a><a href="#h0-5-19" id="h0-5-19" class="i">+            width: 100%;
+</a><a href="#h0-5-20" id="h0-5-20" class="i">+            height: 100vh;
+</a><a href="#h0-5-21" id="h0-5-21" class="i">+            background: rgba(17, 24, 39, 0.95);
+</a><a href="#h0-5-22" id="h0-5-22" class="i">+            backdrop-filter: blur(8px);
+</a><a href="#h0-5-23" id="h0-5-23" class="i">+            z-index: 1000;
+</a><a href="#h0-5-24" id="h0-5-24" class="i">+            transition: opacity 0.3s ease, visibility 0.3s ease;
+</a><a href="#h0-5-25" id="h0-5-25" class="i">+            opacity: 0;
+</a><a href="#h0-5-26" id="h0-5-26" class="i">+            visibility: hidden;
+</a><a href="#h0-5-27" id="h0-5-27" class="i">+        }
+</a><a href="#h0-5-28" id="h0-5-28" class="i">+
+</a><a href="#h0-5-29" id="h0-5-29" class="i">+        .mobile-nav.show {
+</a><a href="#h0-5-30" id="h0-5-30" class="i">+            display: flex;
+</a><a href="#h0-5-31" id="h0-5-31" class="i">+            opacity: 1;
+</a><a href="#h0-5-32" id="h0-5-32" class="i">+            visibility: visible;
+</a><a href="#h0-5-33" id="h0-5-33" class="i">+        }
+</a>     &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+<a href="#h0-6" id="h0-6" class="h">@@ -439,9 +659,8 @@
+</a>             WhistleBlower
+         &lt;/div&gt;
+         &lt;nav class=&quot;navbar&quot;&gt;
+<a href="#h0-6-3" id="h0-6-3" class="d">-            &lt;a href=&quot;{{ url(&#39;/&#39;) }}&quot;&gt;Home&lt;/a&gt;
+</a><a href="#h0-6-4" id="h0-6-4" class="d">-            &lt;a href=&quot;#&quot;&gt;About&lt;/a&gt;
+</a><a href="#h0-6-5" id="h0-6-5" class="d">-            &lt;a href=&quot;#&quot;&gt;Contact&lt;/a&gt;
+</a><a href="#h0-6-6" id="h0-6-6" class="i">+            &lt;a href=&quot;#home&quot;&gt;Home&lt;/a&gt;
+</a><a href="#h0-6-7" id="h0-6-7" class="i">+            &lt;a href=&quot;#about&quot;&gt;About&lt;/a&gt;
+</a>             @if (Route::has(&#39;login&#39;))
+                 @auth
+                     &lt;a href=&quot;{{ route(&#39;dashboard&#39;) }}&quot;&gt;Dashboard&lt;/a&gt;
+<a href="#h0-7" id="h0-7" class="h">@@ -460,16 +679,15 @@
+</a>     &lt;!-- Mobile Navigation --&gt;
+     &lt;nav class=&quot;mobile-nav&quot; id=&quot;mobile-nav&quot;&gt;
+         &lt;button class=&quot;close-menu&quot; id=&quot;close-menu&quot;&gt;×&lt;/button&gt;
+<a href="#h0-7-3" id="h0-7-3" class="d">-        &lt;a href=&quot;{{ url(&#39;/&#39;) }}&quot;&gt;Home&lt;/a&gt;
+</a><a href="#h0-7-4" id="h0-7-4" class="d">-        &lt;a href=&quot;#&quot;&gt;About&lt;/a&gt;
+</a><a href="#h0-7-5" id="h0-7-5" class="d">-        &lt;a href=&quot;#&quot;&gt;Contact&lt;/a&gt;
+</a><a href="#h0-7-6" id="h0-7-6" class="i">+        &lt;a href=&quot;#home&quot; class=&quot;nav-link&quot; onclick=&quot;closeMenu()&quot;&gt;Home&lt;/a&gt;
+</a><a href="#h0-7-7" id="h0-7-7" class="i">+        &lt;a href=&quot;#about&quot; class=&quot;nav-link&quot; onclick=&quot;closeMenu()&quot;&gt;About&lt;/a&gt;
+</a>         @if (Route::has(&#39;login&#39;))
+             @auth
+<a href="#h0-7-10" id="h0-7-10" class="d">-                &lt;a href=&quot;{{ route(&#39;dashboard&#39;) }}&quot;&gt;Dashboard&lt;/a&gt;
+</a><a href="#h0-7-11" id="h0-7-11" class="i">+                &lt;a href=&quot;{{ route(&#39;dashboard&#39;) }}&quot; class=&quot;nav-link&quot;&gt;Dashboard&lt;/a&gt;
+</a>             @else
+<a href="#h0-7-13" id="h0-7-13" class="d">-                &lt;a href=&quot;{{ route(&#39;login&#39;) }}&quot;&gt;Login&lt;/a&gt;
+</a><a href="#h0-7-14" id="h0-7-14" class="i">+                &lt;a href=&quot;{{ route(&#39;login&#39;) }}&quot; class=&quot;nav-link&quot;&gt;Login&lt;/a&gt;
+</a>                 @if (Route::has(&#39;register&#39;))
+<a href="#h0-7-16" id="h0-7-16" class="d">-                    &lt;a href=&quot;{{ route(&#39;register&#39;) }}&quot;&gt;Register&lt;/a&gt;
+</a><a href="#h0-7-17" id="h0-7-17" class="i">+                    &lt;a href=&quot;{{ route(&#39;register&#39;) }}&quot; class=&quot;nav-link&quot;&gt;Register&lt;/a&gt;
+</a>                 @endif
+             @endauth
+         @endif
+<a href="#h0-8" id="h0-8" class="h">@@ -477,7 +695,7 @@
+</a> 
+     &lt;!-- Main Content --&gt;
+     &lt;main&gt;
+<a href="#h0-8-3" id="h0-8-3" class="d">-        &lt;div class=&quot;main-text&quot;&gt;
+</a><a href="#h0-8-4" id="h0-8-4" class="i">+        &lt;div id=&quot;home&quot; class=&quot;main-text&quot;&gt;
+</a>             &lt;h2&gt;Welcome to WhistleBlower 🛡️&lt;/h2&gt;
+             &lt;p class=&quot;tagline&quot;&gt;Memberdayakan Kebenaran, Melindungi Integritas.&lt;/p&gt;
+             &lt;div class=&quot;description&quot;&gt;
+<a href="#h0-9" id="h0-9" class="h">@@ -512,7 +730,7 @@
+</a>                 &lt;/div&gt;
+             &lt;/div&gt;
+         &lt;/div&gt;
+<a href="#h0-9-3" id="h0-9-3" class="d">-        &lt;div class=&quot;image-box&quot;&gt;
+</a><a href="#h0-9-4" id="h0-9-4" class="i">+        &lt;div id=&quot;about&quot; class=&quot;image-box&quot;&gt;
+</a>             &lt;img src=&quot;images/logo.png&quot; alt=&quot;WhistleSecure Logo&quot; class=&quot;hero-image&quot;&gt;
+             &lt;div class=&quot;image-overlay&quot;&gt;&lt;/div&gt;
+             &lt;div class=&quot;logo-description&quot;&gt;
+<a href="#h0-10" id="h0-10" class="h">@@ -535,93 +753,117 @@
+</a>     &lt;audio id=&quot;light-mode-sound&quot; src=&quot;sounds/light-mode.mp3&quot;&gt;&lt;/audio&gt;
+ 
+     &lt;script&gt;
+<a href="#h0-10-3" id="h0-10-3" class="d">-        const toggleBtn = document.getElementById(&#39;theme-toggle&#39;);
+</a><a href="#h0-10-4" id="h0-10-4" class="d">-        const body = document.body;
+</a><a href="#h0-10-5" id="h0-10-5" class="d">-        const popup = document.getElementById(&#39;popup&#39;);
+</a><a href="#h0-10-6" id="h0-10-6" class="d">-        const header = document.querySelector(&#39;header&#39;);
+</a><a href="#h0-10-7" id="h0-10-7" class="d">-        const navbar = document.querySelector(&#39;nav.navbar&#39;);
+</a><a href="#h0-10-8" id="h0-10-8" class="d">-
+</a><a href="#h0-10-9" id="h0-10-9" class="d">-        // Audio elements
+</a><a href="#h0-10-10" id="h0-10-10" class="d">-        const darkModeSound = document.getElementById(&#39;dark-mode-sound&#39;);
+</a><a href="#h0-10-11" id="h0-10-11" class="d">-        const lightModeSound = document.getElementById(&#39;light-mode-sound&#39;);
+</a><a href="#h0-10-12" id="h0-10-12" class="d">-
+</a><a href="#h0-10-13" id="h0-10-13" class="d">-        function setTheme(theme) {
+</a><a href="#h0-10-14" id="h0-10-14" class="d">-            if (theme === &#39;dark&#39;) {
+</a><a href="#h0-10-15" id="h0-10-15" class="d">-                body.classList.remove(&#39;light-mode&#39;);
+</a><a href="#h0-10-16" id="h0-10-16" class="d">-                header.classList.remove(&#39;light-mode&#39;);
+</a><a href="#h0-10-17" id="h0-10-17" class="d">-                navbar.classList.remove(&#39;light-mode&#39;);
+</a><a href="#h0-10-18" id="h0-10-18" class="d">-                toggleBtn.textContent = &#39;🌙&#39;;
+</a><a href="#h0-10-19" id="h0-10-19" class="d">-                localStorage.setItem(&#39;theme&#39;, &#39;dark&#39;);
+</a><a href="#h0-10-20" id="h0-10-20" class="d">-                showPopup(&quot;Selamat datang di kegelapan&quot;);
+</a><a href="#h0-10-21" id="h0-10-21" class="d">-                playSound(darkModeSound); // Mainkan suara dark mode
+</a><a href="#h0-10-22" id="h0-10-22" class="d">-            } else {
+</a><a href="#h0-10-23" id="h0-10-23" class="d">-                body.classList.add(&#39;light-mode&#39;);
+</a><a href="#h0-10-24" id="h0-10-24" class="d">-                header.classList.add(&#39;light-mode&#39;);
+</a><a href="#h0-10-25" id="h0-10-25" class="d">-                navbar.classList.add(&#39;light-mode&#39;);
+</a><a href="#h0-10-26" id="h0-10-26" class="d">-                toggleBtn.textContent = &#39;🌞&#39;;
+</a><a href="#h0-10-27" id="h0-10-27" class="d">-                localStorage.setItem(&#39;theme&#39;, &#39;light&#39;);
+</a><a href="#h0-10-28" id="h0-10-28" class="d">-                showPopup(&quot;Selamat datang di pencerahan&quot;);
+</a><a href="#h0-10-29" id="h0-10-29" class="d">-                playSound(lightModeSound); // Mainkan suara light mode
+</a><a href="#h0-10-30" id="h0-10-30" class="d">-            }
+</a><a href="#h0-10-31" id="h0-10-31" class="d">-        }
+</a><a href="#h0-10-32" id="h0-10-32" class="d">-
+</a><a href="#h0-10-33" id="h0-10-33" class="d">-        // Fungsi untuk menampilkan pop-up
+</a><a href="#h0-10-34" id="h0-10-34" class="d">-        function showPopup(message) {
+</a><a href="#h0-10-35" id="h0-10-35" class="d">-            popup.textContent = message;
+</a><a href="#h0-10-36" id="h0-10-36" class="d">-            popup.classList.add(&#39;visible&#39;);
+</a><a href="#h0-10-37" id="h0-10-37" class="d">-
+</a><a href="#h0-10-38" id="h0-10-38" class="d">-            // Hilangkan pop-up setelah 2 detik
+</a><a href="#h0-10-39" id="h0-10-39" class="d">-            setTimeout(() =&gt; {
+</a><a href="#h0-10-40" id="h0-10-40" class="d">-                popup.classList.remove(&#39;visible&#39;);
+</a><a href="#h0-10-41" id="h0-10-41" class="d">-                popup.classList.add(&#39;hidden&#39;);
+</a><a href="#h0-10-42" id="h0-10-42" class="d">-                setTimeout(() =&gt; {
+</a><a href="#h0-10-43" id="h0-10-43" class="d">-                    popup.classList.remove(&#39;hidden&#39;);
+</a><a href="#h0-10-44" id="h0-10-44" class="d">-                }, 500); // Sinkronkan dengan durasi transisi
+</a><a href="#h0-10-45" id="h0-10-45" class="d">-            }, 2000);
+</a><a href="#h0-10-46" id="h0-10-46" class="d">-        }
+</a><a href="#h0-10-47" id="h0-10-47" class="d">-
+</a><a href="#h0-10-48" id="h0-10-48" class="d">-        // Fungsi untuk memainkan suara
+</a><a href="#h0-10-49" id="h0-10-49" class="d">-        function playSound(audioElement) {
+</a><a href="#h0-10-50" id="h0-10-50" class="d">-            audioElement.currentTime = 0; // Mulai ulang suara jika sudah dimainkan
+</a><a href="#h0-10-51" id="h0-10-51" class="d">-            audioElement.play();
+</a><a href="#h0-10-52" id="h0-10-52" class="d">-        }
+</a><a href="#h0-10-53" id="h0-10-53" class="d">-
+</a><a href="#h0-10-54" id="h0-10-54" class="d">-        window.addEventListener(&#39;DOMContentLoaded&#39;, () =&gt; {
+</a><a href="#h0-10-55" id="h0-10-55" class="d">-            const savedTheme = localStorage.getItem(&#39;theme&#39;);
+</a><a href="#h0-10-56" id="h0-10-56" class="d">-            if (savedTheme === &#39;dark&#39;) {
+</a><a href="#h0-10-57" id="h0-10-57" class="d">-                setTheme(&#39;dark&#39;);
+</a><a href="#h0-10-58" id="h0-10-58" class="d">-            } else if (savedTheme === &#39;light&#39;) {
+</a><a href="#h0-10-59" id="h0-10-59" class="d">-                setTheme(&#39;light&#39;);
+</a><a href="#h0-10-60" id="h0-10-60" class="d">-            } else {
+</a><a href="#h0-10-61" id="h0-10-61" class="d">-                setTheme(window.matchMedia(&#39;(prefers-color-scheme: dark)&#39;).matches ? &#39;dark&#39; : &#39;light&#39;);
+</a><a href="#h0-10-62" id="h0-10-62" class="i">+        document.addEventListener(&#39;DOMContentLoaded&#39;, function() {
+</a><a href="#h0-10-63" id="h0-10-63" class="i">+            const themeToggle = document.getElementById(&#39;theme-toggle&#39;);
+</a><a href="#h0-10-64" id="h0-10-64" class="i">+            const mobileNav = document.getElementById(&#39;mobile-nav&#39;);
+</a><a href="#h0-10-65" id="h0-10-65" class="i">+            const mobileMenuBtn = document.getElementById(&#39;mobile-menu-btn&#39;);
+</a><a href="#h0-10-66" id="h0-10-66" class="i">+            const closeMenuBtn = document.getElementById(&#39;close-menu&#39;);
+</a><a href="#h0-10-67" id="h0-10-67" class="i">+            const body = document.body;
+</a><a href="#h0-10-68" id="h0-10-68" class="i">+
+</a><a href="#h0-10-69" id="h0-10-69" class="i">+            // Initialize theme from localStorage
+</a><a href="#h0-10-70" id="h0-10-70" class="i">+            const currentTheme = localStorage.getItem(&#39;theme&#39;) || &#39;dark&#39;;
+</a><a href="#h0-10-71" id="h0-10-71" class="i">+            setTheme(currentTheme);
+</a><a href="#h0-10-72" id="h0-10-72" class="i">+
+</a><a href="#h0-10-73" id="h0-10-73" class="i">+            function setTheme(theme) {
+</a><a href="#h0-10-74" id="h0-10-74" class="i">+                if (theme === &#39;light&#39;) {
+</a><a href="#h0-10-75" id="h0-10-75" class="i">+                    body.classList.add(&#39;light-mode&#39;);
+</a><a href="#h0-10-76" id="h0-10-76" class="i">+                    themeToggle.classList.add(&#39;light-mode&#39;);
+</a><a href="#h0-10-77" id="h0-10-77" class="i">+                    mobileNav.classList.add(&#39;light-mode&#39;);
+</a><a href="#h0-10-78" id="h0-10-78" class="i">+                    themeToggle.textContent = &#39;🌙&#39;;
+</a><a href="#h0-10-79" id="h0-10-79" class="i">+                } else {
+</a><a href="#h0-10-80" id="h0-10-80" class="i">+                    body.classList.remove(&#39;light-mode&#39;);
+</a><a href="#h0-10-81" id="h0-10-81" class="i">+                    themeToggle.classList.remove(&#39;light-mode&#39;);
+</a><a href="#h0-10-82" id="h0-10-82" class="i">+                    mobileNav.classList.remove(&#39;light-mode&#39;);
+</a><a href="#h0-10-83" id="h0-10-83" class="i">+                    themeToggle.textContent = &#39;☀️&#39;;
+</a><a href="#h0-10-84" id="h0-10-84" class="i">+                }
+</a><a href="#h0-10-85" id="h0-10-85" class="i">+                localStorage.setItem(&#39;theme&#39;, theme);
+</a>             }
+<a href="#h0-10-87" id="h0-10-87" class="d">-        });
+</a> 
+<a href="#h0-10-89" id="h0-10-89" class="d">-        toggleBtn.addEventListener(&#39;click&#39;, () =&gt; {
+</a><a href="#h0-10-90" id="h0-10-90" class="d">-            const isLight = body.classList.contains(&#39;light-mode&#39;);
+</a><a href="#h0-10-91" id="h0-10-91" class="d">-            setTheme(isLight ? &#39;dark&#39; : &#39;light&#39;);
+</a><a href="#h0-10-92" id="h0-10-92" class="d">-        });
+</a><a href="#h0-10-93" id="h0-10-93" class="i">+            // Theme toggle
+</a><a href="#h0-10-94" id="h0-10-94" class="i">+            themeToggle.addEventListener(&#39;click&#39;, (e) =&gt; {
+</a><a href="#h0-10-95" id="h0-10-95" class="i">+                e.stopPropagation();
+</a><a href="#h0-10-96" id="h0-10-96" class="i">+                const newTheme = body.classList.contains(&#39;light-mode&#39;) ? &#39;dark&#39; : &#39;light&#39;;
+</a><a href="#h0-10-97" id="h0-10-97" class="i">+                setTheme(newTheme);
+</a><a href="#h0-10-98" id="h0-10-98" class="i">+            });
+</a> 
+<a href="#h0-10-100" id="h0-10-100" class="d">-        // Mobile Navigation
+</a><a href="#h0-10-101" id="h0-10-101" class="d">-        const mobileMenuBtn = document.getElementById(&#39;mobile-menu-btn&#39;);
+</a><a href="#h0-10-102" id="h0-10-102" class="d">-        const mobileNav = document.getElementById(&#39;mobile-nav&#39;);
+</a><a href="#h0-10-103" id="h0-10-103" class="d">-        const closeMenu = document.getElementById(&#39;close-menu&#39;);
+</a><a href="#h0-10-104" id="h0-10-104" class="d">-
+</a><a href="#h0-10-105" id="h0-10-105" class="d">-        mobileMenuBtn.addEventListener(&#39;click&#39;, () =&gt; {
+</a><a href="#h0-10-106" id="h0-10-106" class="d">-            mobileNav.classList.add(&#39;show&#39;);
+</a><a href="#h0-10-107" id="h0-10-107" class="d">-        });
+</a><a href="#h0-10-108" id="h0-10-108" class="d">-
+</a><a href="#h0-10-109" id="h0-10-109" class="d">-        closeMenu.addEventListener(&#39;click&#39;, () =&gt; {
+</a><a href="#h0-10-110" id="h0-10-110" class="d">-            mobileNav.classList.remove(&#39;show&#39;);
+</a><a href="#h0-10-111" id="h0-10-111" class="d">-        });
+</a><a href="#h0-10-112" id="h0-10-112" class="d">-
+</a><a href="#h0-10-113" id="h0-10-113" class="d">-        // Close mobile menu when clicking outside
+</a><a href="#h0-10-114" id="h0-10-114" class="d">-        document.addEventListener(&#39;click&#39;, (e) =&gt; {
+</a><a href="#h0-10-115" id="h0-10-115" class="d">-            if (mobileNav.classList.contains(&#39;show&#39;) &amp;&amp;
+</a><a href="#h0-10-116" id="h0-10-116" class="d">-                !mobileNav.contains(e.target) &amp;&amp;
+</a><a href="#h0-10-117" id="h0-10-117" class="d">-                e.target !== mobileMenuBtn) {
+</a><a href="#h0-10-118" id="h0-10-118" class="i">+            // Close menu function
+</a><a href="#h0-10-119" id="h0-10-119" class="i">+            function closeMenu() {
+</a>                 mobileNav.classList.remove(&#39;show&#39;);
+<a href="#h0-10-121" id="h0-10-121" class="i">+                body.classList.remove(&#39;nav-open&#39;);
+</a>             }
+<a href="#h0-10-123" id="h0-10-123" class="i">+
+</a><a href="#h0-10-124" id="h0-10-124" class="i">+            // Mobile menu toggle
+</a><a href="#h0-10-125" id="h0-10-125" class="i">+            mobileMenuBtn.addEventListener(&#39;click&#39;, (e) =&gt; {
+</a><a href="#h0-10-126" id="h0-10-126" class="i">+                e.stopPropagation();
+</a><a href="#h0-10-127" id="h0-10-127" class="i">+                mobileNav.classList.add(&#39;show&#39;);
+</a><a href="#h0-10-128" id="h0-10-128" class="i">+                body.classList.add(&#39;nav-open&#39;);
+</a><a href="#h0-10-129" id="h0-10-129" class="i">+
+</a><a href="#h0-10-130" id="h0-10-130" class="i">+                // Add transition delays to nav links
+</a><a href="#h0-10-131" id="h0-10-131" class="i">+                document.querySelectorAll(&#39;.mobile-nav .nav-link&#39;).forEach((link, index) =&gt; {
+</a><a href="#h0-10-132" id="h0-10-132" class="i">+                    link.style.setProperty(&#39;--i&#39;, index);
+</a><a href="#h0-10-133" id="h0-10-133" class="i">+                });
+</a><a href="#h0-10-134" id="h0-10-134" class="i">+            });
+</a><a href="#h0-10-135" id="h0-10-135" class="i">+
+</a><a href="#h0-10-136" id="h0-10-136" class="i">+            // Close menu button
+</a><a href="#h0-10-137" id="h0-10-137" class="i">+            closeMenuBtn.addEventListener(&#39;click&#39;, (e) =&gt; {
+</a><a href="#h0-10-138" id="h0-10-138" class="i">+                e.preventDefault();
+</a><a href="#h0-10-139" id="h0-10-139" class="i">+                closeMenu();
+</a><a href="#h0-10-140" id="h0-10-140" class="i">+            });
+</a><a href="#h0-10-141" id="h0-10-141" class="i">+
+</a><a href="#h0-10-142" id="h0-10-142" class="i">+            // Close mobile menu when clicking outside
+</a><a href="#h0-10-143" id="h0-10-143" class="i">+            document.addEventListener(&#39;click&#39;, (e) =&gt; {
+</a><a href="#h0-10-144" id="h0-10-144" class="i">+                if (mobileNav.classList.contains(&#39;show&#39;) &amp;&amp;
+</a><a href="#h0-10-145" id="h0-10-145" class="i">+                    !mobileNav.contains(e.target) &amp;&amp;
+</a><a href="#h0-10-146" id="h0-10-146" class="i">+                    !mobileMenuBtn.contains(e.target)) {
+</a><a href="#h0-10-147" id="h0-10-147" class="i">+                    closeMenu();
+</a><a href="#h0-10-148" id="h0-10-148" class="i">+                }
+</a><a href="#h0-10-149" id="h0-10-149" class="i">+            });
+</a><a href="#h0-10-150" id="h0-10-150" class="i">+
+</a><a href="#h0-10-151" id="h0-10-151" class="i">+            // Handle navigation links
+</a><a href="#h0-10-152" id="h0-10-152" class="i">+            const navLinks = document.querySelectorAll(&#39;.nav-link&#39;);
+</a><a href="#h0-10-153" id="h0-10-153" class="i">+            navLinks.forEach(link =&gt; {
+</a><a href="#h0-10-154" id="h0-10-154" class="i">+                link.addEventListener(&#39;click&#39;, (e) =&gt; {
+</a><a href="#h0-10-155" id="h0-10-155" class="i">+                    e.preventDefault();
+</a><a href="#h0-10-156" id="h0-10-156" class="i">+                    const targetId = link.getAttribute(&#39;href&#39;);
+</a><a href="#h0-10-157" id="h0-10-157" class="i">+                    if (targetId.startsWith(&#39;#&#39;)) {
+</a><a href="#h0-10-158" id="h0-10-158" class="i">+                        const targetElement = document.getElementById(targetId.substring(1));
+</a><a href="#h0-10-159" id="h0-10-159" class="i">+                        if (targetElement) {
+</a><a href="#h0-10-160" id="h0-10-160" class="i">+                            closeMenu();
+</a><a href="#h0-10-161" id="h0-10-161" class="i">+                            targetElement.scrollIntoView({
+</a><a href="#h0-10-162" id="h0-10-162" class="i">+                                behavior: &#39;smooth&#39;
+</a><a href="#h0-10-163" id="h0-10-163" class="i">+                            });
+</a><a href="#h0-10-164" id="h0-10-164" class="i">+                        }
+</a><a href="#h0-10-165" id="h0-10-165" class="i">+                    } else {
+</a><a href="#h0-10-166" id="h0-10-166" class="i">+                        window.location.href = targetId;
+</a><a href="#h0-10-167" id="h0-10-167" class="i">+                    }
+</a><a href="#h0-10-168" id="h0-10-168" class="i">+                });
+</a><a href="#h0-10-169" id="h0-10-169" class="i">+            });
+</a><a href="#h0-10-170" id="h0-10-170" class="i">+
+</a><a href="#h0-10-171" id="h0-10-171" class="i">+            // Prevent scrolling when mobile menu is open
+</a><a href="#h0-10-172" id="h0-10-172" class="i">+            document.body.addEventListener(&#39;touchmove&#39;, (e) =&gt; {
+</a><a href="#h0-10-173" id="h0-10-173" class="i">+                if (body.classList.contains(&#39;nav-open&#39;)) {
+</a><a href="#h0-10-174" id="h0-10-174" class="i">+                    e.preventDefault();
+</a><a href="#h0-10-175" id="h0-10-175" class="i">+                }
+</a><a href="#h0-10-176" id="h0-10-176" class="i">+            }, { passive: false });
+</a><a href="#h0-10-177" id="h0-10-177" class="i">+
+</a><a href="#h0-10-178" id="h0-10-178" class="i">+            // Scroll spy for navigation
+</a><a href="#h0-10-179" id="h0-10-179" class="i">+            window.addEventListener(&#39;scroll&#39;, () =&gt; {
+</a><a href="#h0-10-180" id="h0-10-180" class="i">+                const scrollPosition = window.scrollY;
+</a><a href="#h0-10-181" id="h0-10-181" class="i">+                document.querySelectorAll(&#39;section&#39;).forEach(section =&gt; {
+</a><a href="#h0-10-182" id="h0-10-182" class="i">+                    const sectionTop = section.offsetTop - 100;
+</a><a href="#h0-10-183" id="h0-10-183" class="i">+                    const sectionBottom = sectionTop + section.offsetHeight;
+</a><a href="#h0-10-184" id="h0-10-184" class="i">+                    const id = section.getAttribute(&#39;id&#39;);
+</a><a href="#h0-10-185" id="h0-10-185" class="i">+
+</a><a href="#h0-10-186" id="h0-10-186" class="i">+                    if (scrollPosition &gt;= sectionTop &amp;&amp; scrollPosition &lt; sectionBottom) {
+</a><a href="#h0-10-187" id="h0-10-187" class="i">+                        navLinks.forEach(link =&gt; {
+</a><a href="#h0-10-188" id="h0-10-188" class="i">+                            link.classList.remove(&#39;active&#39;);
+</a><a href="#h0-10-189" id="h0-10-189" class="i">+                            if (link.getAttribute(&#39;href&#39;) === `#${id}`) {
+</a><a href="#h0-10-190" id="h0-10-190" class="i">+                                link.classList.add(&#39;active&#39;);
+</a><a href="#h0-10-191" id="h0-10-191" class="i">+                            }
+</a><a href="#h0-10-192" id="h0-10-192" class="i">+                        });
+</a><a href="#h0-10-193" id="h0-10-193" class="i">+                    }
+</a><a href="#h0-10-194" id="h0-10-194" class="i">+                });
+</a><a href="#h0-10-195" id="h0-10-195" class="i">+            });
+</a>         });
+     &lt;/script&gt;
+ &lt;/body&gt;
+</pre>
+</div>
+</body>
+</html>

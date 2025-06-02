@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>whistleblower, branch HEAD</title>
+<subtitle>Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</subtitle>
+<entry>
+<id>9828747964c9fe29eabfbd396469b5cdeb98e5d2</id>
+<published>2025-05-22T02:31:57Z</published>
+<updated>2025-05-22T02:31:57Z</updated>
+<title type="text">Merge pull request #9 from Azzelzz/fitur-keren-aku</title>
+<link rel="alternate" type="text/html" href="commit/9828747964c9fe29eabfbd396469b5cdeb98e5d2.html" />
+<author>
+<name>fauzymadani</name>
+<email>153879220+fauzymadani@users.noreply.github.com</email>
+</author>
+<content type="text">commit 9828747964c9fe29eabfbd396469b5cdeb98e5d2
+parent 57dfb026c1645f0456391d9f062e4b50977edf76
+Author: fauzymadani &lt;153879220+fauzymadani@users.noreply.github.com&gt;
+Date:   Thu, 22 May 2025 09:31:57 +0700
+
+Merge pull request #9 from Azzelzz/fitur-keren-aku
+
+Fitur keren aku
+</content>
+</entry>
+<entry>
+<id>57dfb026c1645f0456391d9f062e4b50977edf76</id>
+<published>2025-05-22T01:58:38Z</published>
+<updated>2025-05-22T01:58:38Z</updated>
+<title type="text">Delete Untitled Diagram.drawio (2).pdf</title>
+<link rel="alternate" type="text/html" href="commit/57dfb026c1645f0456391d9f062e4b50977edf76.html" />
+<author>
+<name>fika123</name>
+<email>153879042+andikagithub1@users.noreply.github.com</email>
+</author>
+<content type="text">commit 57dfb026c1645f0456391d9f062e4b50977edf76
+parent 127f5364b5e72ec84e2aab6b9e3f6775702830e2
+Author: fika123 &lt;153879042+andikagithub1@users.noreply.github.com&gt;
+Date:   Thu, 22 May 2025 08:58:38 +0700
+
+Delete Untitled Diagram.drawio (2).pdf
+</content>
+</entry>
+<entry>
+<id>127f5364b5e72ec84e2aab6b9e3f6775702830e2</id>
+<published>2025-05-22T01:58:17Z</published>
+<updated>2025-05-22T01:58:17Z</updated>
+<title type="text">Diagram</title>
+<link rel="alternate" type="text/html" href="commit/127f5364b5e72ec84e2aab6b9e3f6775702830e2.html" />
+<author>
+<name>fika123</name>
+<email>153879042+andikagithub1@users.noreply.github.com</email>
+</author>
+<content type="text">commit 127f5364b5e72ec84e2aab6b9e3f6775702830e2
+parent 33868899a849293f8d39d0ad938736d8946febfd
+Author: fika123 &lt;153879042+andikagithub1@users.noreply.github.com&gt;
+Date:   Thu, 22 May 2025 08:58:17 +0700
+
+Diagram
+</content>
+</entry>
+<entry>
+<id>33868899a849293f8d39d0ad938736d8946febfd</id>
+<published>2025-05-22T01:57:10Z</published>
+<updated>2025-05-22T01:57:10Z</updated>
+<title type="text">Delete database-diagram.pdf</title>
+<link rel="alternate" type="text/html" href="commit/33868899a849293f8d39d0ad938736d8946febfd.html" />
+<author>
+<name>fika123</name>
+<email>153879042+andikagithub1@users.noreply.github.com</email>
+</author>
+<content type="text">commit 33868899a849293f8d39d0ad938736d8946febfd
+parent 7bdb8ae08c7f7edb6f44a3ccf06c332a5b792bc8
+Author: fika123 &lt;153879042+andikagithub1@users.noreply.github.com&gt;
+Date:   Thu, 22 May 2025 08:57:10 +0700
+
+Delete database-diagram.pdf
+
+Delete
+</content>
+</entry>
+<entry>
+<id>7bdb8ae08c7f7edb6f44a3ccf06c332a5b792bc8</id>
+<published>2025-05-21T07:16:48Z</published>
+<updated>2025-05-21T07:16:48Z</updated>
+<title type="text">Merge pull request #8 from andikagithub1/fitur-navbar</title>
+<link rel="alternate" type="text/html" href="commit/7bdb8ae08c7f7edb6f44a3ccf06c332a5b792bc8.html" />
+<author>
+<name>fauzymadani</name>
+<email>153879220+fauzymadani@users.noreply.github.com</email>
+</author>
+<content type="text">commit 7bdb8ae08c7f7edb6f44a3ccf06c332a5b792bc8
+parent 7a1166a8941a3c5e640c822702d6a0eab0aa0ad9
+Author: fauzymadani &lt;153879220+fauzymadani@users.noreply.github.com&gt;
+Date:   Wed, 21 May 2025 14:16:48 +0700
+
+Merge pull request #8 from andikagithub1/fitur-navbar
+
+Fitur Navbar pada mobile
+</content>
+</entry>
+<entry>
+<id>7a1166a8941a3c5e640c822702d6a0eab0aa0ad9</id>
+<published>2025-05-21T06:44:01Z</published>
+<updated>2025-05-21T06:44:01Z</updated>
+<title type="text">Merge pull request #7 from andikagithub1/fitur-navbar</title>
+<link rel="alternate" type="text/html" href="commit/7a1166a8941a3c5e640c822702d6a0eab0aa0ad9.html" />
+<author>
+<name>fauzymadani</name>
+<email>153879220+fauzymadani@users.noreply.github.com</email>
+</author>
+<content type="text">commit 7a1166a8941a3c5e640c822702d6a0eab0aa0ad9
+parent d95cfe86669c0e40bd61e4313e030d6bdb55ae7a
+Author: fauzymadani &lt;153879220+fauzymadani@users.noreply.github.com&gt;
+Date:   Wed, 21 May 2025 13:44:01 +0700
+
+Merge pull request #7 from andikagithub1/fitur-navbar
+
+Fitur navbar
+</content>
+</entry>
+<entry>
+<id>d95cfe86669c0e40bd61e4313e030d6bdb55ae7a</id>
+<published>2025-05-21T05:55:34Z</published>
+<updated>2025-05-21T05:55:34Z</updated>
+<title type="text">Merge pull request #6 from andikagithub1/fitur-navbar</title>
+<link rel="alternate" type="text/html" href="commit/d95cfe86669c0e40bd61e4313e030d6bdb55ae7a.html" />
+<author>
+<name>fauzymadani</name>
+<email>153879220+fauzymadani@users.noreply.github.com</email>
+</author>
+<content type="text">commit d95cfe86669c0e40bd61e4313e030d6bdb55ae7a
+parent 1ce023484c99905460494088166d9dbc69a6afee
+Author: fauzymadani &lt;153879220+fauzymadani@users.noreply.github.com&gt;
+Date:   Wed, 21 May 2025 12:55:34 +0700
+
+Merge pull request #6 from andikagithub1/fitur-navbar
+
+Fitur navbar
+</content>
+</entry>
+<entry>
+<id>1ce023484c99905460494088166d9dbc69a6afee</id>
+<published>2025-05-21T04:47:33Z</published>
+<updated>2025-05-21T04:47:33Z</updated>
+<title type="text">Merge pull request #5 from andikagithub1/tampilan</title>
+<link rel="alternate" type="text/html" href="commit/1ce023484c99905460494088166d9dbc69a6afee.html" />
+<author>
+<name>fauzymadani</name>
+<email>153879220+fauzymadani@users.noreply.github.com</email>
+</author>
+<content type="text">commit 1ce023484c99905460494088166d9dbc69a6afee
+parent 2bb30e73274e35bb7ab2d2464aab3f0937aa7ed4
+Author: fauzymadani &lt;153879220+fauzymadani@users.noreply.github.com&gt;
+Date:   Wed, 21 May 2025 11:47:33 +0700
+
+Merge pull request #5 from andikagithub1/tampilan
+
+Penambahan deskripsi
+</content>
+</entry>
+<entry>
+<id>2bb30e73274e35bb7ab2d2464aab3f0937aa7ed4</id>
+<published>2025-05-21T03:41:19Z</published>
+<updated>2025-05-21T03:41:19Z</updated>
+<title type="text">Merge pull request #4 from andikagithub1/tampilan</title>
+<link rel="alternate" type="text/html" href="commit/2bb30e73274e35bb7ab2d2464aab3f0937aa7ed4.html" />
+<author>
+<name>fauzymadani</name>
+<email>153879220+fauzymadani@users.noreply.github.com</email>
+</author>
+<content type="text">commit 2bb30e73274e35bb7ab2d2464aab3f0937aa7ed4
+parent 33c18bdd18cef054fa19816d5bda7e3228a424e2
+Author: fauzymadani &lt;153879220+fauzymadani@users.noreply.github.com&gt;
+Date:   Wed, 21 May 2025 10:41:19 +0700
+
+Merge pull request #4 from andikagithub1/tampilan
+
+Tampilan
+</content>
+</entry>
+<entry>
+<id>33c18bdd18cef054fa19816d5bda7e3228a424e2</id>
+<published>2025-05-08T05:35:20Z</published>
+<updated>2025-05-08T05:35:20Z</updated>
+<title type="text">Merge pull request #3 from andikagithub1/tampilan</title>
+<link rel="alternate" type="text/html" href="commit/33c18bdd18cef054fa19816d5bda7e3228a424e2.html" />
+<author>
+<name>fauzymadani</name>
+<email>153879220+fauzymadani@users.noreply.github.com</email>
+</author>
+<content type="text">commit 33c18bdd18cef054fa19816d5bda7e3228a424e2
+parent 427ee2ed3b7a7ac16cfc19d1a18e8275ada52c9c
+Author: fauzymadani &lt;153879220+fauzymadani@users.noreply.github.com&gt;
+Date:   Thu,  8 May 2025 12:35:20 +0700
+
+Merge pull request #3 from andikagithub1/tampilan
+
+Tampilan
+</content>
+</entry>
+<entry>
+<id>427ee2ed3b7a7ac16cfc19d1a18e8275ada52c9c</id>
+<published>2025-05-07T06:29:28Z</published>
+<updated>2025-05-07T06:29:28Z</updated>
+<title type="text">Merge pull request #2 from andikagithub1/mengubah-menambahkan</title>
+<link rel="alternate" type="text/html" href="commit/427ee2ed3b7a7ac16cfc19d1a18e8275ada52c9c.html" />
+<author>
+<name>fauzymadani</name>
+<email>153879220+fauzymadani@users.noreply.github.com</email>
+</author>
+<content type="text">commit 427ee2ed3b7a7ac16cfc19d1a18e8275ada52c9c
+parent 32a5d853c9c31395840f49a365a4eb43e72f54a6
+Author: fauzymadani &lt;153879220+fauzymadani@users.noreply.github.com&gt;
+Date:   Wed,  7 May 2025 13:29:28 +0700
+
+Merge pull request #2 from andikagithub1/mengubah-menambahkan
+
+udah
+</content>
+</entry>
+<entry>
+<id>32a5d853c9c31395840f49a365a4eb43e72f54a6</id>
+<published>2025-05-07T01:54:39Z</published>
+<updated>2025-05-07T01:54:39Z</updated>
+<title type="text">Add files via upload</title>
+<link rel="alternate" type="text/html" href="commit/32a5d853c9c31395840f49a365a4eb43e72f54a6.html" />
+<author>
+<name>fauzymadani</name>
+<email>153879220+fauzymadani@users.noreply.github.com</email>
+</author>
+<content type="text">commit 32a5d853c9c31395840f49a365a4eb43e72f54a6
+parent fef613ecbe3876eb138fd8616ef7326883d0e98c
+Author: fauzymadani &lt;153879220+fauzymadani@users.noreply.github.com&gt;
+Date:   Wed,  7 May 2025 08:54:39 +0700
+
+Add files via upload
+</content>
+</entry>
+<entry>
+<id>fef613ecbe3876eb138fd8616ef7326883d0e98c</id>
+<published>2025-04-24T11:16:40Z</published>
+<updated>2025-04-24T11:16:40Z</updated>
+<title type="text">Update README.md</title>
+<link rel="alternate" type="text/html" href="commit/fef613ecbe3876eb138fd8616ef7326883d0e98c.html" />
+<author>
+<name>fauzymadani</name>
+<email>153879220+fauzymadani@users.noreply.github.com</email>
+</author>
+<content type="text">commit fef613ecbe3876eb138fd8616ef7326883d0e98c
+parent 8aa5acb0e0b02eb5834c243c3e880af41b0abfcf
+Author: fauzymadani &lt;153879220+fauzymadani@users.noreply.github.com&gt;
+Date:   Thu, 24 Apr 2025 18:16:40 +0700
+
+Update README.md
+</content>
+</entry>
+<entry>
+<id>8aa5acb0e0b02eb5834c243c3e880af41b0abfcf</id>
+<published>2025-04-24T10:50:50Z</published>
+<updated>2025-04-24T10:50:50Z</updated>
+<title type="text">Merge branch &#39;main&#39; of https://github.com/fauzymadani/WhistleBlower</title>
+<link rel="alternate" type="text/html" href="commit/8aa5acb0e0b02eb5834c243c3e880af41b0abfcf.html" />
+<author>
+<name>fauzymadani</name>
+<email>keperluansekolahfauzy@gmail.com</email>
+</author>
+<content type="text">commit 8aa5acb0e0b02eb5834c243c3e880af41b0abfcf
+parent ec8ae712ea8ff3945925289e06b8cf59d7efe262
+Author: fauzymadani &lt;keperluansekolahfauzy@gmail.com&gt;
+Date:   Thu, 24 Apr 2025 17:50:50 +0700
+
+Merge branch &#39;main&#39; of https://github.com/fauzymadani/WhistleBlower
+
+</content>
+</entry>
+<entry>
+<id>ec8ae712ea8ff3945925289e06b8cf59d7efe262</id>
+<published>2025-04-24T10:49:52Z</published>
+<updated>2025-04-24T10:49:52Z</updated>
+<title type="text">docs: improve documentation for several file</title>
+<link rel="alternate" type="text/html" href="commit/ec8ae712ea8ff3945925289e06b8cf59d7efe262.html" />
+<author>
+<name>fauzymadani</name>
+<email>keperluansekolahfauzy@gmail.com</email>
+</author>
+<content type="text">commit ec8ae712ea8ff3945925289e06b8cf59d7efe262
+parent e6822b4b1c63b6ba6a450e79c8c23ec64d537b1d
+Author: fauzymadani &lt;keperluansekolahfauzy@gmail.com&gt;
+Date:   Thu, 24 Apr 2025 17:49:52 +0700
+
+docs: improve documentation for several file
+
+</content>
+</entry>
+<entry>
+<id>e6822b4b1c63b6ba6a450e79c8c23ec64d537b1d</id>
+<published>2025-04-23T06:20:50Z</published>
+<updated>2025-04-23T06:20:50Z</updated>
+<title type="text">refactor(component): fix error in the status report and create admin panel</title>
+<link rel="alternate" type="text/html" href="commit/e6822b4b1c63b6ba6a450e79c8c23ec64d537b1d.html" />
+<author>
+<name>fauzymadani</name>
+<email>keperluansekolahfauzy@gmail.com</email>
+</author>
+<content type="text">commit e6822b4b1c63b6ba6a450e79c8c23ec64d537b1d
+parent af043fb23e0e3530d2ab795d7aa44958ffa1fba1
+Author: fauzymadani &lt;keperluansekolahfauzy@gmail.com&gt;
+Date:   Wed, 23 Apr 2025 13:20:50 +0700
+
+refactor(component): fix error in the status report and create admin panel
+
+there&#39;s an error when the admin want to set the status of the report and create admin panel which is
+accessible via 127.0.0.1:8000/admin/dashboard
+
+</content>
+</entry>
+<entry>
+<id>af043fb23e0e3530d2ab795d7aa44958ffa1fba1</id>
+<published>2025-04-23T04:00:47Z</published>
+<updated>2025-04-23T04:00:47Z</updated>
+<title type="text">feat: implement simple dark mode on landing page</title>
+<link rel="alternate" type="text/html" href="commit/af043fb23e0e3530d2ab795d7aa44958ffa1fba1.html" />
+<author>
+<name>fauzymadani</name>
+<email>keperluansekolahfauzy@gmail.com</email>
+</author>
+<content type="text">commit af043fb23e0e3530d2ab795d7aa44958ffa1fba1
+parent 4240ad9dd9d65c3988db3b8bb9c9a6f4a0165f92
+Author: fauzymadani &lt;keperluansekolahfauzy@gmail.com&gt;
+Date:   Wed, 23 Apr 2025 11:00:47 +0700
+
+feat: implement simple dark mode on landing page
+
+</content>
+</entry>
+<entry>
+<id>4240ad9dd9d65c3988db3b8bb9c9a6f4a0165f92</id>
+<published>2025-04-23T03:56:16Z</published>
+<updated>2025-04-23T03:56:16Z</updated>
+<title type="text">Merge pull request #1 from andikagithub1/main</title>
+<link rel="alternate" type="text/html" href="commit/4240ad9dd9d65c3988db3b8bb9c9a6f4a0165f92.html" />
+<author>
+<name>fauzymadani</name>
+<email>153879220+fauzymadani@users.noreply.github.com</email>
+</author>
+<content type="text">commit 4240ad9dd9d65c3988db3b8bb9c9a6f4a0165f92
+parent 9ee707b5515d85b12f575254f88dee7563edb10b
+Author: fauzymadani &lt;153879220+fauzymadani@users.noreply.github.com&gt;
+Date:   Wed, 23 Apr 2025 10:56:16 +0700
+
+Merge pull request #1 from andikagithub1/main
+
+update ui awal
+</content>
+</entry>
+<entry>
+<id>9ee707b5515d85b12f575254f88dee7563edb10b</id>
+<published>2025-04-23T03:33:42Z</published>
+<updated>2025-04-23T03:33:42Z</updated>
+<title type="text">Update README.md</title>
+<link rel="alternate" type="text/html" href="commit/9ee707b5515d85b12f575254f88dee7563edb10b.html" />
+<author>
+<name>fauzymadani</name>
+<email>153879220+fauzymadani@users.noreply.github.com</email>
+</author>
+<content type="text">commit 9ee707b5515d85b12f575254f88dee7563edb10b
+parent ec8f99cd3f9d15416d1af826cad25478e699a0c2
+Author: fauzymadani &lt;153879220+fauzymadani@users.noreply.github.com&gt;
+Date:   Wed, 23 Apr 2025 10:33:42 +0700
+
+Update README.md
+</content>
+</entry>
+<entry>
+<id>ec8f99cd3f9d15416d1af826cad25478e699a0c2</id>
+<published>2025-04-23T03:22:47Z</published>
+<updated>2025-04-23T03:22:47Z</updated>
+<title type="text">Add files via upload</title>
+<link rel="alternate" type="text/html" href="commit/ec8f99cd3f9d15416d1af826cad25478e699a0c2.html" />
+<author>
+<name>fauzymadani</name>
+<email>153879220+fauzymadani@users.noreply.github.com</email>
+</author>
+<content type="text">commit ec8f99cd3f9d15416d1af826cad25478e699a0c2
+parent c21de2bc7a4b58152b715a2881b7db40697fe946
+Author: fauzymadani &lt;153879220+fauzymadani@users.noreply.github.com&gt;
+Date:   Wed, 23 Apr 2025 10:22:47 +0700
+
+Add files via upload
+</content>
+</entry>
+<entry>
+<id>c21de2bc7a4b58152b715a2881b7db40697fe946</id>
+<published>2025-04-23T03:20:37Z</published>
+<updated>2025-04-23T03:20:37Z</updated>
+<title type="text">Add files via upload</title>
+<link rel="alternate" type="text/html" href="commit/c21de2bc7a4b58152b715a2881b7db40697fe946.html" />
+<author>
+<name>fauzymadani</name>
+<email>153879220+fauzymadani@users.noreply.github.com</email>
+</author>
+<content type="text">commit c21de2bc7a4b58152b715a2881b7db40697fe946
+parent 5ebad260824aba121c622fdc8be303a483bb15c7
+Author: fauzymadani &lt;153879220+fauzymadani@users.noreply.github.com&gt;
+Date:   Wed, 23 Apr 2025 10:20:37 +0700
+
+Add files via upload
+</content>
+</entry>
+<entry>
+<id>5ebad260824aba121c622fdc8be303a483bb15c7</id>
+<published>2025-04-13T06:26:48Z</published>
+<updated>2025-04-13T06:26:48Z</updated>
+<title type="text">update: edit report and fix  not defined</title>
+<link rel="alternate" type="text/html" href="commit/5ebad260824aba121c622fdc8be303a483bb15c7.html" />
+<author>
+<name>fauzymadani</name>
+<email>keperluansekolahfauzy@gmail.com</email>
+</author>
+<content type="text">commit 5ebad260824aba121c622fdc8be303a483bb15c7
+parent 905a7a600d7e145fab1e211dd7eb5b7e715859cf
+Author: fauzymadani &lt;keperluansekolahfauzy@gmail.com&gt;
+Date:   Sun, 13 Apr 2025 13:26:48 +0700
+
+update: edit report and fix  not defined
+
+</content>
+</entry>
+<entry>
+<id>905a7a600d7e145fab1e211dd7eb5b7e715859cf</id>
+<published>2025-04-10T14:57:10Z</published>
+<updated>2025-04-10T14:57:10Z</updated>
+<title type="text">fix auth in login with username</title>
+<link rel="alternate" type="text/html" href="commit/905a7a600d7e145fab1e211dd7eb5b7e715859cf.html" />
+<author>
+<name>fauzymadani</name>
+<email>keperluansekolahfauzy@gmail.com</email>
+</author>
+<content type="text">commit 905a7a600d7e145fab1e211dd7eb5b7e715859cf
+parent 2ef89b1ce58ee5659a1ebef1d734993f931bfe66
+Author: fauzymadani &lt;keperluansekolahfauzy@gmail.com&gt;
+Date:   Thu, 10 Apr 2025 21:57:10 +0700
+
+fix auth in login with username
+
+</content>
+</entry>
+<entry>
+<id>2ef89b1ce58ee5659a1ebef1d734993f931bfe66</id>
+<published>2025-04-10T14:48:50Z</published>
+<updated>2025-04-10T14:48:50Z</updated>
+<title type="text">dark mode everything</title>
+<link rel="alternate" type="text/html" href="commit/2ef89b1ce58ee5659a1ebef1d734993f931bfe66.html" />
+<author>
+<name>fauzymadani</name>
+<email>keperluansekolahfauzy@gmail.com</email>
+</author>
+<content type="text">commit 2ef89b1ce58ee5659a1ebef1d734993f931bfe66
+parent 62ccca3ca0fb724d3b333b436a796b752cf740bc
+Author: fauzymadani &lt;keperluansekolahfauzy@gmail.com&gt;
+Date:   Thu, 10 Apr 2025 21:48:50 +0700
+
+dark mode everything
+
+</content>
+</entry>
+<entry>
+<id>62ccca3ca0fb724d3b333b436a796b752cf740bc</id>
+<published>2025-04-10T10:56:49Z</published>
+<updated>2025-04-10T10:56:49Z</updated>
+<title type="text">create LICENSE</title>
+<link rel="alternate" type="text/html" href="commit/62ccca3ca0fb724d3b333b436a796b752cf740bc.html" />
+<author>
+<name>fauzymadani</name>
+<email>keperluansekolahfauzy@gmail.com</email>
+</author>
+<content type="text">commit 62ccca3ca0fb724d3b333b436a796b752cf740bc
+parent de451de10008ff6340ca6cf6d2bb1dc7dc4ee6ee
+Author: fauzymadani &lt;keperluansekolahfauzy@gmail.com&gt;
+Date:   Thu, 10 Apr 2025 17:56:49 +0700
+
+create LICENSE
+
+</content>
+</entry>
+<entry>
+<id>de451de10008ff6340ca6cf6d2bb1dc7dc4ee6ee</id>
+<published>2025-04-10T10:52:29Z</published>
+<updated>2025-04-10T10:52:29Z</updated>
+<title type="text">add docs</title>
+<link rel="alternate" type="text/html" href="commit/de451de10008ff6340ca6cf6d2bb1dc7dc4ee6ee.html" />
+<author>
+<name>fauzymadani</name>
+<email>keperluansekolahfauzy@gmail.com</email>
+</author>
+<content type="text">commit de451de10008ff6340ca6cf6d2bb1dc7dc4ee6ee
+parent f242fd07b26fdc58671f9fec6e3d8c1c41b8e0fc
+Author: fauzymadani &lt;keperluansekolahfauzy@gmail.com&gt;
+Date:   Thu, 10 Apr 2025 17:52:29 +0700
+
+add docs
+
+</content>
+</entry>
+<entry>
+<id>f242fd07b26fdc58671f9fec6e3d8c1c41b8e0fc</id>
+<published>2025-04-10T10:46:21Z</published>
+<updated>2025-04-10T10:46:21Z</updated>
+<title type="text">mistype in ProfileController</title>
+<link rel="alternate" type="text/html" href="commit/f242fd07b26fdc58671f9fec6e3d8c1c41b8e0fc.html" />
+<author>
+<name>fauzymadani</name>
+<email>keperluansekolahfauzy@gmail.com</email>
+</author>
+<content type="text">commit f242fd07b26fdc58671f9fec6e3d8c1c41b8e0fc
+parent 8895d32900e37bb44c5ecdb22645ed31aae824ee
+Author: fauzymadani &lt;keperluansekolahfauzy@gmail.com&gt;
+Date:   Thu, 10 Apr 2025 17:46:21 +0700
+
+mistype in ProfileController
+
+</content>
+</entry>
+<entry>
+<id>8895d32900e37bb44c5ecdb22645ed31aae824ee</id>
+<published>2025-04-10T10:42:54Z</published>
+<updated>2025-04-10T10:42:54Z</updated>
+<title type="text">create user form</title>
+<link rel="alternate" type="text/html" href="commit/8895d32900e37bb44c5ecdb22645ed31aae824ee.html" />
+<author>
+<name>fauzymadani</name>
+<email>keperluansekolahfauzy@gmail.com</email>
+</author>
+<content type="text">commit 8895d32900e37bb44c5ecdb22645ed31aae824ee
+parent 03840a29f63b09d9f75a7ced60fd7adfe14faa3b
+Author: fauzymadani &lt;keperluansekolahfauzy@gmail.com&gt;
+Date:   Thu, 10 Apr 2025 17:42:54 +0700
+
+create user form
+
+</content>
+</entry>
+<entry>
+<id>03840a29f63b09d9f75a7ced60fd7adfe14faa3b</id>
+<published>2025-04-10T10:36:31Z</published>
+<updated>2025-04-10T10:36:31Z</updated>
+<title type="text">initial commit</title>
+<link rel="alternate" type="text/html" href="commit/03840a29f63b09d9f75a7ced60fd7adfe14faa3b.html" />
+<author>
+<name>fauzymadani</name>
+<email>keperluansekolahfauzy@gmail.com</email>
+</author>
+<content type="text">commit 03840a29f63b09d9f75a7ced60fd7adfe14faa3b
+Author: fauzymadani &lt;keperluansekolahfauzy@gmail.com&gt;
+Date:   Thu, 10 Apr 2025 17:36:31 +0700
+
+initial commit
+
+</content>
+</entry>
+</feed>

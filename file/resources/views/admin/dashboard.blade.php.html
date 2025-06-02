@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>dashboard.blade.php - whistleblower - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../../../../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed" href="../../../../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed (tags)" href="../../../../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../../../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../../../../"><img src="../../../../logo.png" alt="" width="32" height="32" /></a></td><td><h1>whistleblower</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../../../../log.html">Log</a> | <a href="../../../../files.html">Files</a> | <a href="../../../../refs.html">Refs</a> | <a href="../../../../file/README.md.html">README</a> | <a href="../../../../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<p> dashboard.blade.php (4308B)</p><hr/><pre id="blob">
+<a href="#l1" class="line" id="l1">      1</a> @extends(&#39;admin.layout&#39;)
+<a href="#l2" class="line" id="l2">      2</a> {{-- Pake layout admin sebagai kerangka halaman --}}
+<a href="#l3" class="line" id="l3">      3</a> 
+<a href="#l4" class="line" id="l4">      4</a> @section(&#39;content&#39;)
+<a href="#l5" class="line" id="l5">      5</a> {{-- Bagian konten utama halaman admin --}}
+<a href="#l6" class="line" id="l6">      6</a> 
+<a href="#l7" class="line" id="l7">      7</a>     &lt;h2 class=&quot;text-2xl font-bold mb-4&quot;&gt;Laporan Masuk&lt;/h2&gt;
+<a href="#l8" class="line" id="l8">      8</a>     {{-- Judul halaman --}}
+<a href="#l9" class="line" id="l9">      9</a> 
+<a href="#l10" class="line" id="l10">     10</a>     @if(session(&#39;success&#39;))
+<a href="#l11" class="line" id="l11">     11</a>         {{-- Tampilkan notifikasi kalau ada pesan sukses dari session --}}
+<a href="#l12" class="line" id="l12">     12</a>         &lt;div class=&quot;bg-green-600 text-white p-4 rounded mb-4&quot;&gt;
+<a href="#l13" class="line" id="l13">     13</a>             {{ session(&#39;success&#39;) }}
+<a href="#l14" class="line" id="l14">     14</a>         &lt;/div&gt;
+<a href="#l15" class="line" id="l15">     15</a>     @endif
+<a href="#l16" class="line" id="l16">     16</a> 
+<a href="#l17" class="line" id="l17">     17</a>     &lt;div class=&quot;overflow-x-auto&quot;&gt;
+<a href="#l18" class="line" id="l18">     18</a>         {{-- Bikin tabel scrollable kalau lebarnya melebihi layar --}}
+<a href="#l19" class="line" id="l19">     19</a>         &lt;table class=&quot;min-w-full text-sm text-left text-gray-900 dark:text-gray-300 border border-gray-300 dark:border-[#3a3a3a]&quot;&gt;
+<a href="#l20" class="line" id="l20">     20</a>             &lt;thead class=&quot;bg-gray-100 dark:bg-[#262626] text-xs uppercase font-medium text-gray-700 dark:text-gray-400&quot;&gt;
+<a href="#l21" class="line" id="l21">     21</a>                 &lt;tr&gt;
+<a href="#l22" class="line" id="l22">     22</a>                     {{-- Header kolom tabel --}}
+<a href="#l23" class="line" id="l23">     23</a>                     &lt;th class=&quot;px-4 py-2&quot;&gt;Judul&lt;/th&gt;
+<a href="#l24" class="line" id="l24">     24</a>                     &lt;th class=&quot;px-4 py-2&quot;&gt;Isi&lt;/th&gt;
+<a href="#l25" class="line" id="l25">     25</a>                     &lt;th class=&quot;px-4 py-2&quot;&gt;Pelaku&lt;/th&gt;
+<a href="#l26" class="line" id="l26">     26</a>                     &lt;th class=&quot;px-4 py-2&quot;&gt;Kelas&lt;/th&gt;
+<a href="#l27" class="line" id="l27">     27</a>                     &lt;th class=&quot;px-4 py-2&quot;&gt;Jurusan&lt;/th&gt;
+<a href="#l28" class="line" id="l28">     28</a>                     &lt;th class=&quot;px-4 py-2&quot;&gt;Peran&lt;/th&gt;
+<a href="#l29" class="line" id="l29">     29</a>                     &lt;th class=&quot;px-4 py-2&quot;&gt;Identitas Pelapor&lt;/th&gt;
+<a href="#l30" class="line" id="l30">     30</a>                     &lt;th class=&quot;px-4 py-2&quot;&gt;Status&lt;/th&gt;
+<a href="#l31" class="line" id="l31">     31</a>                     &lt;th class=&quot;px-4 py-2&quot;&gt;Dibuat Pada&lt;/th&gt;
+<a href="#l32" class="line" id="l32">     32</a>                     &lt;th class=&quot;px-4 py-2&quot;&gt;Aksi&lt;/th&gt;
+<a href="#l33" class="line" id="l33">     33</a>                 &lt;/tr&gt;
+<a href="#l34" class="line" id="l34">     34</a>             &lt;/thead&gt;
+<a href="#l35" class="line" id="l35">     35</a>             &lt;tbody class=&quot;bg-white dark:bg-[#181818]&quot;&gt;
+<a href="#l36" class="line" id="l36">     36</a>                 {{-- Looping semua laporan --}}
+<a href="#l37" class="line" id="l37">     37</a>                 @forelse($reports as $report)
+<a href="#l38" class="line" id="l38">     38</a>                     &lt;tr class=&quot;border-b border-gray-300 dark:border-[#3a3a3a]&quot;&gt;
+<a href="#l39" class="line" id="l39">     39</a>                         &lt;td class=&quot;px-4 py-2&quot;&gt;{{ $report-&gt;judul }}&lt;/td&gt;
+<a href="#l40" class="line" id="l40">     40</a>                         &lt;td class=&quot;px-4 py-2 max-w-xs truncate&quot;&gt;{{ $report-&gt;isi_laporan }}&lt;/td&gt;
+<a href="#l41" class="line" id="l41">     41</a>                         &lt;td class=&quot;px-4 py-2&quot;&gt;{{ $report-&gt;nama_pelaku }}&lt;/td&gt;
+<a href="#l42" class="line" id="l42">     42</a>                         &lt;td class=&quot;px-4 py-2&quot;&gt;{{ $report-&gt;kelas_pelaku }}&lt;/td&gt;
+<a href="#l43" class="line" id="l43">     43</a>                         &lt;td class=&quot;px-4 py-2&quot;&gt;{{ $report-&gt;jurusan_pelaku }}&lt;/td&gt;
+<a href="#l44" class="line" id="l44">     44</a>                         &lt;td class=&quot;px-4 py-2&quot;&gt;{{ $report-&gt;peran }}&lt;/td&gt;
+<a href="#l45" class="line" id="l45">     45</a>                         &lt;td class=&quot;px-4 py-2&quot;&gt;
+<a href="#l46" class="line" id="l46">     46</a>                             {{-- Cek apakah laporan anonim atau tidak --}}
+<a href="#l47" class="line" id="l47">     47</a>                             @if(isset($report-&gt;is_anonymous) &amp;&amp; $report-&gt;is_anonymous == 0)
+<a href="#l48" class="line" id="l48">     48</a>                                 {{ $report-&gt;reporter_name }} &lt;br&gt;
+<a href="#l49" class="line" id="l49">     49</a>                                 {{ $report-&gt;reporter_class }} &lt;br&gt;
+<a href="#l50" class="line" id="l50">     50</a>                                 {{ $report-&gt;reporter_major }}
+<a href="#l51" class="line" id="l51">     51</a>                             @else
+<a href="#l52" class="line" id="l52">     52</a>                                 &lt;em&gt;Anonim&lt;/em&gt;
+<a href="#l53" class="line" id="l53">     53</a>                             @endif
+<a href="#l54" class="line" id="l54">     54</a>                         &lt;/td&gt;
+<a href="#l55" class="line" id="l55">     55</a>                         &lt;td class=&quot;px-4 py-2&quot;&gt;{{ ucfirst($report-&gt;status) }}&lt;/td&gt;
+<a href="#l56" class="line" id="l56">     56</a>                         {{-- Format tanggal laporan dibuat --}}
+<a href="#l57" class="line" id="l57">     57</a>                         &lt;td class=&quot;px-4 py-2&quot;&gt;{{ $report-&gt;created_at-&gt;format(&#39;d M Y&#39;) }}&lt;/td&gt;
+<a href="#l58" class="line" id="l58">     58</a>                         &lt;td class=&quot;px-4 py-2&quot;&gt;
+<a href="#l59" class="line" id="l59">     59</a>                             {{-- Form buat update status laporan langsung dari dropdown --}}
+<a href="#l60" class="line" id="l60">     60</a>                             &lt;form action=&quot;{{ route(&#39;admin.reports.update&#39;, $report-&gt;id) }}&quot; method=&quot;POST&quot;&gt;
+<a href="#l61" class="line" id="l61">     61</a>                                 @csrf
+<a href="#l62" class="line" id="l62">     62</a>                                 @method(&#39;PUT&#39;)
+<a href="#l63" class="line" id="l63">     63</a>                                 &lt;select name=&quot;status&quot; class=&quot;form-select&quot; onchange=&quot;this.form.submit()&quot;&gt;
+<a href="#l64" class="line" id="l64">     64</a>                                     &lt;option value=&quot;pending&quot; {{ $report-&gt;status == &#39;pending&#39; ? &#39;selected&#39; : &#39;&#39; }}&gt;Pending&lt;/option&gt;
+<a href="#l65" class="line" id="l65">     65</a>                                     &lt;option value=&quot;proses&quot; {{ $report-&gt;status == &#39;proses&#39; ? &#39;selected&#39; : &#39;&#39; }}&gt;Proses&lt;/option&gt;
+<a href="#l66" class="line" id="l66">     66</a>                                     &lt;option value=&quot;selesai&quot; {{ $report-&gt;status == &#39;selesai&#39; ? &#39;selected&#39; : &#39;&#39; }}&gt;Selesai&lt;/option&gt;
+<a href="#l67" class="line" id="l67">     67</a>                                 &lt;/select&gt;
+<a href="#l68" class="line" id="l68">     68</a>                             &lt;/form&gt;
+<a href="#l69" class="line" id="l69">     69</a>                         &lt;/td&gt;
+<a href="#l70" class="line" id="l70">     70</a>                     &lt;/tr&gt;
+<a href="#l71" class="line" id="l71">     71</a>                 @empty
+<a href="#l72" class="line" id="l72">     72</a>                     {{-- Kalau belum ada laporan, tampilkan pesan ini --}}
+<a href="#l73" class="line" id="l73">     73</a>                     &lt;tr&gt;
+<a href="#l74" class="line" id="l74">     74</a>                         &lt;td colspan=&quot;10&quot; class=&quot;px-4 py-4 text-center text-gray-500 dark:text-gray-400&quot;&gt;Belum ada laporan&lt;/td&gt;
+<a href="#l75" class="line" id="l75">     75</a>                     &lt;/tr&gt;
+<a href="#l76" class="line" id="l76">     76</a>                 @endforelse
+<a href="#l77" class="line" id="l77">     77</a>             &lt;/tbody&gt;
+<a href="#l78" class="line" id="l78">     78</a>         &lt;/table&gt;
+<a href="#l79" class="line" id="l79">     79</a>     &lt;/div&gt;
+<a href="#l80" class="line" id="l80">     80</a> @endsection
+<a href="#l81" class="line" id="l81">     81</a> 
+</pre>
+</div>
+</body>
+</html>

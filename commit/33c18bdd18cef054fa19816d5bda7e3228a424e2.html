@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Merge pull request #3 from andikagithub1/tampilan - whistleblower - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>whistleblower</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/33c18bdd18cef054fa19816d5bda7e3228a424e2.html">33c18bdd18cef054fa19816d5bda7e3228a424e2</a>
+<b>parent</b> <a href="../commit/427ee2ed3b7a7ac16cfc19d1a18e8275ada52c9c.html">427ee2ed3b7a7ac16cfc19d1a18e8275ada52c9c</a>
+<b>Author:</b> fauzymadani &lt;<a href="mailto:153879220+fauzymadani@users.noreply.github.com">153879220+fauzymadani@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Thu,  8 May 2025 12:35:20 +0700
+
+Merge pull request #3 from andikagithub1/tampilan
+
+Tampilan
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">resources/views/welcome.blade.php</a></td><td> | </td><td class="num">250</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">------------------------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">routes/web.php</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+</table></pre><pre>2 files changed, 177 insertions(+), 75 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/resources/views/welcome.blade.php.html">resources/views/welcome.blade.php</a> b/<a href="../file/resources/views/welcome.blade.php.html">resources/views/welcome.blade.php</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -2,103 +2,174 @@
+</a> &lt;html lang=&quot;{{ str_replace(&#39;_&#39;, &#39;-&#39;, app()-&gt;getLocale()) }}&quot; id=&quot;html-tag&quot; class=&quot;dark&quot;&gt;
+ &lt;head&gt;
+     &lt;meta charset=&quot;UTF-8&quot;&gt;
+<a href="#h0-0-3" id="h0-0-3" class="d">-    &lt;title&gt;Welcome&lt;/title&gt;
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+    &lt;title&gt;WhistleSecure - Secure Reporting Platform&lt;/title&gt;
+</a>     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+     &lt;style&gt;
+<a href="#h0-0-7" id="h0-0-7" class="d">-        /* Default Styles */
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+        /* CSS Utama */
+</a>         body {
+<a href="#h0-0-10" id="h0-0-10" class="d">-            background-color: #1f2937; /* Dark Mode Background */
+</a><a href="#h0-0-11" id="h0-0-11" class="d">-            color: #ffffff; /* Text Color for Dark Mode */
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+            background-color: #1f2937;
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+            color: #ffffff;
+</a>             margin: 0;
+             font-family: Arial, sans-serif;
+<a href="#h0-0-16" id="h0-0-16" class="d">-            transition: background-color 0.3s ease, color 0.3s ease;
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+            transition: background-color 0.5s ease, color 0.5s ease;
+</a>             min-height: 100vh;
+         }
+ 
+<a href="#h0-0-21" id="h0-0-21" class="d">-        /* Light Mode Styles */
+</a>         body.light-mode {
+<a href="#h0-0-23" id="h0-0-23" class="d">-            background-color: #ffffff; /* Light Mode Background */
+</a><a href="#h0-0-24" id="h0-0-24" class="d">-            color: #000000; /* Text Color for Light Mode */
+</a><a href="#h0-0-25" id="h0-0-25" class="i">+            background-color: #ffffff;
+</a><a href="#h0-0-26" id="h0-0-26" class="i">+            color: #000000;
+</a>         }
+ 
+         header {
+<a href="#h0-0-30" id="h0-0-30" class="d">-            display: flex;
+</a><a href="#h0-0-31" id="h0-0-31" class="d">-            justify-content: space-between;
+</a><a href="#h0-0-32" id="h0-0-32" class="i">+            display: grid;
+</a><a href="#h0-0-33" id="h0-0-33" class="i">+            grid-template-columns: 1fr auto 1fr;
+</a>             align-items: center;
+<a href="#h0-0-35" id="h0-0-35" class="d">-            padding: 1rem;
+</a><a href="#h0-0-36" id="h0-0-36" class="d">-            border-bottom: 1px solid #4b5563; /* Border for Dark Mode */
+</a><a href="#h0-0-37" id="h0-0-37" class="i">+            padding: 1rem 2rem;
+</a><a href="#h0-0-38" id="h0-0-38" class="i">+            border-bottom: 1px solid #4b5563;
+</a><a href="#h0-0-39" id="h0-0-39" class="i">+            background-color: #111827;
+</a><a href="#h0-0-40" id="h0-0-40" class="i">+            transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease;
+</a>         }
+ 
+         header.light-mode {
+<a href="#h0-0-44" id="h0-0-44" class="d">-            border-bottom: 1px solid #e5e7eb; /* Border for Light Mode */
+</a><a href="#h0-0-45" id="h0-0-45" class="i">+            background-color: #f9fafb;
+</a><a href="#h0-0-46" id="h0-0-46" class="i">+            border-bottom: 1px solid #e5e7eb;
+</a><a href="#h0-0-47" id="h0-0-47" class="i">+            color: #000000;
+</a>         }
+ 
+<a href="#h0-0-50" id="h0-0-50" class="d">-        nav a {
+</a><a href="#h0-0-51" id="h0-0-51" class="d">-            text-decoration: none;
+</a><a href="#h0-0-52" id="h0-0-52" class="d">-            color: #9ca3af; /* Link Color for Dark Mode */
+</a><a href="#h0-0-53" id="h0-0-53" class="d">-            margin-right: 1rem;
+</a><a href="#h0-0-54" id="h0-0-54" class="i">+        .logo-title {
+</a><a href="#h0-0-55" id="h0-0-55" class="i">+            display: flex;
+</a><a href="#h0-0-56" id="h0-0-56" class="i">+            align-items: center;
+</a><a href="#h0-0-57" id="h0-0-57" class="i">+            gap: 0.75rem;
+</a><a href="#h0-0-58" id="h0-0-58" class="i">+            font-size: 1.5rem;
+</a><a href="#h0-0-59" id="h0-0-59" class="i">+            font-weight: bold;
+</a><a href="#h0-0-60" id="h0-0-60" class="i">+            justify-self: start;
+</a><a href="#h0-0-61" id="h0-0-61" class="i">+            transition: color 0.5s ease;
+</a>         }
+ 
+<a href="#h0-0-64" id="h0-0-64" class="d">-        nav.light-mode a {
+</a><a href="#h0-0-65" id="h0-0-65" class="d">-            color: #374151; /* Link Color for Light Mode */
+</a><a href="#h0-0-66" id="h0-0-66" class="i">+        .logo-title img {
+</a><a href="#h0-0-67" id="h0-0-67" class="i">+            width: 60px;
+</a><a href="#h0-0-68" id="h0-0-68" class="i">+            height: 60px;
+</a>         }
+ 
+<a href="#h0-0-71" id="h0-0-71" class="d">-        main {
+</a><a href="#h0-0-72" id="h0-0-72" class="d">-            flex: 1;
+</a><a href="#h0-0-73" id="h0-0-73" class="i">+        nav.navbar {
+</a>             display: flex;
+<a href="#h0-0-75" id="h0-0-75" class="d">-            flex-direction: column;
+</a>             align-items: center;
+<a href="#h0-0-77" id="h0-0-77" class="d">-            justify-content: center;
+</a><a href="#h0-0-78" id="h0-0-78" class="d">-            text-align: center;
+</a><a href="#h0-0-79" id="h0-0-79" class="d">-            padding: 1rem;
+</a><a href="#h0-0-80" id="h0-0-80" class="i">+            gap: 1.5rem;
+</a><a href="#h0-0-81" id="h0-0-81" class="i">+            justify-self: center;
+</a><a href="#h0-0-82" id="h0-0-82" class="i">+            transition: color 0.5s ease;
+</a>         }
+ 
+<a href="#h0-0-85" id="h0-0-85" class="d">-        footer {
+</a><a href="#h0-0-86" id="h0-0-86" class="d">-            text-align: center;
+</a><a href="#h0-0-87" id="h0-0-87" class="d">-            padding: 1rem;
+</a><a href="#h0-0-88" id="h0-0-88" class="d">-            border-top: 1px solid #4b5563; /* Border for Dark Mode */
+</a><a href="#h0-0-89" id="h0-0-89" class="d">-            font-size: 0.875rem;
+</a><a href="#h0-0-90" id="h0-0-90" class="d">-            color: #9ca3af; /* Text Color for Dark Mode */
+</a><a href="#h0-0-91" id="h0-0-91" class="i">+        nav.navbar a {
+</a><a href="#h0-0-92" id="h0-0-92" class="i">+            text-decoration: none;
+</a><a href="#h0-0-93" id="h0-0-93" class="i">+            color: #9ca3af;
+</a><a href="#h0-0-94" id="h0-0-94" class="i">+            font-weight: 500;
+</a><a href="#h0-0-95" id="h0-0-95" class="i">+            transition: color 0.5s ease;
+</a>         }
+ 
+<a href="#h0-0-98" id="h0-0-98" class="d">-        footer.light-mode {
+</a><a href="#h0-0-99" id="h0-0-99" class="d">-            border-top: 1px solid #e5e7eb; /* Border for Light Mode */
+</a><a href="#h0-0-100" id="h0-0-100" class="d">-            color: #6b7280; /* Text Color for Light Mode */
+</a><a href="#h0-0-101" id="h0-0-101" class="i">+        nav.navbar a:hover {
+</a><a href="#h0-0-102" id="h0-0-102" class="i">+            color: #ffffff;
+</a><a href="#h0-0-103" id="h0-0-103" class="i">+        }
+</a><a href="#h0-0-104" id="h0-0-104" class="i">+
+</a><a href="#h0-0-105" id="h0-0-105" class="i">+        nav.navbar.light-mode a {
+</a><a href="#h0-0-106" id="h0-0-106" class="i">+            color: #374151;
+</a><a href="#h0-0-107" id="h0-0-107" class="i">+        }
+</a><a href="#h0-0-108" id="h0-0-108" class="i">+
+</a><a href="#h0-0-109" id="h0-0-109" class="i">+        nav.navbar.light-mode a:hover {
+</a><a href="#h0-0-110" id="h0-0-110" class="i">+            color: #000000;
+</a>         }
+ 
+<a href="#h0-0-113" id="h0-0-113" class="d">-        /* Button Styling */
+</a>         #theme-toggle {
+<a href="#h0-0-115" id="h0-0-115" class="d">-            padding: 0.5rem 1rem;
+</a><a href="#h0-0-116" id="h0-0-116" class="d">-            background-color: #374151; /* Button Background for Dark Mode */
+</a><a href="#h0-0-117" id="h0-0-117" class="d">-            color: #facc15; /* Button Text for Dark Mode */
+</a><a href="#h0-0-118" id="h0-0-118" class="i">+            padding: 0.4rem 0.8rem;
+</a><a href="#h0-0-119" id="h0-0-119" class="i">+            background-color: #374151;
+</a><a href="#h0-0-120" id="h0-0-120" class="i">+            color: #facc15;
+</a>             border: none;
+             border-radius: 0.25rem;
+             cursor: pointer;
+<a href="#h0-0-124" id="h0-0-124" class="d">-            transition: background-color 0.3s ease, color 0.3s ease;
+</a><a href="#h0-0-125" id="h0-0-125" class="i">+            transition: background-color 0.5s ease, color 0.5s ease, transform 0.3s ease;
+</a><a href="#h0-0-126" id="h0-0-126" class="i">+            justify-self: end;
+</a>         }
+ 
+         #theme-toggle:hover {
+<a href="#h0-0-130" id="h0-0-130" class="d">-            background-color: #4b5563; /* Hover Background for Dark Mode */
+</a><a href="#h0-0-131" id="h0-0-131" class="i">+            background-color: #4b5563;
+</a><a href="#h0-0-132" id="h0-0-132" class="i">+            transform: scale(1.1);
+</a>         }
+ 
+         #theme-toggle.light-mode {
+<a href="#h0-0-136" id="h0-0-136" class="d">-            background-color: #f3f4f6; /* Button Background for Light Mode */
+</a><a href="#h0-0-137" id="h0-0-137" class="d">-            color: #3b82f6; /* Button Text for Light Mode */
+</a><a href="#h0-0-138" id="h0-0-138" class="i">+            background-color: #f3f4f6;
+</a><a href="#h0-0-139" id="h0-0-139" class="i">+            color: #3b82f6;
+</a>         }
+ 
+         #theme-toggle.light-mode:hover {
+<a href="#h0-0-143" id="h0-0-143" class="d">-            background-color: #e5e7eb; /* Hover Background for Light Mode */
+</a><a href="#h0-0-144" id="h0-0-144" class="i">+            background-color: #e5e7eb;
+</a><a href="#h0-0-145" id="h0-0-145" class="i">+            transform: scale(1.1);
+</a><a href="#h0-0-146" id="h0-0-146" class="i">+        }
+</a><a href="#h0-0-147" id="h0-0-147" class="i">+
+</a><a href="#h0-0-148" id="h0-0-148" class="i">+        main {
+</a><a href="#h0-0-149" id="h0-0-149" class="i">+            display: flex;
+</a><a href="#h0-0-150" id="h0-0-150" class="i">+            justify-content: space-between;
+</a><a href="#h0-0-151" id="h0-0-151" class="i">+            align-items: center;
+</a><a href="#h0-0-152" id="h0-0-152" class="i">+            padding: 2rem;
+</a><a href="#h0-0-153" id="h0-0-153" class="i">+            flex-wrap: wrap;
+</a><a href="#h0-0-154" id="h0-0-154" class="i">+        }
+</a><a href="#h0-0-155" id="h0-0-155" class="i">+
+</a><a href="#h0-0-156" id="h0-0-156" class="i">+        footer {
+</a><a href="#h0-0-157" id="h0-0-157" class="i">+            text-align: center;
+</a><a href="#h0-0-158" id="h0-0-158" class="i">+            padding: 1rem;
+</a><a href="#h0-0-159" id="h0-0-159" class="i">+            border-top: 1px solid #4b5563;
+</a><a href="#h0-0-160" id="h0-0-160" class="i">+            font-size: 0.875rem;
+</a><a href="#h0-0-161" id="h0-0-161" class="i">+            color: #9ca3af;
+</a><a href="#h0-0-162" id="h0-0-162" class="i">+            transition: border-color 0.5s ease, color 0.5s ease;
+</a><a href="#h0-0-163" id="h0-0-163" class="i">+        }
+</a><a href="#h0-0-164" id="h0-0-164" class="i">+
+</a><a href="#h0-0-165" id="h0-0-165" class="i">+        footer.light-mode {
+</a><a href="#h0-0-166" id="h0-0-166" class="i">+            border-top: 1px solid #e5e7eb;
+</a><a href="#h0-0-167" id="h0-0-167" class="i">+            color: #6b7280;
+</a><a href="#h0-0-168" id="h0-0-168" class="i">+        }
+</a><a href="#h0-0-169" id="h0-0-169" class="i">+
+</a><a href="#h0-0-170" id="h0-0-170" class="i">+        /* Styling untuk Pop-Up */
+</a><a href="#h0-0-171" id="h0-0-171" class="i">+        #popup {
+</a><a href="#h0-0-172" id="h0-0-172" class="i">+            position: fixed;
+</a><a href="#h0-0-173" id="h0-0-173" class="i">+            top: 50%;
+</a><a href="#h0-0-174" id="h0-0-174" class="i">+            left: 50%;
+</a><a href="#h0-0-175" id="h0-0-175" class="i">+            transform: translate(-50%, -50%);
+</a><a href="#h0-0-176" id="h0-0-176" class="i">+            background-color: rgba(0, 0, 0, 0.8);
+</a><a href="#h0-0-177" id="h0-0-177" class="i">+            color: #ffffff;
+</a><a href="#h0-0-178" id="h0-0-178" class="i">+            padding: 2rem;
+</a><a href="#h0-0-179" id="h0-0-179" class="i">+            border-radius: 1rem;
+</a><a href="#h0-0-180" id="h0-0-180" class="i">+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+</a><a href="#h0-0-181" id="h0-0-181" class="i">+            z-index: 1000;
+</a><a href="#h0-0-182" id="h0-0-182" class="i">+            opacity: 0;
+</a><a href="#h0-0-183" id="h0-0-183" class="i">+            visibility: hidden;
+</a><a href="#h0-0-184" id="h0-0-184" class="i">+            transition: opacity 0.5s ease, visibility 0.5s ease, transform 0.5s ease;
+</a><a href="#h0-0-185" id="h0-0-185" class="i">+            text-align: center;
+</a><a href="#h0-0-186" id="h0-0-186" class="i">+            font-size: 1.2rem;
+</a><a href="#h0-0-187" id="h0-0-187" class="i">+            font-weight: bold;
+</a><a href="#h0-0-188" id="h0-0-188" class="i">+        }
+</a><a href="#h0-0-189" id="h0-0-189" class="i">+
+</a><a href="#h0-0-190" id="h0-0-190" class="i">+        #popup.visible {
+</a><a href="#h0-0-191" id="h0-0-191" class="i">+            opacity: 1;
+</a><a href="#h0-0-192" id="h0-0-192" class="i">+            visibility: visible;
+</a><a href="#h0-0-193" id="h0-0-193" class="i">+            transform: translate(-50%, -50%) scale(1);
+</a><a href="#h0-0-194" id="h0-0-194" class="i">+        }
+</a><a href="#h0-0-195" id="h0-0-195" class="i">+
+</a><a href="#h0-0-196" id="h0-0-196" class="i">+        #popup.hidden {
+</a><a href="#h0-0-197" id="h0-0-197" class="i">+            opacity: 0;
+</a><a href="#h0-0-198" id="h0-0-198" class="i">+            visibility: hidden;
+</a><a href="#h0-0-199" id="h0-0-199" class="i">+            transform: translate(-50%, -50%) scale(0.9);
+</a>         }
+     &lt;/style&gt;
+ &lt;/head&gt;
+<a href="#h0-0-203" id="h0-0-203" class="d">-
+</a> &lt;body&gt;
+     &lt;!-- Navbar --&gt;
+     &lt;header&gt;
+<a href="#h0-0-207" id="h0-0-207" class="d">-        &lt;h1 style=&quot;font-size: 1.5rem; font-weight: bold;&quot;&gt;🌓 My Laravel App&lt;/h1&gt;
+</a><a href="#h0-0-208" id="h0-0-208" class="d">-
+</a><a href="#h0-0-209" id="h0-0-209" class="d">-        &lt;!-- Nav Links --&gt;
+</a><a href="#h0-0-210" id="h0-0-210" class="d">-        &lt;nav&gt;
+</a><a href="#h0-0-211" id="h0-0-211" class="i">+        &lt;div class=&quot;logo-title&quot;&gt;
+</a><a href="#h0-0-212" id="h0-0-212" class="i">+            &lt;img src=&quot;images/logo.png&quot; alt=&quot;Logo&quot;&gt;
+</a><a href="#h0-0-213" id="h0-0-213" class="i">+            WhistleSecure
+</a><a href="#h0-0-214" id="h0-0-214" class="i">+        &lt;/div&gt;
+</a><a href="#h0-0-215" id="h0-0-215" class="i">+        &lt;nav class=&quot;navbar&quot;&gt;
+</a><a href="#h0-0-216" id="h0-0-216" class="i">+            &lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;
+</a><a href="#h0-0-217" id="h0-0-217" class="i">+            &lt;a href=&quot;#&quot;&gt;About&lt;/a&gt;
+</a><a href="#h0-0-218" id="h0-0-218" class="i">+            &lt;a href=&quot;#&quot;&gt;Contact&lt;/a&gt;
+</a>             @if (Route::has(&#39;login&#39;))
+                 @auth
+                     &lt;a href=&quot;{{ url(&#39;/dashboard&#39;) }}&quot;&gt;Dashboard&lt;/a&gt;
+<a href="#h0-1" id="h0-1" class="h">@@ -109,67 +180,98 @@
+</a>                     @endif
+                 @endauth
+             @endif
+<a href="#h0-1-3" id="h0-1-3" class="d">-
+</a><a href="#h0-1-4" id="h0-1-4" class="d">-            &lt;!-- Dark/Light Mode Toggle Button --&gt;
+</a><a href="#h0-1-5" id="h0-1-5" class="d">-            &lt;button id=&quot;theme-toggle&quot;&gt;🌙&lt;/button&gt;
+</a>         &lt;/nav&gt;
+<a href="#h0-1-7" id="h0-1-7" class="i">+        &lt;button id=&quot;theme-toggle&quot;&gt;🌙&lt;/button&gt;
+</a>     &lt;/header&gt;
+ 
+     &lt;!-- Main Content --&gt;
+     &lt;main&gt;
+<a href="#h0-1-12" id="h0-1-12" class="d">-        &lt;h2 style=&quot;font-size: 2rem; font-weight: bold; margin-bottom: 1rem;&quot;&gt;
+</a><a href="#h0-1-13" id="h0-1-13" class="d">-            Welcome to Your Laravel App 🌌
+</a><a href="#h0-1-14" id="h0-1-14" class="d">-        &lt;/h2&gt;
+</a><a href="#h0-1-15" id="h0-1-15" class="d">-        &lt;p style=&quot;font-size: 1rem; max-width: 40rem; margin: 0 auto;&quot;&gt;
+</a><a href="#h0-1-16" id="h0-1-16" class="d">-            This is a simple and elegant starting point for your next big thing.
+</a><a href="#h0-1-17" id="h0-1-17" class="d">-        &lt;/p&gt;
+</a><a href="#h0-1-18" id="h0-1-18" class="i">+        &lt;div class=&quot;main-text&quot;&gt;
+</a><a href="#h0-1-19" id="h0-1-19" class="i">+            &lt;h2&gt;Welcome to WhistleSecure 🛡️&lt;/h2&gt;
+</a><a href="#h0-1-20" id="h0-1-20" class="i">+            &lt;p&gt;A secure and confidential platform for reporting misconduct anonymously.&lt;/p&gt;
+</a><a href="#h0-1-21" id="h0-1-21" class="i">+        &lt;/div&gt;
+</a><a href="#h0-1-22" id="h0-1-22" class="i">+        &lt;div class=&quot;image-box&quot;&gt;
+</a><a href="#h0-1-23" id="h0-1-23" class="i">+            &lt;img src=&quot;images/logo.png&quot; alt=&quot;Image Box&quot;&gt;
+</a><a href="#h0-1-24" id="h0-1-24" class="i">+        &lt;/div&gt;
+</a>     &lt;/main&gt;
+ 
+<a href="#h0-1-27" id="h0-1-27" class="d">-    &lt;!-- Footer --&gt;
+</a>     &lt;footer&gt;
+<a href="#h0-1-29" id="h0-1-29" class="d">-        &amp;copy; {{ date(&#39;Y&#39;) }} Fauzy&#39;s Project. All rights reserved.
+</a><a href="#h0-1-30" id="h0-1-30" class="i">+        &amp;copy; {{ date(&#39;Y&#39;) }} WhistleSecure. All rights reserved.
+</a>     &lt;/footer&gt;
+ 
+<a href="#h0-1-33" id="h0-1-33" class="d">-    &lt;!-- JavaScript untuk Toggle Dark Mode --&gt;
+</a><a href="#h0-1-34" id="h0-1-34" class="i">+    &lt;!-- Pop-Up Elemen --&gt;
+</a><a href="#h0-1-35" id="h0-1-35" class="i">+    &lt;div id=&quot;popup&quot;&gt;&lt;/div&gt;
+</a><a href="#h0-1-36" id="h0-1-36" class="i">+
+</a><a href="#h0-1-37" id="h0-1-37" class="i">+    &lt;!-- Audio Element --&gt;
+</a><a href="#h0-1-38" id="h0-1-38" class="i">+    &lt;audio id=&quot;dark-mode-sound&quot; src=&quot;sounds/dark-mode.mp3&quot;&gt;&lt;/audio&gt;
+</a><a href="#h0-1-39" id="h0-1-39" class="i">+    &lt;audio id=&quot;light-mode-sound&quot; src=&quot;sounds/light-mode.mp3&quot;&gt;&lt;/audio&gt;
+</a><a href="#h0-1-40" id="h0-1-40" class="i">+
+</a>     &lt;script&gt;
+         const toggleBtn = document.getElementById(&#39;theme-toggle&#39;);
+         const body = document.body;
+<a href="#h0-1-44" id="h0-1-44" class="i">+        const popup = document.getElementById(&#39;popup&#39;);
+</a><a href="#h0-1-45" id="h0-1-45" class="i">+        const header = document.querySelector(&#39;header&#39;);
+</a><a href="#h0-1-46" id="h0-1-46" class="i">+        const navbar = document.querySelector(&#39;nav.navbar&#39;);
+</a><a href="#h0-1-47" id="h0-1-47" class="i">+
+</a><a href="#h0-1-48" id="h0-1-48" class="i">+        // Audio elements
+</a><a href="#h0-1-49" id="h0-1-49" class="i">+        const darkModeSound = document.getElementById(&#39;dark-mode-sound&#39;);
+</a><a href="#h0-1-50" id="h0-1-50" class="i">+        const lightModeSound = document.getElementById(&#39;light-mode-sound&#39;);
+</a> 
+         function setTheme(theme) {
+             if (theme === &#39;dark&#39;) {
+                 body.classList.remove(&#39;light-mode&#39;);
+<a href="#h0-1-55" id="h0-1-55" class="i">+                header.classList.remove(&#39;light-mode&#39;);
+</a><a href="#h0-1-56" id="h0-1-56" class="i">+                navbar.classList.remove(&#39;light-mode&#39;);
+</a><a href="#h0-1-57" id="h0-1-57" class="i">+                toggleBtn.textContent = &#39;🌙&#39;;
+</a>                 localStorage.setItem(&#39;theme&#39;, &#39;dark&#39;);
+<a href="#h0-1-59" id="h0-1-59" class="d">-                toggleBtn.innerHTML = &#39;🌙&#39;; // Emoji dark mode
+</a><a href="#h0-1-60" id="h0-1-60" class="i">+                showPopup(&quot;Selamat datang di kegelapan&quot;);
+</a><a href="#h0-1-61" id="h0-1-61" class="i">+                playSound(darkModeSound); // Mainkan suara dark mode
+</a>             } else {
+                 body.classList.add(&#39;light-mode&#39;);
+<a href="#h0-1-64" id="h0-1-64" class="i">+                header.classList.add(&#39;light-mode&#39;);
+</a><a href="#h0-1-65" id="h0-1-65" class="i">+                navbar.classList.add(&#39;light-mode&#39;);
+</a><a href="#h0-1-66" id="h0-1-66" class="i">+                toggleBtn.textContent = &#39;🌞&#39;;
+</a>                 localStorage.setItem(&#39;theme&#39;, &#39;light&#39;);
+<a href="#h0-1-68" id="h0-1-68" class="d">-                toggleBtn.innerHTML = &#39;🌞&#39;; // Emoji light mode
+</a><a href="#h0-1-69" id="h0-1-69" class="i">+                showPopup(&quot;Selamat datang di pencerahan&quot;);
+</a><a href="#h0-1-70" id="h0-1-70" class="i">+                playSound(lightModeSound); // Mainkan suara light mode
+</a>             }
+         }
+ 
+<a href="#h0-1-74" id="h0-1-74" class="d">-        // Cek tema saat halaman dimuat
+</a><a href="#h0-1-75" id="h0-1-75" class="i">+        // Fungsi untuk menampilkan pop-up
+</a><a href="#h0-1-76" id="h0-1-76" class="i">+        function showPopup(message) {
+</a><a href="#h0-1-77" id="h0-1-77" class="i">+            popup.textContent = message;
+</a><a href="#h0-1-78" id="h0-1-78" class="i">+            popup.classList.add(&#39;visible&#39;);
+</a><a href="#h0-1-79" id="h0-1-79" class="i">+
+</a><a href="#h0-1-80" id="h0-1-80" class="i">+            // Hilangkan pop-up setelah 2 detik
+</a><a href="#h0-1-81" id="h0-1-81" class="i">+            setTimeout(() =&gt; {
+</a><a href="#h0-1-82" id="h0-1-82" class="i">+                popup.classList.remove(&#39;visible&#39;);
+</a><a href="#h0-1-83" id="h0-1-83" class="i">+                popup.classList.add(&#39;hidden&#39;);
+</a><a href="#h0-1-84" id="h0-1-84" class="i">+                setTimeout(() =&gt; {
+</a><a href="#h0-1-85" id="h0-1-85" class="i">+                    popup.classList.remove(&#39;hidden&#39;);
+</a><a href="#h0-1-86" id="h0-1-86" class="i">+                }, 500); // Sinkronkan dengan durasi transisi
+</a><a href="#h0-1-87" id="h0-1-87" class="i">+            }, 2000);
+</a><a href="#h0-1-88" id="h0-1-88" class="i">+        }
+</a><a href="#h0-1-89" id="h0-1-89" class="i">+
+</a><a href="#h0-1-90" id="h0-1-90" class="i">+        // Fungsi untuk memainkan suara
+</a><a href="#h0-1-91" id="h0-1-91" class="i">+        function playSound(audioElement) {
+</a><a href="#h0-1-92" id="h0-1-92" class="i">+            audioElement.currentTime = 0; // Mulai ulang suara jika sudah dimainkan
+</a><a href="#h0-1-93" id="h0-1-93" class="i">+            audioElement.play();
+</a><a href="#h0-1-94" id="h0-1-94" class="i">+        }
+</a><a href="#h0-1-95" id="h0-1-95" class="i">+
+</a>         window.addEventListener(&#39;DOMContentLoaded&#39;, () =&gt; {
+             const savedTheme = localStorage.getItem(&#39;theme&#39;);
+<a href="#h0-1-98" id="h0-1-98" class="d">-
+</a>             if (savedTheme === &#39;dark&#39;) {
+                 setTheme(&#39;dark&#39;);
+             } else if (savedTheme === &#39;light&#39;) {
+                 setTheme(&#39;light&#39;);
+             } else {
+<a href="#h0-1-104" id="h0-1-104" class="d">-                // Jika belum ada preferensi, gunakan preferensi sistem
+</a><a href="#h0-1-105" id="h0-1-105" class="d">-                if (window.matchMedia &amp;&amp; window.matchMedia(&#39;(prefers-color-scheme: dark)&#39;).matches) {
+</a><a href="#h0-1-106" id="h0-1-106" class="d">-                    setTheme(&#39;dark&#39;);
+</a><a href="#h0-1-107" id="h0-1-107" class="d">-                } else {
+</a><a href="#h0-1-108" id="h0-1-108" class="d">-                    setTheme(&#39;light&#39;);
+</a><a href="#h0-1-109" id="h0-1-109" class="d">-                }
+</a><a href="#h0-1-110" id="h0-1-110" class="i">+                setTheme(window.matchMedia(&#39;(prefers-color-scheme: dark)&#39;).matches ? &#39;dark&#39; : &#39;light&#39;);
+</a>             }
+         });
+ 
+<a href="#h0-1-114" id="h0-1-114" class="d">-        // Event listener untuk tombol toggle
+</a>         toggleBtn.addEventListener(&#39;click&#39;, () =&gt; {
+<a href="#h0-1-116" id="h0-1-116" class="d">-            const currentTheme = body.classList.contains(&#39;light-mode&#39;) ? &#39;light&#39; : &#39;dark&#39;;
+</a><a href="#h0-1-117" id="h0-1-117" class="d">-            const newTheme = currentTheme === &#39;dark&#39; ? &#39;light&#39; : &#39;dark&#39;;
+</a><a href="#h0-1-118" id="h0-1-118" class="d">-            setTheme(newTheme);
+</a><a href="#h0-1-119" id="h0-1-119" class="i">+            const isLight = body.classList.contains(&#39;light-mode&#39;);
+</a><a href="#h0-1-120" id="h0-1-120" class="i">+            setTheme(isLight ? &#39;dark&#39; : &#39;light&#39;);
+</a>         });
+     &lt;/script&gt;
+ &lt;/body&gt;
+<b>diff --git a/<a id="h1" href="../file/routes/web.php.html">routes/web.php</a> b/<a href="../file/routes/web.php.html">routes/web.php</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -8,7 +8,7 @@ use App\Http\Controllers\AdminController;
+</a> // 127.0.0.1:8000/ aja
+ Route::get(&#39;/&#39;, function () {
+     return view(&#39;welcome&#39;);
+<a href="#h1-0-3" id="h1-0-3" class="d">-;
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+});
+</a> 
+ Route::get(&#39;/dashboard&#39;, function () {
+     return view(&#39;dashboard&#39;);
+</pre>
+</div>
+</body>
+</html>

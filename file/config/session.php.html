@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>session.php - whistleblower - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed" href="../../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed (tags)" href="../../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><h1>whistleblower</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a> | <a href="../../file/README.md.html">README</a> | <a href="../../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<p> session.php (7858B)</p><hr/><pre id="blob">
+<a href="#l1" class="line" id="l1">      1</a> &lt;?php
+<a href="#l2" class="line" id="l2">      2</a> 
+<a href="#l3" class="line" id="l3">      3</a> use Illuminate\Support\Str;
+<a href="#l4" class="line" id="l4">      4</a> 
+<a href="#l5" class="line" id="l5">      5</a> return [
+<a href="#l6" class="line" id="l6">      6</a> 
+<a href="#l7" class="line" id="l7">      7</a>     /*
+<a href="#l8" class="line" id="l8">      8</a>     |--------------------------------------------------------------------------
+<a href="#l9" class="line" id="l9">      9</a>     | Default Session Driver
+<a href="#l10" class="line" id="l10">     10</a>     |--------------------------------------------------------------------------
+<a href="#l11" class="line" id="l11">     11</a>     |
+<a href="#l12" class="line" id="l12">     12</a>     | This option determines the default session driver that is utilized for
+<a href="#l13" class="line" id="l13">     13</a>     | incoming requests. Laravel supports a variety of storage options to
+<a href="#l14" class="line" id="l14">     14</a>     | persist session data. Database storage is a great default choice.
+<a href="#l15" class="line" id="l15">     15</a>     |
+<a href="#l16" class="line" id="l16">     16</a>     | Supported: &quot;file&quot;, &quot;cookie&quot;, &quot;database&quot;, &quot;apc&quot;,
+<a href="#l17" class="line" id="l17">     17</a>     |            &quot;memcached&quot;, &quot;redis&quot;, &quot;dynamodb&quot;, &quot;array&quot;
+<a href="#l18" class="line" id="l18">     18</a>     |
+<a href="#l19" class="line" id="l19">     19</a>     */
+<a href="#l20" class="line" id="l20">     20</a> 
+<a href="#l21" class="line" id="l21">     21</a>     &#39;driver&#39; =&gt; env(&#39;SESSION_DRIVER&#39;, &#39;database&#39;),
+<a href="#l22" class="line" id="l22">     22</a> 
+<a href="#l23" class="line" id="l23">     23</a>     /*
+<a href="#l24" class="line" id="l24">     24</a>     |--------------------------------------------------------------------------
+<a href="#l25" class="line" id="l25">     25</a>     | Session Lifetime
+<a href="#l26" class="line" id="l26">     26</a>     |--------------------------------------------------------------------------
+<a href="#l27" class="line" id="l27">     27</a>     |
+<a href="#l28" class="line" id="l28">     28</a>     | Here you may specify the number of minutes that you wish the session
+<a href="#l29" class="line" id="l29">     29</a>     | to be allowed to remain idle before it expires. If you want them
+<a href="#l30" class="line" id="l30">     30</a>     | to expire immediately when the browser is closed then you may
+<a href="#l31" class="line" id="l31">     31</a>     | indicate that via the expire_on_close configuration option.
+<a href="#l32" class="line" id="l32">     32</a>     |
+<a href="#l33" class="line" id="l33">     33</a>     */
+<a href="#l34" class="line" id="l34">     34</a> 
+<a href="#l35" class="line" id="l35">     35</a>     &#39;lifetime&#39; =&gt; (int) env(&#39;SESSION_LIFETIME&#39;, 120),
+<a href="#l36" class="line" id="l36">     36</a> 
+<a href="#l37" class="line" id="l37">     37</a>     &#39;expire_on_close&#39; =&gt; env(&#39;SESSION_EXPIRE_ON_CLOSE&#39;, false),
+<a href="#l38" class="line" id="l38">     38</a> 
+<a href="#l39" class="line" id="l39">     39</a>     /*
+<a href="#l40" class="line" id="l40">     40</a>     |--------------------------------------------------------------------------
+<a href="#l41" class="line" id="l41">     41</a>     | Session Encryption
+<a href="#l42" class="line" id="l42">     42</a>     |--------------------------------------------------------------------------
+<a href="#l43" class="line" id="l43">     43</a>     |
+<a href="#l44" class="line" id="l44">     44</a>     | This option allows you to easily specify that all of your session data
+<a href="#l45" class="line" id="l45">     45</a>     | should be encrypted before it&#39;s stored. All encryption is performed
+<a href="#l46" class="line" id="l46">     46</a>     | automatically by Laravel and you may use the session like normal.
+<a href="#l47" class="line" id="l47">     47</a>     |
+<a href="#l48" class="line" id="l48">     48</a>     */
+<a href="#l49" class="line" id="l49">     49</a> 
+<a href="#l50" class="line" id="l50">     50</a>     &#39;encrypt&#39; =&gt; env(&#39;SESSION_ENCRYPT&#39;, false),
+<a href="#l51" class="line" id="l51">     51</a> 
+<a href="#l52" class="line" id="l52">     52</a>     /*
+<a href="#l53" class="line" id="l53">     53</a>     |--------------------------------------------------------------------------
+<a href="#l54" class="line" id="l54">     54</a>     | Session File Location
+<a href="#l55" class="line" id="l55">     55</a>     |--------------------------------------------------------------------------
+<a href="#l56" class="line" id="l56">     56</a>     |
+<a href="#l57" class="line" id="l57">     57</a>     | When utilizing the &quot;file&quot; session driver, the session files are placed
+<a href="#l58" class="line" id="l58">     58</a>     | on disk. The default storage location is defined here; however, you
+<a href="#l59" class="line" id="l59">     59</a>     | are free to provide another location where they should be stored.
+<a href="#l60" class="line" id="l60">     60</a>     |
+<a href="#l61" class="line" id="l61">     61</a>     */
+<a href="#l62" class="line" id="l62">     62</a> 
+<a href="#l63" class="line" id="l63">     63</a>     &#39;files&#39; =&gt; storage_path(&#39;framework/sessions&#39;),
+<a href="#l64" class="line" id="l64">     64</a> 
+<a href="#l65" class="line" id="l65">     65</a>     /*
+<a href="#l66" class="line" id="l66">     66</a>     |--------------------------------------------------------------------------
+<a href="#l67" class="line" id="l67">     67</a>     | Session Database Connection
+<a href="#l68" class="line" id="l68">     68</a>     |--------------------------------------------------------------------------
+<a href="#l69" class="line" id="l69">     69</a>     |
+<a href="#l70" class="line" id="l70">     70</a>     | When using the &quot;database&quot; or &quot;redis&quot; session drivers, you may specify a
+<a href="#l71" class="line" id="l71">     71</a>     | connection that should be used to manage these sessions. This should
+<a href="#l72" class="line" id="l72">     72</a>     | correspond to a connection in your database configuration options.
+<a href="#l73" class="line" id="l73">     73</a>     |
+<a href="#l74" class="line" id="l74">     74</a>     */
+<a href="#l75" class="line" id="l75">     75</a> 
+<a href="#l76" class="line" id="l76">     76</a>     &#39;connection&#39; =&gt; env(&#39;SESSION_CONNECTION&#39;),
+<a href="#l77" class="line" id="l77">     77</a> 
+<a href="#l78" class="line" id="l78">     78</a>     /*
+<a href="#l79" class="line" id="l79">     79</a>     |--------------------------------------------------------------------------
+<a href="#l80" class="line" id="l80">     80</a>     | Session Database Table
+<a href="#l81" class="line" id="l81">     81</a>     |--------------------------------------------------------------------------
+<a href="#l82" class="line" id="l82">     82</a>     |
+<a href="#l83" class="line" id="l83">     83</a>     | When using the &quot;database&quot; session driver, you may specify the table to
+<a href="#l84" class="line" id="l84">     84</a>     | be used to store sessions. Of course, a sensible default is defined
+<a href="#l85" class="line" id="l85">     85</a>     | for you; however, you&#39;re welcome to change this to another table.
+<a href="#l86" class="line" id="l86">     86</a>     |
+<a href="#l87" class="line" id="l87">     87</a>     */
+<a href="#l88" class="line" id="l88">     88</a> 
+<a href="#l89" class="line" id="l89">     89</a>     &#39;table&#39; =&gt; env(&#39;SESSION_TABLE&#39;, &#39;sessions&#39;),
+<a href="#l90" class="line" id="l90">     90</a> 
+<a href="#l91" class="line" id="l91">     91</a>     /*
+<a href="#l92" class="line" id="l92">     92</a>     |--------------------------------------------------------------------------
+<a href="#l93" class="line" id="l93">     93</a>     | Session Cache Store
+<a href="#l94" class="line" id="l94">     94</a>     |--------------------------------------------------------------------------
+<a href="#l95" class="line" id="l95">     95</a>     |
+<a href="#l96" class="line" id="l96">     96</a>     | When using one of the framework&#39;s cache driven session backends, you may
+<a href="#l97" class="line" id="l97">     97</a>     | define the cache store which should be used to store the session data
+<a href="#l98" class="line" id="l98">     98</a>     | between requests. This must match one of your defined cache stores.
+<a href="#l99" class="line" id="l99">     99</a>     |
+<a href="#l100" class="line" id="l100">    100</a>     | Affects: &quot;apc&quot;, &quot;dynamodb&quot;, &quot;memcached&quot;, &quot;redis&quot;
+<a href="#l101" class="line" id="l101">    101</a>     |
+<a href="#l102" class="line" id="l102">    102</a>     */
+<a href="#l103" class="line" id="l103">    103</a> 
+<a href="#l104" class="line" id="l104">    104</a>     &#39;store&#39; =&gt; env(&#39;SESSION_STORE&#39;),
+<a href="#l105" class="line" id="l105">    105</a> 
+<a href="#l106" class="line" id="l106">    106</a>     /*
+<a href="#l107" class="line" id="l107">    107</a>     |--------------------------------------------------------------------------
+<a href="#l108" class="line" id="l108">    108</a>     | Session Sweeping Lottery
+<a href="#l109" class="line" id="l109">    109</a>     |--------------------------------------------------------------------------
+<a href="#l110" class="line" id="l110">    110</a>     |
+<a href="#l111" class="line" id="l111">    111</a>     | Some session drivers must manually sweep their storage location to get
+<a href="#l112" class="line" id="l112">    112</a>     | rid of old sessions from storage. Here are the chances that it will
+<a href="#l113" class="line" id="l113">    113</a>     | happen on a given request. By default, the odds are 2 out of 100.
+<a href="#l114" class="line" id="l114">    114</a>     |
+<a href="#l115" class="line" id="l115">    115</a>     */
+<a href="#l116" class="line" id="l116">    116</a> 
+<a href="#l117" class="line" id="l117">    117</a>     &#39;lottery&#39; =&gt; [2, 100],
+<a href="#l118" class="line" id="l118">    118</a> 
+<a href="#l119" class="line" id="l119">    119</a>     /*
+<a href="#l120" class="line" id="l120">    120</a>     |--------------------------------------------------------------------------
+<a href="#l121" class="line" id="l121">    121</a>     | Session Cookie Name
+<a href="#l122" class="line" id="l122">    122</a>     |--------------------------------------------------------------------------
+<a href="#l123" class="line" id="l123">    123</a>     |
+<a href="#l124" class="line" id="l124">    124</a>     | Here you may change the name of the session cookie that is created by
+<a href="#l125" class="line" id="l125">    125</a>     | the framework. Typically, you should not need to change this value
+<a href="#l126" class="line" id="l126">    126</a>     | since doing so does not grant a meaningful security improvement.
+<a href="#l127" class="line" id="l127">    127</a>     |
+<a href="#l128" class="line" id="l128">    128</a>     */
+<a href="#l129" class="line" id="l129">    129</a> 
+<a href="#l130" class="line" id="l130">    130</a>     &#39;cookie&#39; =&gt; env(
+<a href="#l131" class="line" id="l131">    131</a>         &#39;SESSION_COOKIE&#39;,
+<a href="#l132" class="line" id="l132">    132</a>         Str::slug(env(&#39;APP_NAME&#39;, &#39;laravel&#39;), &#39;_&#39;).&#39;_session&#39;
+<a href="#l133" class="line" id="l133">    133</a>     ),
+<a href="#l134" class="line" id="l134">    134</a> 
+<a href="#l135" class="line" id="l135">    135</a>     /*
+<a href="#l136" class="line" id="l136">    136</a>     |--------------------------------------------------------------------------
+<a href="#l137" class="line" id="l137">    137</a>     | Session Cookie Path
+<a href="#l138" class="line" id="l138">    138</a>     |--------------------------------------------------------------------------
+<a href="#l139" class="line" id="l139">    139</a>     |
+<a href="#l140" class="line" id="l140">    140</a>     | The session cookie path determines the path for which the cookie will
+<a href="#l141" class="line" id="l141">    141</a>     | be regarded as available. Typically, this will be the root path of
+<a href="#l142" class="line" id="l142">    142</a>     | your application, but you&#39;re free to change this when necessary.
+<a href="#l143" class="line" id="l143">    143</a>     |
+<a href="#l144" class="line" id="l144">    144</a>     */
+<a href="#l145" class="line" id="l145">    145</a> 
+<a href="#l146" class="line" id="l146">    146</a>     &#39;path&#39; =&gt; env(&#39;SESSION_PATH&#39;, &#39;/&#39;),
+<a href="#l147" class="line" id="l147">    147</a> 
+<a href="#l148" class="line" id="l148">    148</a>     /*
+<a href="#l149" class="line" id="l149">    149</a>     |--------------------------------------------------------------------------
+<a href="#l150" class="line" id="l150">    150</a>     | Session Cookie Domain
+<a href="#l151" class="line" id="l151">    151</a>     |--------------------------------------------------------------------------
+<a href="#l152" class="line" id="l152">    152</a>     |
+<a href="#l153" class="line" id="l153">    153</a>     | This value determines the domain and subdomains the session cookie is
+<a href="#l154" class="line" id="l154">    154</a>     | available to. By default, the cookie will be available to the root
+<a href="#l155" class="line" id="l155">    155</a>     | domain and all subdomains. Typically, this shouldn&#39;t be changed.
+<a href="#l156" class="line" id="l156">    156</a>     |
+<a href="#l157" class="line" id="l157">    157</a>     */
+<a href="#l158" class="line" id="l158">    158</a> 
+<a href="#l159" class="line" id="l159">    159</a>     &#39;domain&#39; =&gt; env(&#39;SESSION_DOMAIN&#39;),
+<a href="#l160" class="line" id="l160">    160</a> 
+<a href="#l161" class="line" id="l161">    161</a>     /*
+<a href="#l162" class="line" id="l162">    162</a>     |--------------------------------------------------------------------------
+<a href="#l163" class="line" id="l163">    163</a>     | HTTPS Only Cookies
+<a href="#l164" class="line" id="l164">    164</a>     |--------------------------------------------------------------------------
+<a href="#l165" class="line" id="l165">    165</a>     |
+<a href="#l166" class="line" id="l166">    166</a>     | By setting this option to true, session cookies will only be sent back
+<a href="#l167" class="line" id="l167">    167</a>     | to the server if the browser has a HTTPS connection. This will keep
+<a href="#l168" class="line" id="l168">    168</a>     | the cookie from being sent to you when it can&#39;t be done securely.
+<a href="#l169" class="line" id="l169">    169</a>     |
+<a href="#l170" class="line" id="l170">    170</a>     */
+<a href="#l171" class="line" id="l171">    171</a> 
+<a href="#l172" class="line" id="l172">    172</a>     &#39;secure&#39; =&gt; env(&#39;SESSION_SECURE_COOKIE&#39;),
+<a href="#l173" class="line" id="l173">    173</a> 
+<a href="#l174" class="line" id="l174">    174</a>     /*
+<a href="#l175" class="line" id="l175">    175</a>     |--------------------------------------------------------------------------
+<a href="#l176" class="line" id="l176">    176</a>     | HTTP Access Only
+<a href="#l177" class="line" id="l177">    177</a>     |--------------------------------------------------------------------------
+<a href="#l178" class="line" id="l178">    178</a>     |
+<a href="#l179" class="line" id="l179">    179</a>     | Setting this value to true will prevent JavaScript from accessing the
+<a href="#l180" class="line" id="l180">    180</a>     | value of the cookie and the cookie will only be accessible through
+<a href="#l181" class="line" id="l181">    181</a>     | the HTTP protocol. It&#39;s unlikely you should disable this option.
+<a href="#l182" class="line" id="l182">    182</a>     |
+<a href="#l183" class="line" id="l183">    183</a>     */
+<a href="#l184" class="line" id="l184">    184</a> 
+<a href="#l185" class="line" id="l185">    185</a>     &#39;http_only&#39; =&gt; env(&#39;SESSION_HTTP_ONLY&#39;, true),
+<a href="#l186" class="line" id="l186">    186</a> 
+<a href="#l187" class="line" id="l187">    187</a>     /*
+<a href="#l188" class="line" id="l188">    188</a>     |--------------------------------------------------------------------------
+<a href="#l189" class="line" id="l189">    189</a>     | Same-Site Cookies
+<a href="#l190" class="line" id="l190">    190</a>     |--------------------------------------------------------------------------
+<a href="#l191" class="line" id="l191">    191</a>     |
+<a href="#l192" class="line" id="l192">    192</a>     | This option determines how your cookies behave when cross-site requests
+<a href="#l193" class="line" id="l193">    193</a>     | take place, and can be used to mitigate CSRF attacks. By default, we
+<a href="#l194" class="line" id="l194">    194</a>     | will set this value to &quot;lax&quot; to permit secure cross-site requests.
+<a href="#l195" class="line" id="l195">    195</a>     |
+<a href="#l196" class="line" id="l196">    196</a>     | See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#samesitesamesite-value
+<a href="#l197" class="line" id="l197">    197</a>     |
+<a href="#l198" class="line" id="l198">    198</a>     | Supported: &quot;lax&quot;, &quot;strict&quot;, &quot;none&quot;, null
+<a href="#l199" class="line" id="l199">    199</a>     |
+<a href="#l200" class="line" id="l200">    200</a>     */
+<a href="#l201" class="line" id="l201">    201</a> 
+<a href="#l202" class="line" id="l202">    202</a>     &#39;same_site&#39; =&gt; env(&#39;SESSION_SAME_SITE&#39;, &#39;lax&#39;),
+<a href="#l203" class="line" id="l203">    203</a> 
+<a href="#l204" class="line" id="l204">    204</a>     /*
+<a href="#l205" class="line" id="l205">    205</a>     |--------------------------------------------------------------------------
+<a href="#l206" class="line" id="l206">    206</a>     | Partitioned Cookies
+<a href="#l207" class="line" id="l207">    207</a>     |--------------------------------------------------------------------------
+<a href="#l208" class="line" id="l208">    208</a>     |
+<a href="#l209" class="line" id="l209">    209</a>     | Setting this value to true will tie the cookie to the top-level site for
+<a href="#l210" class="line" id="l210">    210</a>     | a cross-site context. Partitioned cookies are accepted by the browser
+<a href="#l211" class="line" id="l211">    211</a>     | when flagged &quot;secure&quot; and the Same-Site attribute is set to &quot;none&quot;.
+<a href="#l212" class="line" id="l212">    212</a>     |
+<a href="#l213" class="line" id="l213">    213</a>     */
+<a href="#l214" class="line" id="l214">    214</a> 
+<a href="#l215" class="line" id="l215">    215</a>     &#39;partitioned&#39; =&gt; env(&#39;SESSION_PARTITIONED_COOKIE&#39;, false),
+<a href="#l216" class="line" id="l216">    216</a> 
+<a href="#l217" class="line" id="l217">    217</a> ];
+</pre>
+</div>
+</body>
+</html>

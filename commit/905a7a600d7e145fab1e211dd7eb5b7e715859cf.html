@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>fix auth in login with username - whistleblower - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>whistleblower</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/905a7a600d7e145fab1e211dd7eb5b7e715859cf.html">905a7a600d7e145fab1e211dd7eb5b7e715859cf</a>
+<b>parent</b> <a href="../commit/2ef89b1ce58ee5659a1ebef1d734993f931bfe66.html">2ef89b1ce58ee5659a1ebef1d734993f931bfe66</a>
+<b>Author:</b> fauzymadani &lt;<a href="mailto:keperluansekolahfauzy@gmail.com">keperluansekolahfauzy@gmail.com</a>&gt;
+<b>Date:</b>   Thu, 10 Apr 2025 21:57:10 +0700
+
+fix auth in login with username
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">app/Http/Requests/Auth/LoginRequest.php</a></td><td> | </td><td class="num">13</td><td><span class="i">+++++</span><span class="d">--------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">resources/views/auth/login.blade.php</a></td><td> | </td><td class="num">6</td><td><span class="i">+++</span><span class="d">---</span></td></tr>
+</table></pre><pre>2 files changed, 8 insertions(+), 11 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/app/Http/Requests/Auth/LoginRequest.php.html">app/Http/Requests/Auth/LoginRequest.php</a> b/<a href="../file/app/Http/Requests/Auth/LoginRequest.php.html">app/Http/Requests/Auth/LoginRequest.php</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -27,7 +27,7 @@ class LoginRequest extends FormRequest
+</a>     public function rules(): array
+     {
+         return [
+<a href="#h0-0-3" id="h0-0-3" class="d">-            &#39;email&#39; =&gt; [&#39;required&#39;, &#39;string&#39;, &#39;email&#39;],
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+            &#39;username&#39; =&gt; [&#39;required&#39;, &#39;string&#39;],
+</a>             &#39;password&#39; =&gt; [&#39;required&#39;, &#39;string&#39;],
+         ];
+     }
+<a href="#h0-1" id="h0-1" class="h">@@ -39,19 +39,16 @@ class LoginRequest extends FormRequest
+</a>      */
+     public function authenticate(): void
+     {
+<a href="#h0-1-3" id="h0-1-3" class="d">-        $this-&gt;ensureIsNotRateLimited();
+</a><a href="#h0-1-4" id="h0-1-4" class="d">-
+</a><a href="#h0-1-5" id="h0-1-5" class="d">-        if (! Auth::attempt($this-&gt;only(&#39;email&#39;, &#39;password&#39;), $this-&gt;boolean(&#39;remember&#39;))) {
+</a><a href="#h0-1-6" id="h0-1-6" class="d">-            RateLimiter::hit($this-&gt;throttleKey());
+</a><a href="#h0-1-7" id="h0-1-7" class="d">-
+</a><a href="#h0-1-8" id="h0-1-8" class="i">+        if (! Auth::attempt($this-&gt;only(&#39;username&#39;, &#39;password&#39;), $this-&gt;boolean(&#39;remember&#39;))) {
+</a>             throw ValidationException::withMessages([
+<a href="#h0-1-10" id="h0-1-10" class="d">-                &#39;email&#39; =&gt; trans(&#39;auth.failed&#39;),
+</a><a href="#h0-1-11" id="h0-1-11" class="i">+                &#39;username&#39; =&gt; __(&#39;auth.failed&#39;),
+</a>             ]);
+         }
+ 
+         RateLimiter::clear($this-&gt;throttleKey());
+     }
+ 
+<a href="#h0-1-18" id="h0-1-18" class="i">+
+</a>     /**
+      * Ensure the login request is not rate limited.
+      *
+<a href="#h0-2" id="h0-2" class="h">@@ -80,6 +77,6 @@ class LoginRequest extends FormRequest
+</a>      */
+     public function throttleKey(): string
+     {
+<a href="#h0-2-3" id="h0-2-3" class="d">-        return Str::transliterate(Str::lower($this-&gt;string(&#39;email&#39;)).&#39;|&#39;.$this-&gt;ip());
+</a><a href="#h0-2-4" id="h0-2-4" class="i">+        return Str::transliterate(Str::lower($this-&gt;string(&#39;email&#39;)) . &#39;|&#39; . $this-&gt;ip());
+</a>     }
+ }
+<b>diff --git a/<a id="h1" href="../file/resources/views/auth/login.blade.php.html">resources/views/auth/login.blade.php</a> b/<a href="../file/resources/views/auth/login.blade.php.html">resources/views/auth/login.blade.php</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -7,9 +7,9 @@
+</a> 
+         &lt;!-- Email Address --&gt;
+         &lt;div&gt;
+<a href="#h1-0-3" id="h1-0-3" class="d">-            &lt;x-input-label for=&quot;email&quot; class=&quot;text-gray-700 dark:text-gray-300&quot; :value=&quot;__(&#39;Email&#39;)&quot; /&gt;
+</a><a href="#h1-0-4" id="h1-0-4" class="d">-            &lt;x-text-input id=&quot;email&quot; class=&quot;block mt-1 w-full bg-gray-100 dark:bg-[#2b2b2b] border border-gray-300 dark:border-[#555] text-gray-900 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-600&quot; type=&quot;email&quot; name=&quot;email&quot; :value=&quot;old(&#39;email&#39;)&quot; required autofocus autocomplete=&quot;username&quot; /&gt;
+</a><a href="#h1-0-5" id="h1-0-5" class="d">-            &lt;x-input-error :messages=&quot;$errors-&gt;get(&#39;email&#39;)&quot; class=&quot;mt-2 text-red-600 dark:text-red-400&quot; /&gt;
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+            &lt;x-input-label for=&quot;username&quot; class=&quot;text-gray-700 dark:text-gray-300&quot; :value=&quot;__(&#39;Username&#39;)&quot; /&gt;
+</a><a href="#h1-0-7" id="h1-0-7" class="i">+            &lt;x-text-input id=&quot;username&quot; class=&quot;block mt-1 w-full bg-gray-100 dark:bg-[#2b2b2b] border border-gray-300 dark:border-[#555] text-gray-900 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-600&quot; type=&quot;username&quot; name=&quot;username&quot; :value=&quot;old(&#39;username&#39;)&quot; required autofocus autocomplete=&quot;username&quot; /&gt;
+</a><a href="#h1-0-8" id="h1-0-8" class="i">+            &lt;x-input-error :messages=&quot;$errors-&gt;get(&#39;username&#39;)&quot; class=&quot;mt-2 text-red-600 dark:text-red-400&quot; /&gt;
+</a>         &lt;/div&gt;
+ 
+         &lt;!-- Password --&gt;
+</pre>
+</div>
+</body>
+</html>

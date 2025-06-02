@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Merge pull request #5 from andikagithub1/tampilan - whistleblower - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>whistleblower</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/1ce023484c99905460494088166d9dbc69a6afee.html">1ce023484c99905460494088166d9dbc69a6afee</a>
+<b>parent</b> <a href="../commit/2bb30e73274e35bb7ab2d2464aab3f0937aa7ed4.html">2bb30e73274e35bb7ab2d2464aab3f0937aa7ed4</a>
+<b>Author:</b> fauzymadani &lt;<a href="mailto:153879220+fauzymadani@users.noreply.github.com">153879220+fauzymadani@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Wed, 21 May 2025 11:47:33 +0700
+
+Merge pull request #5 from andikagithub1/tampilan
+
+Penambahan deskripsi
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">resources/views/welcome.blade.php</a></td><td> | </td><td class="num">68</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">------------</span></td></tr>
+</table></pre><pre>1 file changed, 56 insertions(+), 12 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/resources/views/welcome.blade.php.html">resources/views/welcome.blade.php</a> b/<a href="../file/resources/views/welcome.blade.php.html">resources/views/welcome.blade.php</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -224,9 +224,43 @@
+</a>         .image-box {
+             flex: 1;
+             display: flex;
+<a href="#h0-0-3" id="h0-0-3" class="i">+            flex-direction: column;
+</a>             justify-content: center;
+             align-items: center;
+             position: relative;
+<a href="#h0-0-7" id="h0-0-7" class="i">+            gap: 2rem;
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+        }
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+        .logo-description {
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+            background: rgba(55, 65, 81, 0.5);
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+            backdrop-filter: blur(10px);
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+            padding: 2rem;
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+            border-radius: 1rem;
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+            border: 1px solid rgba(255, 255, 255, 0.1);
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+            max-width: 500px;
+</a><a href="#h0-0-18" id="h0-0-18" class="i">+        }
+</a><a href="#h0-0-19" id="h0-0-19" class="i">+
+</a><a href="#h0-0-20" id="h0-0-20" class="i">+        .light-mode .logo-description {
+</a><a href="#h0-0-21" id="h0-0-21" class="i">+            background: rgba(243, 244, 246, 0.8);
+</a><a href="#h0-0-22" id="h0-0-22" class="i">+            border: 1px solid rgba(0, 0, 0, 0.1);
+</a><a href="#h0-0-23" id="h0-0-23" class="i">+        }
+</a><a href="#h0-0-24" id="h0-0-24" class="i">+
+</a><a href="#h0-0-25" id="h0-0-25" class="i">+        .logo-description h3 {
+</a><a href="#h0-0-26" id="h0-0-26" class="i">+            font-size: 1.5rem;
+</a><a href="#h0-0-27" id="h0-0-27" class="i">+            color: #3b82f6;
+</a><a href="#h0-0-28" id="h0-0-28" class="i">+            margin-bottom: 1rem;
+</a><a href="#h0-0-29" id="h0-0-29" class="i">+            font-weight: bold;
+</a><a href="#h0-0-30" id="h0-0-30" class="i">+        }
+</a><a href="#h0-0-31" id="h0-0-31" class="i">+
+</a><a href="#h0-0-32" id="h0-0-32" class="i">+        .logo-description p {
+</a><a href="#h0-0-33" id="h0-0-33" class="i">+            color: #9ca3af;
+</a><a href="#h0-0-34" id="h0-0-34" class="i">+            line-height: 1.6;
+</a><a href="#h0-0-35" id="h0-0-35" class="i">+            margin-bottom: 1rem;
+</a><a href="#h0-0-36" id="h0-0-36" class="i">+        }
+</a><a href="#h0-0-37" id="h0-0-37" class="i">+
+</a><a href="#h0-0-38" id="h0-0-38" class="i">+        .light-mode .logo-description p {
+</a><a href="#h0-0-39" id="h0-0-39" class="i">+            color: #4b5563;
+</a>         }
+ 
+         .hero-image {
+<a href="#h0-1" id="h0-1" class="h">@@ -318,7 +352,7 @@
+</a>     &lt;header&gt;
+         &lt;div class=&quot;logo-title&quot;&gt;
+             &lt;img src=&quot;images/logo.png&quot; alt=&quot;Logo&quot;&gt;
+<a href="#h0-1-3" id="h0-1-3" class="d">-            WhistleSecure
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+            WhistleBlower
+</a>         &lt;/div&gt;
+         &lt;nav class=&quot;navbar&quot;&gt;
+             &lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;
+<a href="#h0-2" id="h0-2" class="h">@@ -341,29 +375,34 @@
+</a>     &lt;!-- Main Content --&gt;
+     &lt;main&gt;
+         &lt;div class=&quot;main-text&quot;&gt;
+<a href="#h0-2-3" id="h0-2-3" class="d">-            &lt;h2&gt;Welcome to WhistleSecure 🛡️&lt;/h2&gt;
+</a><a href="#h0-2-4" id="h0-2-4" class="d">-            &lt;p class=&quot;tagline&quot;&gt;Empowering Truth, Protecting Integrity&lt;/p&gt;
+</a><a href="#h0-2-5" id="h0-2-5" class="i">+            &lt;h2&gt;Welcome to WhistleBlower 🛡️&lt;/h2&gt;
+</a><a href="#h0-2-6" id="h0-2-6" class="i">+            &lt;p class=&quot;tagline&quot;&gt;Memberdayakan Kebenaran, Melindungi Integritas.&lt;/p&gt;
+</a>             &lt;div class=&quot;description&quot;&gt;
+<a href="#h0-2-8" id="h0-2-8" class="d">-                &lt;p&gt;Your trusted platform for confidential reporting and organizational transparency.&lt;/p&gt;
+</a><a href="#h0-2-9" id="h0-2-9" class="i">+                &lt;p&gt;Platform terpercaya Anda untuk pelaporan rahasia dan transparansi organisasi.&lt;/p&gt;
+</a>                 &lt;div class=&quot;features&quot;&gt;
+                     &lt;div class=&quot;feature-card&quot;&gt;
+                         &lt;span class=&quot;feature-icon&quot;&gt;🔒&lt;/span&gt;
+<a href="#h0-2-13" id="h0-2-13" class="d">-                        &lt;h3&gt;Guaranteed Anonymity&lt;/h3&gt;
+</a><a href="#h0-2-14" id="h0-2-14" class="d">-                        &lt;p&gt;State-of-the-art encryption ensuring your identity remains protected&lt;/p&gt;
+</a><a href="#h0-2-15" id="h0-2-15" class="i">+                        &lt;h3&gt;Dijamin Anonimitas&lt;/h3&gt;
+</a><a href="#h0-2-16" id="h0-2-16" class="i">+                        &lt;p&gt;Enkripsi canggih memastikan identitas anda tetap terlindungi&lt;/p&gt;
+</a>                     &lt;/div&gt;
+                     &lt;div class=&quot;feature-card&quot;&gt;
+                         &lt;span class=&quot;feature-icon&quot;&gt;⚖️&lt;/span&gt;
+<a href="#h0-2-20" id="h0-2-20" class="d">-                        &lt;h3&gt;Ethical Reporting&lt;/h3&gt;
+</a><a href="#h0-2-21" id="h0-2-21" class="d">-                        &lt;p&gt;Support transparency and accountability in your organization&lt;/p&gt;
+</a><a href="#h0-2-22" id="h0-2-22" class="i">+                        &lt;h3&gt;Pelaporan Etis&lt;/h3&gt;
+</a><a href="#h0-2-23" id="h0-2-23" class="i">+                        &lt;p&gt;Dukung transparansi dan akuntabilitas di organisasi anda&lt;/p&gt;
+</a>                     &lt;/div&gt;
+                     &lt;div class=&quot;feature-card&quot;&gt;
+                         &lt;span class=&quot;feature-icon&quot;&gt;🔍&lt;/span&gt;
+<a href="#h0-2-27" id="h0-2-27" class="d">-                        &lt;h3&gt;Secure Investigation&lt;/h3&gt;
+</a><a href="#h0-2-28" id="h0-2-28" class="d">-                        &lt;p&gt;Professional handling of reports with complete confidentiality&lt;/p&gt;
+</a><a href="#h0-2-29" id="h0-2-29" class="i">+                        &lt;h3&gt;Investigasi yang Aman&lt;/h3&gt;
+</a><a href="#h0-2-30" id="h0-2-30" class="i">+                        &lt;p&gt;Penanganan laporan secara profesional dengan kerahasiaan yang lengkap&lt;/p&gt;
+</a><a href="#h0-2-31" id="h0-2-31" class="i">+                    &lt;/div&gt;
+</a><a href="#h0-2-32" id="h0-2-32" class="i">+                    &lt;div class=&quot;feature-card&quot;&gt;
+</a><a href="#h0-2-33" id="h0-2-33" class="i">+                        &lt;span class=&quot;feature-icon&quot;&gt;📊&lt;/span&gt;
+</a><a href="#h0-2-34" id="h0-2-34" class="i">+                        &lt;h3&gt;Tracking Progress&lt;/h3&gt;
+</a><a href="#h0-2-35" id="h0-2-35" class="i">+                        &lt;p&gt;Pantau status dan perkembangan laporan Anda secara real-time&lt;/p&gt;
+</a>                     &lt;/div&gt;
+                 &lt;/div&gt;
+                 &lt;div class=&quot;cta-section&quot;&gt;
+<a href="#h0-2-39" id="h0-2-39" class="d">-                    &lt;p class=&quot;cta-text&quot;&gt;Make a difference today. Your voice matters.&lt;/p&gt;
+</a><a href="#h0-2-40" id="h0-2-40" class="i">+                    &lt;p class=&quot;cta-text&quot;&gt;Buat perbedaan hari ini. Suara Anda penting.&lt;/p&gt;
+</a>                     @if (Route::has(&#39;register&#39;))
+                         &lt;a href=&quot;{{ route(&#39;register&#39;) }}&quot; class=&quot;cta-button&quot;&gt;Get Started&lt;/a&gt;
+                     @endif
+<a href="#h0-3" id="h0-3" class="h">@@ -373,11 +412,16 @@
+</a>         &lt;div class=&quot;image-box&quot;&gt;
+             &lt;img src=&quot;images/logo.png&quot; alt=&quot;WhistleSecure Logo&quot; class=&quot;hero-image&quot;&gt;
+             &lt;div class=&quot;image-overlay&quot;&gt;&lt;/div&gt;
+<a href="#h0-3-3" id="h0-3-3" class="i">+            &lt;div class=&quot;logo-description&quot;&gt;
+</a><a href="#h0-3-4" id="h0-3-4" class="i">+                &lt;h3&gt;Apa itu WhistleBlower?&lt;/h3&gt;
+</a><a href="#h0-3-5" id="h0-3-5" class="i">+                &lt;p&gt;WhistleBlower adalah platform pelaporan digital yang aman dan terpercaya, dirancang khusus untuk melindungi individu yang berani mengungkap praktik-praktik tidak etis, kecurangan, atau pelanggaran dalam organisasi.&lt;/p&gt;
+</a><a href="#h0-3-6" id="h0-3-6" class="i">+                &lt;p&gt;Dengan teknologi enkripsi terkini dan sistem manajemen laporan yang canggih, kami memastikan setiap laporan ditangani dengan profesional sambil menjaga kerahasiaan total pelapor.&lt;/p&gt;
+</a><a href="#h0-3-7" id="h0-3-7" class="i">+            &lt;/div&gt;
+</a>         &lt;/div&gt;
+     &lt;/main&gt;
+ 
+     &lt;footer&gt;
+<a href="#h0-3-12" id="h0-3-12" class="d">-        &amp;copy; {{ date(&#39;Y&#39;) }} WhistleSecure. All rights reserved.
+</a><a href="#h0-3-13" id="h0-3-13" class="i">+        &amp;copy; {{ date(&#39;Y&#39;) }} WhistleBlower. All rights reserved.
+</a>     &lt;/footer&gt;
+ 
+     &lt;!-- Pop-Up Elemen --&gt;
+</pre>
+</div>
+</body>
+</html>

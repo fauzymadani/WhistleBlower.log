@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>dropdown.blade.php - whistleblower - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../../../../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed" href="../../../../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="whistleblower.git Atom Feed (tags)" href="../../../../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../../../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../../../../"><img src="../../../../logo.png" alt="" width="32" height="32" /></a></td><td><h1>whistleblower</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../../../../log.html">Log</a> | <a href="../../../../files.html">Files</a> | <a href="../../../../refs.html">Refs</a> | <a href="../../../../file/README.md.html">README</a> | <a href="../../../../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<p> dropdown.blade.php (1295B)</p><hr/><pre id="blob">
+<a href="#l1" class="line" id="l1">      1</a> @props([&#39;align&#39; =&gt; &#39;right&#39;, &#39;width&#39; =&gt; &#39;48&#39;, &#39;contentClasses&#39; =&gt; &#39;py-1 bg-white dark:bg-[#1e1e1e] text-gray-800 dark:text-gray-200&#39;])
+<a href="#l2" class="line" id="l2">      2</a> 
+<a href="#l3" class="line" id="l3">      3</a> @php
+<a href="#l4" class="line" id="l4">      4</a> $alignmentClasses = match ($align) {
+<a href="#l5" class="line" id="l5">      5</a>     &#39;left&#39; =&gt; &#39;ltr:origin-top-left rtl:origin-top-right start-0&#39;,
+<a href="#l6" class="line" id="l6">      6</a>     &#39;top&#39; =&gt; &#39;origin-top&#39;,
+<a href="#l7" class="line" id="l7">      7</a>     default =&gt; &#39;ltr:origin-top-right rtl:origin-top-left end-0&#39;,
+<a href="#l8" class="line" id="l8">      8</a> };
+<a href="#l9" class="line" id="l9">      9</a> 
+<a href="#l10" class="line" id="l10">     10</a> $width = match ($width) {
+<a href="#l11" class="line" id="l11">     11</a>     &#39;48&#39; =&gt; &#39;w-48&#39;,
+<a href="#l12" class="line" id="l12">     12</a>     default =&gt; $width,
+<a href="#l13" class="line" id="l13">     13</a> };
+<a href="#l14" class="line" id="l14">     14</a> @endphp
+<a href="#l15" class="line" id="l15">     15</a> 
+<a href="#l16" class="line" id="l16">     16</a> &lt;div class=&quot;relative&quot; x-data=&quot;{ open: false }&quot; @click.outside=&quot;open = false&quot; @close.stop=&quot;open = false&quot;&gt;
+<a href="#l17" class="line" id="l17">     17</a>     &lt;div @click=&quot;open = ! open&quot;&gt;
+<a href="#l18" class="line" id="l18">     18</a>         {{ $trigger }}
+<a href="#l19" class="line" id="l19">     19</a>     &lt;/div&gt;
+<a href="#l20" class="line" id="l20">     20</a> 
+<a href="#l21" class="line" id="l21">     21</a>     &lt;div x-show=&quot;open&quot;
+<a href="#l22" class="line" id="l22">     22</a>             x-transition:enter=&quot;transition ease-out duration-200&quot;
+<a href="#l23" class="line" id="l23">     23</a>             x-transition:enter-start=&quot;opacity-0 scale-95&quot;
+<a href="#l24" class="line" id="l24">     24</a>             x-transition:enter-end=&quot;opacity-100 scale-100&quot;
+<a href="#l25" class="line" id="l25">     25</a>             x-transition:leave=&quot;transition ease-in duration-75&quot;
+<a href="#l26" class="line" id="l26">     26</a>             x-transition:leave-start=&quot;opacity-100 scale-100&quot;
+<a href="#l27" class="line" id="l27">     27</a>             x-transition:leave-end=&quot;opacity-0 scale-95&quot;
+<a href="#l28" class="line" id="l28">     28</a>             class=&quot;absolute z-50 mt-2 {{ $width }} rounded-md shadow-lg {{ $alignmentClasses }}&quot;
+<a href="#l29" class="line" id="l29">     29</a>             style=&quot;display: none;&quot;
+<a href="#l30" class="line" id="l30">     30</a>             @click=&quot;open = false&quot;&gt;
+<a href="#l31" class="line" id="l31">     31</a>         &lt;div class=&quot;rounded-md ring-1 ring-black ring-opacity-5 {{ $contentClasses }}&quot;&gt;
+<a href="#l32" class="line" id="l32">     32</a>             {{ $content }}
+<a href="#l33" class="line" id="l33">     33</a>         &lt;/div&gt;
+<a href="#l34" class="line" id="l34">     34</a>     &lt;/div&gt;
+<a href="#l35" class="line" id="l35">     35</a> &lt;/div&gt;
+</pre>
+</div>
+</body>
+</html>
